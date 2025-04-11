@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -58,7 +57,7 @@
         .block {
             background: linear-gradient(135deg, #292929, #3a3a3a);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             margin: 20px 0;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
             animation: slideUp 0.8s ease-in-out;
@@ -82,6 +81,11 @@
             color: #ddd;
             cursor: default;
         }
+
+        .button-container {
+            margin-bottom: 20px;
+        }
+
 
        .gallery {
             display: flex;
@@ -115,7 +119,6 @@
             border: 0;
         }
 
-        /* Анимации */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -131,9 +134,9 @@
             padding: 20px;
             background-color: #222;
             border-radius: 12px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #999;
-            cursor: default; /* Добавлено */
+            cursor: default;
         }
 
         .news-item {
@@ -144,21 +147,21 @@
         }
 
         .news-item h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #eee;
             margin-bottom: 5px;
             cursor: default;
         }
 
         .news-item .date {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #777;
             margin-bottom: 10px;
             cursor: default;
         }
 
         .news-item p {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #ccc;
             cursor: default;
         }
@@ -188,7 +191,7 @@
             margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 90%;
             max-width: 800px;
             border-radius: 12px;
             text-align: center;
@@ -218,44 +221,188 @@
         .button {
             background-color: #3a3a3a;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin: 5px;
             transition: background-color 0.3s;
         }
 
         .contact-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
         }
 
         .contact-text {
-            flex: 1;
-            text-align: left;
-            padding-right: 20px;
+            text-align: center;
+            padding-right: 0;
+            margin-bottom: 15px;
             cursor: default;
         }
 
         .contact-image {
-            flex: 1;
-            text-align: right;
+            text-align: center;
         }
 
         .contact-image img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 45%;
             object-fit: cover;
         }
+
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: none;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .menu-toggle span {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            transform: translateY(-50%);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-toggle span:before,
+        .menu-toggle span:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .menu-toggle span:before {
+            top: -8px;
+        }
+
+        .menu-toggle span:after {
+            top: 8px;
+        }
+
+        .menu-toggle.open span {
+            background-color: transparent;
+        }
+
+        .menu-toggle.open span:before {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:after {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1;
+            display: none;
+        }
+
+        .overlay.open {
+            display: block;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #222;
+            z-index: 3;
+            transition: left 0.3s;
+            padding-top: 60px;
+            text-align: left;
+        }
+
+        .menu.open {
+            left: 0;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+        .menu a:hover {
+            background-color: #333;
+        }
+
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .block {
+                padding: 15px;
+            }
+
+            .gallery img {
+                width: calc(100% - 10px);
+            }
+
+            .map-container {
+                height: 250px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+            .button-container {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
@@ -270,7 +417,23 @@
         });
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/100472478" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+
+    <div class="menu-toggle">
+        <span></span>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="menu">
+        <ul>
+            <li><a href="#" onclick="openModal('galleryModal'); closeMenu()">Галерея</a></li>
+            <li><a href="#description" onclick="closeMenu()">Описание</a></li>
+            <li><a href="#news" onclick="closeMenu()">Новости</a></li>
+            <li><a href="#development" onclick="closeMenu()">Развитие</a></li>
+            <li><a href="#contacts" onclick="closeMenu()">Контакты</a></li>
+            <li><a href="#map" onclick="closeMenu()">Расположение</a></li>
+        </ul>
+    </div>
 
     <div class="container">
         <h1>Официальный сайт<br>СПК "Спортзнак"</h1>
@@ -304,17 +467,17 @@
             </div>
         </div>
 
-        <div class="block">
+        <div class="block" id="description">
             <h2>Описание СПК "Спортзнак"</h2>
             <p>СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
         </div>
 
-        <div class="block">
+        <div class="block" id="news">
             <h2>Новости</h2>
             <div class="news-container">
                 <div class="news-item">
                     <h3>Обновление сайта!</h3>
-                    <div class="date">15 марта 2025</div>
+                    <div class="date">11 апреля 2025</div>
                     <p>Новое обновление сайта!</p>
                 </div>
 
@@ -333,12 +496,12 @@
             </div>
         </div>
 
-        <div class="block">
+        <div class="block" id="development">
             <h2>Развитие</h2>
             <p>В СПК "Спортзнак" часто проводятся собрания для обсуждения планов по улучшению территории, и работоспособности объектов, таких как: дороги, освещение, мусорные площадки и т. д.</p>
         </div>
 
-        <div class="block">
+        <div class="block" id="contacts">
             <h2>Контакты</h2>
             <div class="contact-container">
                 <div class="contact-text">
@@ -351,7 +514,7 @@
             </div>
         </div>
 
-        <div class="block">
+        <div class="block" id="map">
             <h2>Расположение на карте</h2>
             <div class="map-container">
                 <iframe src="https://yandex.ru/map-widget/v1/?ll=36.402552%2C55.314090&z=17&l=sat,skl,stv,sta&whatshere%5Bpoint%5D=36.402552%2C55.314090&whatshere%5Bzoom%5D=100"
@@ -364,6 +527,29 @@
         </div>
     </div>
     <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.menu');
+        const overlay = document.querySelector('.overlay');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        });
+
+        overlay.addEventListener('click', () => {
+            menuToggle.classList.remove('open');
+            menu.classList.remove('open');
+            overlay.classList.remove('open');
+        });
+
+        function closeMenu() {
+            menuToggle.classList.remove('open');
+            menu.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+
+
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
         }
