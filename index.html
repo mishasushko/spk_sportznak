@@ -337,6 +337,22 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow on image */
         }
 
+        .contact-text p {
+            cursor: text; /* Allow text selection */
+        }
+
+        .contact-text a {
+            color: #ccc; /* Match parent text color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s ease;
+        }
+
+         .contact-text a:hover {
+            color: #fff; /* Lighter on hover */
+            text-decoration: underline; /* Add underline on hover for emphasis */
+         }
+
+
         .menu-toggle {
             position: fixed;
             top: 20px;
@@ -664,7 +680,6 @@
                 <span class="close" onclick="closeModal('galleryModal')">×</span>
                 <h2 id="gallery-modal-title">Галерея</h2>
                 <div class="gallery">
-                     <!-- Corrected onclick to use local paths -->
                      <img src="Photos\image1.jpg" alt="Image 1" onclick="openImageModal('Photos/image1.jpg')">
                      <img src="Photos\image2.jpg" alt="Image 2" onclick="openImageModal('Photos/image2.jpg')">
                      <img src="Photos\image3.jpg" alt="Image 3" onclick="openImageModal('Photos/image3.jpg')">
@@ -735,7 +750,9 @@
             <div class="contact-container">
                 <div class="contact-text">
                     <p id="contact-chairman">Председатель: Фаттяхетдинов Рушан Шамилевич</p>
-                    <p id="contact-phone">Телефон: +7 916 600-94-60 (только для срочных вопросов)</p>
+                    <p id="contact-phone">
+                        Телефон: <a href="tel:+79166009460">+7 916 600-94-60</a> (только для срочных вопросов)
+                    </p>
                 </div>
                 <div class="contact-image">
                     <img src="rushan.png" alt="Фото председателя" id="contact-img-alt">
@@ -851,7 +868,8 @@
                 'development-text': 'В СПК "Спортзнак" часто проводятся собрания для обсуждения планов по улучшению территории, и работоспособности объектов, таких как: дороги, освещение, мусорные площадки и т. д.',
                 'contacts-title': 'Контакты',
                 'contact-chairman': 'Председатель: Фаттяхетдинов Рушан Шамилевич',
-                'contact-phone': 'Телефон: +7 916 600-94-60 (только для срочных вопросов)',
+                // Изменено для кликабельного номера телефона
+                'contact-phone': 'Телефон: <a href="tel:+79166009460">+7 916 600-94-60</a> (только для срочных вопросов)',
                 'contact-img-alt': "Фото председателя",
                 'map-title': 'Расположение на карте',
                 'copyright-text': '© 2025 СПК "Спортзнак". Все права защищены.',
@@ -890,7 +908,8 @@
                 'development-text': 'Meetings are often held at SPK "Sportznak" to discuss plans for improving the territory and the functionality of facilities such as roads, lighting, garbage collection areas, etc.',
                 'contacts-title': 'Contacts',
                 'contact-chairman': 'Chairman: Fattyakhetdinov Rushan Shamilevich',
-                'contact-phone': 'Phone: +7 916 600-94-60 (for urgent matters only)',
+                // Изменено для кликабельного номера телефона (английская версия)
+                'contact-phone': 'Phone: <a href="tel:+79166009460">+7 916 600-94-60</a> (for urgent matters only)',
                 'contact-img-alt': "Chairman's Photo",
                 'map-title': 'Location on Map',
                 'copyright-text': '© 2025 SPK "Sportznak". All rights reserved.',
@@ -922,6 +941,9 @@
                          element.innerHTML = translations[lang][id];
                     } else if (id === 'language-switcher') {
                         element.textContent = translations[lang][id];
+                    }
+                    else if (id === 'contact-phone') { // Специальная обработка для ссылки на телефон
+                         element.innerHTML = translations[lang][id];
                     }
                     else {
                         // For most elements like p, h1, h2, h3, a, button, div
