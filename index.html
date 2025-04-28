@@ -17,7 +17,7 @@
     <!-- Title will be updated by JS -->
     <title id="page-title">Официальный сайт СПК "Спортзнак"</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
         * {
             box-sizing: border-box;
@@ -27,90 +27,121 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #181818;
+            background: linear-gradient(to bottom, #181818, #0a0a0a); /* Deeper dark gradient */
             color: #f0f0f0;
             text-align: center;
             line-height: 1.6;
+            min-height: 100vh; /* Ensure full height */
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px; /* Slightly wider container */
             margin: auto;
-            padding: 20px;
+            padding: 0 20px; /* Adjusted padding */
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.2);
-            animation: fadeIn 1.2s ease-in-out;
-            letter-spacing: 0.5px;
+            font-size: 3rem; /* Larger heading */
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.25); /* Stronger shadow */
+            animation: fadeInDown 1.5s ease-in-out; /* New animation */
+            letter-spacing: 1px; /* Increased letter spacing */
             cursor: default;
+            font-weight: 700; /* Bolder font weight */
         }
 
-        .date { /* Shared date class for news */
+         .date { /* Shared date class for news */
             font-size: 1rem;
             color: #bbb;
             margin-bottom: 20px;
             animation: fadeIn 1.5s ease-in-out;
             cursor: default;
+            font-weight: 400; /* Standard weight */
         }
 
+
         .block {
-            background: linear-gradient(135deg, #292929, #3a3a3a);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.8s ease-in-out;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(135deg, #2e2e2e, #3f3f3f); /* Slightly lighter gradient */
+            border-radius: 15px; /* More rounded corners */
+            padding: 30px; /* More padding */
+            margin: 30px 0; /* More margin */
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+            animation: fadeInUp 0.8s ease-in-out; /* New animation */
+            transition: transform 0.4s ease, box-shadow 0.4s ease; /* Slower transition */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
         }
 
         .block:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 6px 18px rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.15); /* Lighter, more spread shadow on hover */
         }
 
         h2 {
             color: #fff;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
+            margin-bottom: 20px; /* More margin */
+            font-size: 2.2rem; /* Larger heading */
             cursor: default;
+            font-weight: 700; /* Bolder font weight */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
         }
 
         p {
-            font-size: 1.1rem;
-            color: #ddd;
+            font-size: 1.2rem; /* Larger text */
+            color: #ccc; /* Slightly lighter text color */
             cursor: default;
+            font-weight: 400;
         }
 
         .button-container {
-            margin-bottom: 20px;
+            margin-bottom: 30px; /* More margin */
         }
 
-       .gallery {
+        .button {
+            background-color: #4a4a4a; /* Darker button */
+            color: white;
+            padding: 12px 25px; /* Larger padding */
+            border: none;
+            border-radius: 8px; /* More rounded */
+            cursor: pointer;
+            font-size: 1.1rem; /* Larger font */
+            margin: 8px; /* More margin */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Add transform transition */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        .button:hover {
+            background-color: #5a5a5a; /* Lighter on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
+        }
+
+        .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 10px; /* Gap between images */
         }
 
         .gallery img {
-            width: calc(33.33% - 10px);
+            width: calc(33.33% - 15px); /* Adjust width with gap */
             height: auto;
-            margin: 5px;
-            border-radius: 8px;
+            border-radius: 10px; /* More rounded corners */
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smoother transition */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow on images */
+            object-fit: cover; /* Maintain aspect ratio */
         }
 
         .gallery img:hover {
-            transform: scale(1.1);
+            transform: scale(1.05); /* Slightly larger scale */
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15); /* Lighter, more spread shadow on hover */
         }
 
         .map-container {
-            height: 300px;
-            border-radius: 12px;
+            height: 400px; /* Taller map */
+            border-radius: 15px; /* Match block radius */
             overflow: hidden;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4); /* Shadow on map */
         }
 
         .map-container iframe {
@@ -119,144 +150,191 @@
             border: 0;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes fadeIn {
+             from { opacity: 0; }
+             to { opacity: 1; }
+         }
+
 
         .copyright {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #222;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            color: #999;
+            margin-top: 50px; /* More margin */
+            padding: 25px; /* More padding */
+            background-color: #1f1f1f; /* Darker background */
+            border-radius: 15px; /* Match block radius */
+            font-size: 0.9rem; /* Slightly larger font */
+            color: #888; /* Darker text color */
             cursor: default;
         }
 
         .news-item {
-            margin-bottom: 15px;
-            padding: 15px;
-            border-bottom: 2px solid #333;
+            margin-bottom: 20px; /* More space between news items */
+            padding: 20px; /* More padding */
+            border-bottom: 2px solid #383838; /* Slightly lighter border */
             text-align: left;
+            background-color: rgba(255, 255, 255, 0.05); /* Very subtle background */
+            border-radius: 10px; /* Rounded corners */
+            transition: background-color 0.3s ease;
+        }
+
+        .news-item:last-child {
+            border-bottom: none; /* No border on the last item */
+        }
+
+        .news-item:hover {
+            background-color: rgba(255, 255, 255, 0.08); /* Slightly more visible on hover */
         }
 
         .news-item h3 {
-            font-size: 1.1rem;
-            color: #eee;
-            margin-bottom: 5px;
+            font-size: 1.3rem; /* Larger heading */
+            color: #eee; /* Slightly brighter heading */
+            margin-bottom: 8px; /* More margin */
             cursor: default;
+            font-weight: 500; /* Medium font weight */
         }
 
         /* Specific news date style */
         .news-item .news-date {
-            font-size: 0.9rem;
-            color: #777;
-            margin-bottom: 10px;
+            font-size: 1rem; /* Larger date font */
+            color: #999; /* Lighter date color */
+            margin-bottom: 12px; /* More margin */
             cursor: default;
+            font-weight: 400;
             /* Remove animation inherited from general .date */
             animation: none;
         }
 
         .news-item p {
-            font-size: 0.9rem;
-            color: #ccc;
+            font-size: 1rem; /* Larger text */
+            color: #bbb; /* Lighter text color */
             cursor: default;
+            font-weight: 400;
         }
 
         .news-container {
-            max-height: 400px;
+            max-height: 500px; /* Taller news container */
             overflow-y: auto;
+            padding-right: 10px; /* Padding for scrollbar */
+        }
+
+        /* Custom Scrollbar */
+        .news-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .news-container::-webkit-scrollbar-track {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        .news-container::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+
+        .news-container::-webkit-scrollbar-thumb:hover {
+            background: #777;
         }
 
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 100; /* Higher z-index */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
             background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.9);
-            padding-top: 50px;
-            animation: slideUp 0.2s ease-in-out;
+            background-color: rgba(0,0,0,0.95); /* More opaque background */
+            padding-top: 20px; /* Less padding at the top */
+            animation: fadeIn 0.3s ease-in-out; /* Fade in animation */
         }
 
         .modal-content {
             background-color: #292929;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 800px;
-            border-radius: 12px;
+            margin: 2% auto; /* Adjust margin */
+            padding: 30px; /* More padding */
+            border: 1px solid #444; /* Darker border */
+            width: 95%; /* Wider modal */
+            max-width: 900px; /* Larger max width */
+            border-radius: 15px; /* More rounded corners */
             text-align: center;
+            position: relative; /* Needed for close button absolute positioning */
+            animation: zoomIn 0.4s ease-in-out; /* New animation */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow */
         }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
 
         .modal-content img {
             max-width: 100%;
-            max-height: 80vh;
+            max-height: 85vh; /* Take up more vertical space */
             display: block;
             margin: 0 auto;
+            border-radius: 10px; /* Rounded corners for image */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Shadow on modal image */
         }
 
         .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
+            color: #fff; /* White close button */
+            position: absolute; /* Position relative to modal-content */
+            top: 15px;
+            right: 25px;
+            font-size: 35px; /* Larger font size */
             font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease; /* Add transition */
         }
 
         .close:hover,
         .close:focus {
-            color: white;
+            color: #ccc; /* Lighter on hover */
             text-decoration: none;
             cursor: pointer;
-        }
-
-        .button {
-            background-color: #3a3a3a;
-            color: white;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            margin: 5px;
-            transition: background-color 0.3s;
+            transform: rotate(90deg); /* Rotate on hover */
         }
 
         .contact-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row; /* Horizontal layout */
             align-items: center;
             justify-content: center;
-            text-align: center;
+            gap: 30px; /* Space between text and image */
+            text-align: left; /* Align text to the left */
         }
 
         .contact-text {
-            text-align: center;
+            flex-grow: 1; /* Allow text to grow */
+            text-align: left; /* Ensure text is left aligned */
             padding-right: 0;
-            margin-bottom: 15px;
             cursor: default;
         }
 
         .contact-image {
-            text-align: center;
+            flex-shrink: 0; /* Prevent image from shrinking */
+            text-align: center; /* Center image within its container */
         }
 
         .contact-image img {
-            width: 120px;
-            height: 120px;
-            border-radius: 45%;
+            width: 150px; /* Larger image */
+            height: 150px; /* Larger image */
+            border-radius: 50%; /* Perfect circle */
             object-fit: cover;
+            border: 4px solid #4a4a4a; /* Border around image */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow on image */
         }
 
         .menu-toggle {
@@ -264,10 +342,15 @@
             top: 20px;
             left: 20px;
             display: none; /* Initially hidden, shown by media query */
-            width: 30px;
-            height: 30px;
+            width: 35px; /* Larger toggle */
+            height: 35px; /* Larger toggle */
             cursor: pointer;
-            z-index: 2;
+            z-index: 101; /* Higher z-index than overlay */
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
         }
 
         .menu-toggle span {
@@ -275,10 +358,11 @@
             top: 50%;
             left: 0;
             width: 100%;
-            height: 2px;
+            height: 3px; /* Thicker lines */
             background-color: #fff;
             transform: translateY(-50%);
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border-radius: 2px;
         }
 
         .menu-toggle span:before,
@@ -287,17 +371,18 @@
             position: absolute;
             left: 0;
             width: 100%;
-            height: 2px;
+            height: 3px; /* Thicker lines */
             background-color: #fff;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            border-radius: 2px;
         }
 
         .menu-toggle span:before {
-            top: -8px;
+            top: -10px; /* More space */
         }
 
         .menu-toggle span:after {
-            top: 8px;
+            top: 10px; /* More space */
         }
 
         .menu-toggle.open span {
@@ -305,11 +390,11 @@
         }
 
         .menu-toggle.open span:before {
-            transform: translateY(8px) rotate(45deg);
+            transform: translateY(10px) rotate(45deg); /* Adjust translation */
         }
 
         .menu-toggle.open span:after {
-            transform: translateY(-8px) rotate(-45deg);
+            transform: translateY(-10px) rotate(-45deg); /* Adjust translation */
         }
 
         .overlay {
@@ -318,26 +403,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.7); /* Slightly less opaque */
+            z-index: 100; /* Match modal z-index */
             display: none;
+            backdrop-filter: blur(5px); /* Add blur effect */
+            transition: opacity 0.3s ease;
+            opacity: 0;
         }
 
         .overlay.open {
             display: block;
+            opacity: 1;
         }
 
         .menu {
             position: fixed;
             top: 0;
-            left: -250px;
-            width: 250px;
+            left: -280px; /* Wider menu */
+            width: 280px; /* Wider menu */
             height: 100%;
             background-color: #222;
-            z-index: 3;
-            transition: left 0.3s;
-            padding-top: 60px;
+            z-index: 102; /* Higher than overlay */
+            transition: left 0.4s ease; /* Slower transition */
+            padding-top: 80px; /* More padding */
             text-align: left;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Shadow on menu */
         }
 
         .menu.open {
@@ -351,47 +441,167 @@
         }
 
         .menu li {
-            padding: 15px;
-            border-bottom: 1px solid #333;
+            padding: 18px 25px; /* More padding */
+            border-bottom: 1px solid #383838; /* Lighter border */
         }
 
         .menu a {
             color: #fff;
             text-decoration: none;
             display: block;
+            font-size: 1.1rem; /* Larger font */
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
         }
 
         .menu a:hover {
             background-color: #333;
+            padding-left: 10px; /* Indent on hover */
         }
+
+        /* Language Switcher - Basic Styling */
+         .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 101;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s ease;
+         }
+
+        .language-switcher:hover {
+            color: #fff;
+        }
+
 
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 0 15px;
             }
 
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                 font-size: 1.8rem;
+                 margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 1rem;
             }
 
             .block {
-                padding: 15px;
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+             .button-container {
+                margin-bottom: 20px; /* More margin */
+            }
+
+            .button {
+                 padding: 10px 20px;
+                 font-size: 1rem;
+                 margin: 5px;
+            }
+
+            .gallery {
+                gap: 5px; /* Smaller gap */
             }
 
             .gallery img {
-                width: calc(100% - 10px);
+                width: calc(50% - 7.5px); /* Two images per row on smaller screens */
             }
 
             .map-container {
-                height: 250px;
+                height: 300px;
             }
 
             .menu-toggle {
                 display: block; /* Show hamburger menu on mobile */
+                width: 30px;
+                height: 30px;
+                 top: 15px;
+                 left: 15px;
             }
+
+             .menu-toggle span {
+                 height: 2px;
+             }
+
+            .menu-toggle span:before,
+            .menu-toggle span:after {
+                 height: 2px;
+            }
+
+             .menu-toggle span:before {
+                 top: -8px;
+             }
+
+            .menu-toggle span:after {
+                 top: 8px;
+             }
+
+             .menu-toggle.open span:before {
+                 transform: translateY(8px) rotate(45deg);
+             }
+
+            .menu-toggle.open span:after {
+                 transform: translateY(-8px) rotate(-45deg);
+             }
+
+
             .button-container {
                 display: none; /* Hide desktop buttons on mobile */
             }
+
+            .contact-container {
+                flex-direction: column; /* Stack elements vertically */
+                gap: 20px;
+            }
+
+            .contact-text {
+                text-align: center; /* Center text */
+            }
+
+             .contact-image img {
+                 width: 100px;
+                 height: 100px;
+             }
+
+             .modal-content {
+                 padding: 20px;
+             }
+
+             .close {
+                 font-size: 30px;
+                 top: 10px;
+                 right: 15px;
+             }
+
+             .menu {
+                 width: 220px; /* Smaller menu */
+                 left: -220px;
+                 padding-top: 70px;
+             }
+
+              .menu li {
+                 padding: 12px 20px;
+             }
+
+              .menu a {
+                 font-size: 1rem;
+              }
+
+             .language-switcher {
+                 top: 15px;
+                 right: 15px;
+                 font-size: 0.9rem;
+             }
         }
 
         @media (min-width: 769px) {
@@ -421,6 +631,8 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/100472478" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 
+    <div class="language-switcher" onclick="toggleLanguage()" id="language-switcher">EN</div>
+
     <div class="menu-toggle">
         <span></span>
     </div>
@@ -430,7 +642,7 @@
     <div class="menu">
         <ul>
             <!-- Added IDs for translation -->
-            <li><a href="#" onclick="openModal('galleryModal'); closeMenu()" id="menu-gallery">Галерея</a></li>
+            <li><a href="#gallery" onclick="closeMenu()" id="menu-gallery">Галерея</a></li>
             <li><a href="#description" onclick="closeMenu()" id="menu-description">Описание</a></li>
             <li><a href="#news" onclick="closeMenu()" id="menu-news">Новости</a></li>
             <li><a href="#development" onclick="closeMenu()" id="menu-development">Развитие</a></li>
@@ -452,16 +664,16 @@
                 <span class="close" onclick="closeModal('galleryModal')">×</span>
                 <h2 id="gallery-modal-title">Галерея</h2>
                 <div class="gallery">
-                     <!-- Images remain the same -->
-                    <img src="https://i.pinimg.com/474x/db/c1/83/dbc1832eae3a76c75d92695bddb3f234.jpg" alt="Image 1" onclick="openImageModal('https://i.pinimg.com/474x/db/c1/83/dbc1832eae3a76c75d92695bddb3f234.jpg')">
-                    <img src="https://i.pinimg.com/474x/38/d4/68/38d4689f39cdb6eaf3fc7e5aa4b6f3ec.jpg" alt="Image 2" onclick="openImageModal('https://i.pinimg.com/474x/38/d4/68/38d4689f39cdb6eaf3fc7e5aa4b6f3ec.jpg')">
-                    <img src="https://i.pinimg.com/736x/b4/e2/df/b4e2df6764ffc5b3dbbe79a65eea550f.jpg" alt="Image 3" onclick="openImageModal('https://i.pinimg.com/736x/b4/e2/df/b4e2df6764ffc5b3dbbe79a65eea550f.jpg')">
-                    <img src="https://i.pinimg.com/474x/c6/f9/17/c6f917ed52260906526341bbf173da06.jpg" alt="Image 4" onclick="openImageModal('https://i.pinimg.com/474x/c6/f9/17/c6f917ed52260906526341bbf173da06.jpg')">
-                    <img src="https://i.pinimg.com/474x/ce/f2/c1/cef2c1a780c5606e4b452d56a6f56efd.jpg" alt="Image 5" onclick="openImageModal('https://i.pinimg.com/474x/ce/f2/c1/cef2c1a780c5606e4b452d56a6f56efd.jpg')">
-                    <img src="https://i.pinimg.com/474x/89/91/14/8991142e04ac29123bdf229238c1bc7c.jpg" alt="Image 6" onclick="openImageModal('https://i.pinimg.com/474x/89/91/14/8991142e04ac29123bdf229238c1bc7c.jpg')">
-                    <img src="https://i.postimg.cc/5jWNVW2N/photo-2025-03-14-19-29-18.jpg" alt="Image 7" onclick="openImageModal('https://i.postimg.cc/5jWNVW2N/photo-2025-03-14-19-29-18.jpg')">
-                    <img src="https://i.postimg.cc/MKBDwCDk/photo-2025-03-14-19-29-18-2.jpg" alt="Image 8" onclick="openImageModal('https://i.postimg.cc/MKBDwCDk/photo-2025-03-14-19-29-18-2.jpg')">
-                    <img src="https://i.postimg.cc/brktXhj3/photo-2025-03-14-19-33-51.jpg" alt="Image 9" onclick="openImageModal('https://i.postimg.cc/brktXhj3/photo-2025-03-14-19-33-51.jpg')">
+                     <!-- Corrected onclick to use local paths -->
+                     <img src="Photos\image1.jpg" alt="Image 1" onclick="openImageModal('Photos/image1.jpg')">
+                     <img src="Photos\image2.jpg" alt="Image 2" onclick="openImageModal('Photos/image2.jpg')">
+                     <img src="Photos\image3.jpg" alt="Image 3" onclick="openImageModal('Photos/image3.jpg')">
+                     <img src="Photos\image4.jpg" alt="Image 4" onclick="openImageModal('Photos/image4.jpg')">
+                     <img src="Photos\image5.jpg" alt="Image 5" onclick="openImageModal('Photos/image5.jpg')">
+                     <img src="Photos\image6.jpg" alt="Image 6" onclick="openImageModal('Photos/image6.jpg')">
+                     <img src="Photos\image7.jpg" alt="Image 7" onclick="openImageModal('Photos/image7.jpg')">
+                     <img src="Photos\image8.jpg" alt="Image 8" onclick="openImageModal('Photos/image8.jpg')">
+                     <img src="Photos\image9.jpg" alt="Image 9" onclick="openImageModal('Photos/image9.jpg')">
                 </div>
             </div>
         </div>
@@ -491,22 +703,22 @@
                 </div>
 
                 <div class="news-item">
-                    <h3 id="news1-title">Обновление сайта!</h3>
-                    <div class="news-date" id="news1-date">11 апреля 2025</div>
-                    <p id="news1-text">Новое обновление сайта!</p>
+                    <h3 id="news2-title">Обновление сайта!</h3>
+                    <div class="news-date" id="news2-date">11 апреля 2025</div>
+                    <p id="news2-text">Новое обновление сайта!</p>
                 </div>
 
                 <div class="news-item">
-                    <h3 id="news2-title">С 8 Марта!</h3>
-                    <div class="news-date" id="news2-date">8 марта 2025</div>
-                    <p id="news2-text1">Поздравляем всех женщин с праздником!</p>
-                    <p id="news2-text2">Желаем вам счастья, любви, успехов и долгих лет жизни!</p>
+                    <h3 id="news3-title">С 8 Марта!</h3>
+                    <div class="news-date" id="news3-date">8 марта 2025</div>
+                    <p id="news3-text1">Поздравляем всех женщин с праздником!</p>
+                    <p id="news3-text2">Желаем вам счастья, любви, успехов и долгих лет жизни!</p>
                 </div>
 
                   <div class="news-item">
-                    <h3 id="news3-title">Сайт запущен!</h3>
-                    <div class="news-date" id="news3-date">7 марта 2025</div>
-                    <p id="news3-text">Наш официальный сайт запущен в работу!</p>
+                    <h3 id="news4-title">Сайт запущен!</h3>
+                    <div class="news-date" id="news4-date">7 марта 2025</div>
+                    <p id="news4-text">Наш официальный сайт запущен в работу!</p>
                 </div>
             </div>
         </div>
@@ -553,6 +765,7 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const menu = document.querySelector('.menu');
         const overlay = document.querySelector('.overlay');
+        const languageSwitcher = document.getElementById('language-switcher');
 
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('open');
@@ -573,11 +786,15 @@
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) modal.style.display = "block";
+            // Prevent body scrolling when modal is open
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) modal.style.display = "none";
+             // Restore body scrolling
+            document.body.style.overflow = '';
         }
 
         function openImageModal(imageSrc) {
@@ -597,8 +814,49 @@
 
         // --- Language Switching Logic ---
 
+        let currentLanguage = 'ru'; // Default language
+
         // Translations Object
         const translations = {
+            'ru': {
+                'meta-keywords': 'спк спортзнак, спортзнак, снт спортзнак',
+                'meta-description': "Официальный сайт СПК 'Спортзнак' в Наро-Фоминском районе Московской области. Узнайте больше о нашем уютном посёлке: расположение, преимущества, контакты председателя, фотогалерея.",
+                'page-title': 'Официальный сайт СПК "Спортзнак"',
+                'main-heading': 'Официальный сайт<br>СПК "Спортзнак"',
+                'button-gallery': 'Галерея',
+                'menu-gallery': 'Галерея',
+                'menu-description': 'Описание',
+                'menu-news': 'Новости',
+                'menu-development': 'Развитие',
+                'menu-contacts': 'Контакты',
+                'menu-map': 'Расположение',
+                'gallery-modal-title': 'Галерея',
+                'description-title': 'Описание СПК "Спортзнак"',
+                'description-text': 'СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.',
+                'news-title': 'Новости',
+                'news1-title': 'День космонавтики!',
+                'news1-date': '12 апреля 2025',
+                'news1-text': 'Поздравляем с Днём космонавтики!',
+                'news2-title': 'Обновление сайта!',
+                'news2-date': '11 апреля 2025',
+                'news2-text': 'Новое обновление сайта!',
+                'news3-title': 'С 8 Марта!',
+                'news3-date': '8 марта 2025',
+                'news3-text1': 'Поздравляем всех женщин с праздником!',
+                'news3-text2': 'Желаем вам счастья, любви, успехов и долгих лет жизни!',
+                 'news4-title': 'Сайт запущен!',
+                 'news4-date': '7 марта 2025',
+                 'news4-text': 'Наш официальный сайт запущен в работу!',
+                'development-title': 'Развитие',
+                'development-text': 'В СПК "Спортзнак" часто проводятся собрания для обсуждения планов по улучшению территории, и работоспособности объектов, таких как: дороги, освещение, мусорные площадки и т. д.',
+                'contacts-title': 'Контакты',
+                'contact-chairman': 'Председатель: Фаттяхетдинов Рушан Шамилевич',
+                'contact-phone': 'Телефон: +7 916 600-94-60 (только для срочных вопросов)',
+                'contact-img-alt': "Фото председателя",
+                'map-title': 'Расположение на карте',
+                'copyright-text': '© 2025 СПК "Спортзнак". Все права защищены.',
+                'language-switcher': 'EN'
+            },
             'en': {
                 'meta-keywords': 'spk sportznak, sportznak, snt sportznak, cooperative',
                 'meta-description': "Official website of SPK 'Sportznak' in the Naro-Fominsk district of the Moscow region. Learn more about our cozy settlement: location, advantages, chairman's contacts, photo gallery.",
@@ -615,32 +873,35 @@
                 'description-title': 'Description of SPK "Sportznak"',
                 'description-text': 'SPK "Sportznak" is a cozy settlement in the Naro-Fominsk district of the Moscow region.',
                 'news-title': 'News',
-                'news1-title': 'Site Update!',
-                'news1-date': 'April 11, 2025', // Keep date format consistent or change as needed
-                'news1-text': 'New site update!',
-                'news2-title': 'Happy March 8th!',
-                'news2-date': 'March 8, 2025',
-                'news2-text1': 'Congratulations to all women on the holiday!',
-                'news2-text2': 'We wish you happiness, love, success, and long life!',
-                'news3-title': 'Site Launched!',
-                'news3-date': 'March 7, 2025',
-                'news3-text': 'Our official website has been launched!',
+                'news1-title': 'Cosmonautics Day!',
+                'news1-date': 'April 12, 2025',
+                'news1-text': 'Happy Cosmonautics Day!',
+                'news2-title': 'Site Update!',
+                'news2-date': 'April 11, 2025',
+                'news2-text': 'New site update!',
+                'news3-title': 'Happy March 8th!',
+                'news3-date': 'March 8, 2025',
+                'news3-text1': 'Congratulations to all women on the holiday!',
+                'news3-text2': 'We wish you happiness, love, success, and long life!',
+                'news4-title': 'Site Launched!',
+                'news4-date': 'March 7, 2025',
+                'news4-text': 'Our official website has been launched!',
                 'development-title': 'Development',
                 'development-text': 'Meetings are often held at SPK "Sportznak" to discuss plans for improving the territory and the functionality of facilities such as roads, lighting, garbage collection areas, etc.',
                 'contacts-title': 'Contacts',
-                'contact-chairman': 'Chairman: Fattyakhetdinov Rushan Shamilevich', // Name transliteration
+                'contact-chairman': 'Chairman: Fattyakhetdinov Rushan Shamilevich',
                 'contact-phone': 'Phone: +7 916 600-94-60 (for urgent matters only)',
                 'contact-img-alt': "Chairman's Photo",
                 'map-title': 'Location on Map',
-                'copyright-text': '© 2025 SPK "Sportznak". All rights reserved.'
+                'copyright-text': '© 2025 SPK "Sportznak". All rights reserved.',
+                 'language-switcher': 'RU'
             }
-            // Add other languages here if needed, e.g., 'ru': { ... } (though RU is the default in HTML)
         };
 
-        function switchToEnglish() {
-            console.log("Switching to English");
-            const lang = 'en';
+        function applyTranslation(lang) {
             document.documentElement.lang = lang; // Set HTML lang attribute
+            currentLanguage = lang;
+            console.log("Applying translation for:", lang);
 
             for (const id in translations[lang]) {
                 const element = document.getElementById(id);
@@ -655,10 +916,12 @@
                     } else if (element.tagName === 'TITLE') {
                         element.textContent = translations[lang][id];
                     } else if (element.tagName === 'IMG') {
+                        // No translation needed for image src itself, just alt text
                         element.alt = translations[lang][id];
-                    }
-                     else if (id === 'main-heading') { // Handle potential <br>
+                    } else if (id === 'main-heading') { // Handle potential <br>
                          element.innerHTML = translations[lang][id];
+                    } else if (id === 'language-switcher') {
+                        element.textContent = translations[lang][id];
                     }
                     else {
                         // For most elements like p, h1, h2, h3, a, button, div
@@ -669,6 +932,12 @@
                 }
             }
         }
+
+        function toggleLanguage() {
+            const newLang = currentLanguage === 'ru' ? 'en' : 'ru';
+            applyTranslation(newLang);
+        }
+
 
         // --- Geolocation and Language Check ---
         document.addEventListener('DOMContentLoaded', () => {
@@ -686,9 +955,11 @@
                         console.log("Detected country:", country);
                         // Switch to English if NOT Russia (RU) or Belarus (BY)
                         if (country !== 'RU' && country !== 'BY') {
-                            switchToEnglish();
+                             console.log("Region is not RU or BY, switching to English.");
+                            applyTranslation('en');
                         } else {
                              console.log("Region is RU or BY, keeping Russian.");
+                            applyTranslation('ru'); // Explicitly apply Russian just in case
                         }
                     } else {
                          throw new Error(`API Error: ${data.message || 'Could not retrieve country code'}`);
@@ -696,7 +967,8 @@
                 })
                 .catch(error => {
                     console.error("Could not get geolocation or apply translation:", error);
-                    // Optional: Default to Russian (which it already is) or try another method
+                    // Default to Russian if geolocation fails
+                    applyTranslation('ru');
                 });
         });
 
