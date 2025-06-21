@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta tags will be updated by JS if language changes -->
-    <meta name="keywords" content="спк спортзнак, спортзнак, снт спортзнак" id="meta-keywords">
-    <meta name="description" content="Официальный сайт СПК 'Спортзнак' в Наро-Фоминском районе Московской области. Узнайте больше о нашем уютном посёлке: расположение, преимущества, контакты председателя, фотогалерея." id="meta-description">
+    <meta name="keywords" content="спк спортзнак, спортзнак, снт спортзнак">
+    <meta name="description" content="Официальный сайт СПК 'Спортзнак' в Наро-Фоминском районе Московской области. Узнайте больше о нашем уютном посёлке: расположение, преимущества, контакты председателя, фотогалерея.">
     <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="shortcut icon" href="favicon.ico" />
@@ -14,8 +13,7 @@
     <link rel="manifest" href="site.webmanifest" />
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <link href="favicon.ico" rel="icon" type="image/x-icon">
-    <!-- Title will be updated by JS -->
-    <title id="page-title">Официальный сайт СПК "Спортзнак"</title>
+    <title>Официальный сайт СПК "Спортзнак"</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
@@ -474,23 +472,6 @@
             padding-left: 10px; /* Indent on hover */
         }
 
-        /* Language Switcher - Basic Styling */
-         .language-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 101;
-            font-size: 1rem;
-            cursor: pointer;
-            color: #ccc;
-            transition: color 0.3s ease;
-         }
-
-        .language-switcher:hover {
-            color: #fff;
-        }
-
-
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
@@ -515,8 +496,10 @@
                 margin: 20px 0;
             }
 
+             /* УДАЛЕН display: none для .button-container */
              .button-container {
                 margin-bottom: 20px; /* More margin */
+                display: block; /* Убедимся, что он всегда отображается */
             }
 
             .button {
@@ -570,11 +553,6 @@
                  transform: translateY(-8px) rotate(-45deg);
              }
 
-
-            .button-container {
-                display: none; /* Hide desktop buttons on mobile */
-            }
-
             .contact-container {
                 flex-direction: column; /* Stack elements vertically */
                 gap: 20px;
@@ -612,12 +590,6 @@
               .menu a {
                  font-size: 1rem;
               }
-
-             .language-switcher {
-                 top: 15px;
-                 right: 15px;
-                 font-size: 0.9rem;
-             }
         }
 
         @media (min-width: 769px) {
@@ -647,8 +619,6 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/100472478" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 
-    <div class="language-switcher" onclick="toggleLanguage()" id="language-switcher">EN</div>
-
     <div class="menu-toggle">
         <span></span>
     </div>
@@ -657,38 +627,38 @@
 
     <div class="menu">
         <ul>
-            <!-- Added IDs for translation -->
-            <li><a href="#gallery" onclick="closeMenu()" id="menu-gallery">Галерея</a></li>
-            <li><a href="#description" onclick="closeMenu()" id="menu-description">Описание</a></li>
-            <li><a href="#news" onclick="closeMenu()" id="menu-news">Новости</a></li>
-            <li><a href="#development" onclick="closeMenu()" id="menu-development">Развитие</a></li>
-            <li><a href="#contacts" onclick="closeMenu()" id="menu-contacts">Контакты</a></li>
-            <li><a href="#map" onclick="closeMenu()" id="menu-map">Расположение</a></li>
+            <!-- Добавлена ссылка на галерею в мобильное меню -->
+            <li><a href="#gallery" onclick="openModal('galleryModal'); closeMenu();">Галерея</a></li>
+            <li><a href="#description" onclick="closeMenu()">Описание</a></li>
+            <li><a href="#news" onclick="closeMenu()">Новости</a></li>
+            <li><a href="#development" onclick="closeMenu()">Развитие</a></li>
+            <li><a href="#contacts" onclick="closeMenu()">Контакты</a></li>
+            <li><a href="#map" onclick="closeMenu()">Расположение</a></li>
         </ul>
     </div>
 
     <div class="container">
-        <h1 id="main-heading">Официальный сайт<br>СПК "Спортзнак"</h1>
+        <h1>Официальный сайт<br>СПК "Спортзнак"</h1>
 
         <div class="button-container">
-            <button class="button" onclick="openModal('galleryModal')" id="button-gallery">Галерея</button>
+            <button class="button" onclick="openModal('galleryModal')">Галерея</button>
         </div>
 
         <!-- Gallery Modal -->
         <div id="galleryModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('galleryModal')">×</span>
-                <h2 id="gallery-modal-title">Галерея</h2>
+                <h2>Галерея</h2>
                 <div class="gallery">
-                     <img src="Photos\image1.jpg" alt="Image 1" onclick="openImageModal('Photos/image1.jpg')">
-                     <img src="Photos\image2.jpg" alt="Image 2" onclick="openImageModal('Photos/image2.jpg')">
-                     <img src="Photos\image3.jpg" alt="Image 3" onclick="openImageModal('Photos/image3.jpg')">
-                     <img src="Photos\image4.jpg" alt="Image 4" onclick="openImageModal('Photos/image4.jpg')">
-                     <img src="Photos\image5.jpg" alt="Image 5" onclick="openImageModal('Photos/image5.jpg')">
-                     <img src="Photos\image6.jpg" alt="Image 6" onclick="openImageModal('Photos/image6.jpg')">
-                     <img src="Photos\image7.jpg" alt="Image 7" onclick="openImageModal('Photos/image7.jpg')">
-                     <img src="Photos\image8.jpg" alt="Image 8" onclick="openImageModal('Photos/image8.jpg')">
-                     <img src="Photos\image9.jpg" alt="Image 9" onclick="openImageModal('Photos/image9.jpg')">
+                     <img src="Photos\image1.jpg" alt="Изображение 1" onclick="openImageModal('Photos/image1.jpg')">
+                     <img src="Photos\image2.jpg" alt="Изображение 2" onclick="openImageModal('Photos/image2.jpg')">
+                     <img src="Photos\image3.jpg" alt="Изображение 3" onclick="openImageModal('Photos/image3.jpg')">
+                     <img src="Photos\image4.jpg" alt="Изображение 4" onclick="openImageModal('Photos/image4.jpg')">
+                     <img src="Photos\image5.jpg" alt="Изображение 5" onclick="openImageModal('Photos/image5.jpg')">
+                     <img src="Photos\image6.jpg" alt="Изображение 6" onclick="openImageModal('Photos/image6.jpg')">
+                     <img src="Photos\image7.jpg" alt="Изображение 7" onclick="openImageModal('Photos/image7.jpg')">
+                     <img src="Photos\image8.jpg" alt="Изображение 8" onclick="openImageModal('Photos/image8.jpg')">
+                     <img src="Photos\image9.jpg" alt="Изображение 9" onclick="openImageModal('Photos/image9.jpg')">
                 </div>
             </div>
         </div>
@@ -697,94 +667,93 @@
         <div id="imageModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('imageModal')">×</span>
-                <img id="modalImage" src="" alt="Full Image">
+                <img id="modalImage" src="" alt="Полное изображение">
             </div>
         </div>
 
         <!-- Description Block -->
         <div class="block" id="description">
-            <h2 id="description-title">Описание СПК "Спортзнак"</h2>
-            <p id="description-text">СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
+            <h2>Описание СПК "Спортзнак"</h2>
+            <p>СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
         </div>
 
         <!-- News Block -->
         <div class="block" id="news">
-            <h2 id="news-title">Новости</h2>
+            <h2>Новости</h2>
             <div class="news-container">
 
                 <div class="news-item">
-                    <h3 id="news0-title">Лето!</h3>
-                    <div class="news-date" id="news0-date">1 июня 2025</div>
-                    <p id="news0-text">Поздравляем всех с летом!</p>
+                    <h3>Лето!</h3>
+                    <div class="news-date">1 июня 2025</div>
+                    <p>Поздравляем всех с летом!</p>
                 </div>
 
                 <div class="news-item">
-                    <h3 id="news1-title">День Победы!</h3>
-                    <div class="news-date" id="news0-date">9 мая 2025</div>
-                    <p id="news0-text">Поздравляем с Днём Победы!</p>
+                    <h3>День Победы!</h3>
+                    <div class="news-date">9 мая 2025</div>
+                    <p>Поздравляем с Днём Победы!</p>
                 </div>
                 
                 <div class="news-item">
-                    <h3 id="news2-title">День космонавтики!</h3>
-                    <div class="news-date" id="news1-date">12 апреля 2025</div>
-                    <p id="news1-text">Поздравляем с Днём космонавтики!</p>
+                    <h3>День космонавтики!</h3>
+                    <div class="news-date">12 апреля 2025</div>
+                    <p>Поздравляем с Днём космонавтики!</p>
                 </div>
 
                 <div class="news-item">
-                    <h3 id="news3-title">Обновление сайта!</h3>
-                    <div class="news-date" id="news2-date">11 апреля 2025</div>
-                    <p id="news2-text">Новое обновление сайта!</p>
+                    <h3>Обновление сайта!</h3>
+                    <div class="news-date">11 апреля 2025</div>
+                    <p>Новое обновление сайта!</p>
                 </div>
 
                 <div class="news-item">
-                    <h3 id="news4-title">С 8 Марта!</h3>
-                    <div class="news-date" id="news3-date">8 марта 2025</div>
-                    <p id="news3-text1">Поздравляем всех женщин с праздником!</p>
-                    <p id="news3-text2">Желаем вам счастья, любви, успехов и долгих лет жизни!</p>
+                    <h3>С 8 Марта!</h3>
+                    <div class="news-date">8 марта 2025</div>
+                    <p>Поздравляем всех женщин с праздником!</p>
+                    <p>Желаем вам счастья, любви, успехов и долгих лет жизни!</p>
                 </div>
 
                   <div class="news-item">
-                    <h3 id="news5-title">Сайт запущен!</h3>
-                    <div class="news-date" id="news4-date">7 марта 2025</div>
-                    <p id="news4-text">Наш официальный сайт запущен в работу!</p>
+                    <h3>Сайт запущен!</h3>
+                    <div class="news-date">7 марта 2025</div>
+                    <p>Наш официальный сайт запущен в работу!</p>
                 </div>
             </div>
         </div>
 
         <!-- Development Block -->
         <div class="block" id="development">
-            <h2 id="development-title">Развитие</h2>
-            <p id="development-text">В СПК "Спортзнак" часто проводятся собрания для обсуждения планов по улучшению территории, и работоспособности объектов, таких как: дороги, освещение, мусорные площадки и т. д.</p>
+            <h2>Развитие</h2>
+            <p>В СПК "Спортзнак" часто проводятся собрания для обсуждения планов по улучшению территории, и работоспособности объектов, таких как: дороги, освещение, мусорные площадки и т. д.</p>
         </div>
 
         <!-- Contacts Block -->
         <div class="block" id="contacts">
-            <h2 id="contacts-title">Контакты</h2>
+            <h2>Контакты</h2>
             <div class="contact-container">
                 <div class="contact-text">
-                    <p id="contact-chairman">Председатель: Фаттяхетдинов Рушан Шамилевич</p>
-                    <p id="contact-phone">
+                    <p>Председатель: Фаттяхетдинов Рушан Шамилевич</p>
+                    <p>
                         Телефон: <a href="tel:+79166009460">+7 916 600-94-60</a> (только для срочных вопросов)
                     </p>
                 </div>
                 <div class="contact-image">
-                    <img src="rushan.png" alt="Фото председателя" id="contact-img-alt">
+                    <img src="rushan.png" alt="Фото председателя">
                 </div>
             </div>
         </div>
 
         <!-- Map Block -->
         <div class="block" id="map">
-            <h2 id="map-title">Расположение на карте</h2>
+            <h2>Расположение на карте</h2>
             <div class="map-container">
-                <!-- Map iframe remains the same -->
                 <iframe src="https://yandex.ru/map-widget/v1/?ll=36.402552%2C55.314090&z=17&l=sat,skl,stv,sta&whatshere%5Bpoint%5D=36.402552%2C55.314090&whatshere%5Bzoom%5D=100"
         width="100%" height="400" frameborder="0" allowfullscreen="true"></iframe>
             </div>
         </div>
 
         <!-- Copyright -->
-        <div class="copyright" id="copyright-text">
+        <div class="copyright">
             © 2025 СПК "Спортзнак". Все права защищены.
         </div>
     </div>
@@ -795,7 +764,6 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const menu = document.querySelector('.menu');
         const overlay = document.querySelector('.overlay');
-        const languageSwitcher = document.getElementById('language-switcher');
 
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('open');
@@ -841,172 +809,6 @@
                 closeModal(event.target.id);
             }
         }
-
-        // --- Language Switching Logic ---
-
-        let currentLanguage = 'ru'; // Default language
-
-        // Translations Object
-        const translations = {
-            'ru': {
-                'meta-keywords': 'спк спортзнак, спортзнак, снт спортзнак',
-                'meta-description': "Официальный сайт СПК 'Спортзнак' в Наро-Фоминском районе Московской области. Узнайте больше о нашем уютном посёлке: расположение, преимущества, контакты председателя, фотогалерея.",
-                'page-title': 'Официальный сайт СПК "Спортзнак"',
-                'main-heading': 'Официальный сайт<br>СПК "Спортзнак"',
-                'button-gallery': 'Галерея',
-                'menu-gallery': 'Галерея',
-                'menu-description': 'Описание',
-                'menu-news': 'Новости',
-                'menu-development': 'Развитие',
-                'menu-contacts': 'Контакты',
-                'menu-map': 'Расположение',
-                'gallery-modal-title': 'Галерея',
-                'description-title': 'Описание СПК "Спортзнак"',
-                'description-text': 'СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.',
-                'news-title': 'Новости',
-                'news1-title': 'День космонавтики!',
-                'news1-date': '12 апреля 2025',
-                'news1-text': 'Поздравляем с Днём космонавтики!',
-                'news2-title': 'Обновление сайта!',
-                'news2-date': '11 апреля 2025',
-                'news2-text': 'Новое обновление сайта!',
-                'news3-title': 'С 8 Марта!',
-                'news3-date': '8 марта 2025',
-                'news3-text1': 'Поздравляем всех женщин с праздником!',
-                'news3-text2': 'Желаем вам счастья, любви, успехов и долгих лет жизни!',
-                 'news4-title': 'Сайт запущен!',
-                 'news4-date': '7 марта 2025',
-                 'news4-text': 'Наш официальный сайт запущен в работу!',
-                'development-title': 'Развитие',
-                'development-text': 'В СПК "Спортзнак" часто проводятся собрания для обсуждения планов по улучшению территории, и работоспособности объектов, таких как: дороги, освещение, мусорные площадки и т. д.',
-                'contacts-title': 'Контакты',
-                'contact-chairman': 'Председатель: Фаттяхетдинов Рушан Шамилевич',
-                // Изменено для кликабельного номера телефона
-                'contact-phone': 'Телефон: <a href="tel:+79166009460">+7 916 600-94-60</a> (только для срочных вопросов)',
-                'contact-img-alt': "Фото председателя",
-                'map-title': 'Расположение на карте',
-                'copyright-text': '© 2025 СПК "Спортзнак". Все права защищены.',
-                'language-switcher': 'EN'
-            },
-            'en': {
-                'meta-keywords': 'spk sportznak, sportznak, snt sportznak, cooperative',
-                'meta-description': "Official website of SPK 'Sportznak' in the Naro-Fominsk district of the Moscow region. Learn more about our cozy settlement: location, advantages, chairman's contacts, photo gallery.",
-                'page-title': 'Official Website SPK "Sportznak"',
-                'main-heading': 'Official Website<br>SPK "Sportznak"',
-                'button-gallery': 'Gallery',
-                'menu-gallery': 'Gallery',
-                'menu-description': 'Description',
-                'menu-news': 'News',
-                'menu-development': 'Development',
-                'menu-contacts': 'Contacts',
-                'menu-map': 'Location',
-                'gallery-modal-title': 'Gallery',
-                'description-title': 'Description of SPK "Sportznak"',
-                'description-text': 'SPK "Sportznak" is a cozy settlement in the Naro-Fominsk district of the Moscow region.',
-                'news-title': 'News',
-                'news1-title': 'Cosmonautics Day!',
-                'news1-date': 'April 12, 2025',
-                'news1-text': 'Happy Cosmonautics Day!',
-                'news2-title': 'Site Update!',
-                'news2-date': 'April 11, 2025',
-                'news2-text': 'New site update!',
-                'news3-title': 'Happy March 8th!',
-                'news3-date': 'March 8, 2025',
-                'news3-text1': 'Congratulations to all women on the holiday!',
-                'news3-text2': 'We wish you happiness, love, success, and long life!',
-                'news4-title': 'Site Launched!',
-                'news4-date': 'March 7, 2025',
-                'news4-text': 'Our official website has been launched!',
-                'development-title': 'Development',
-                'development-text': 'Meetings are often held at SPK "Sportznak" to discuss plans for improving the territory and the functionality of facilities such as roads, lighting, garbage collection areas, etc.',
-                'contacts-title': 'Contacts',
-                'contact-chairman': 'Chairman: Fattyakhetdinov Rushan Shamilevich',
-                // Изменено для кликабельного номера телефона (английская версия)
-                'contact-phone': 'Phone: <a href="tel:+79166009460">+7 916 600-94-60</a> (for urgent matters only)',
-                'contact-img-alt': "Chairman's Photo",
-                'map-title': 'Location on Map',
-                'copyright-text': '© 2025 SPK "Sportznak". All rights reserved.',
-                 'language-switcher': 'RU'
-            }
-        };
-
-        function applyTranslation(lang) {
-            document.documentElement.lang = lang; // Set HTML lang attribute
-            currentLanguage = lang;
-            console.log("Applying translation for:", lang);
-
-            for (const id in translations[lang]) {
-                const element = document.getElementById(id);
-                if (element) {
-                    // Handle specific element types
-                    if (id.startsWith('meta-')) {
-                        const metaName = id.split('-')[1];
-                        const metaElement = document.querySelector(`meta[name="${metaName}"]`);
-                        if (metaElement) {
-                            metaElement.content = translations[lang][id];
-                        }
-                    } else if (element.tagName === 'TITLE') {
-                        element.textContent = translations[lang][id];
-                    } else if (element.tagName === 'IMG') {
-                        // No translation needed for image src itself, just alt text
-                        element.alt = translations[lang][id];
-                    } else if (id === 'main-heading') { // Handle potential <br>
-                         element.innerHTML = translations[lang][id];
-                    } else if (id === 'language-switcher') {
-                        element.textContent = translations[lang][id];
-                    }
-                    else if (id === 'contact-phone') { // Специальная обработка для ссылки на телефон
-                         element.innerHTML = translations[lang][id];
-                    }
-                    else {
-                        // For most elements like p, h1, h2, h3, a, button, div
-                        element.textContent = translations[lang][id];
-                    }
-                } else {
-                    console.warn(`Element with ID '${id}' not found for translation.`);
-                }
-            }
-        }
-
-        function toggleLanguage() {
-            const newLang = currentLanguage === 'ru' ? 'en' : 'ru';
-            applyTranslation(newLang);
-        }
-
-
-        // --- Geolocation and Language Check ---
-        document.addEventListener('DOMContentLoaded', () => {
-            // Use HTTPS for the API call if your site is served over HTTPS
-            fetch('https://ip-api.com/json/?fields=status,message,countryCode')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.status === 'success' && data.countryCode) {
-                        const country = data.countryCode;
-                        console.log("Detected country:", country);
-                        // Switch to English if NOT Russia (RU) or Belarus (BY)
-                        if (country !== 'RU' && country !== 'BY') {
-                             console.log("Region is not RU or BY, switching to English.");
-                            applyTranslation('en');
-                        } else {
-                             console.log("Region is RU or BY, keeping Russian.");
-                            applyTranslation('ru'); // Explicitly apply Russian just in case
-                        }
-                    } else {
-                         throw new Error(`API Error: ${data.message || 'Could not retrieve country code'}`);
-                    }
-                })
-                .catch(error => {
-                    console.error("Could not get geolocation or apply translation:", error);
-                    // Default to Russian if geolocation fails
-                    applyTranslation('ru');
-                });
-        });
-
     </script>
 </body>
 </html>
