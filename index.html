@@ -15,7 +15,9 @@
     <link href="favicon.ico" rel="icon" type="image/x-icon">
     <title>Официальный сайт СПК "Спортзнак"</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        /* Импортируем новые шрифты из Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+JP+N&display=swap');
 
         * {
             box-sizing: border-box;
@@ -24,7 +26,7 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Advent Pro', sans-serif; /* Применяем Advent Pro для основного текста */
             background: linear-gradient(to bottom, #181818, #0a0a0a); /* Deeper dark gradient */
             color: #f0f0f0;
             text-align: center;
@@ -40,13 +42,14 @@
         }
 
         h1 {
+            font-family: 'WDXL Lubrifont JP N', sans-serif; /* Применяем WDXL Lubrifont для h1 */
             font-size: 3rem; /* Larger heading */
             margin-bottom: 25px;
             text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.25); /* Stronger shadow */
             animation: fadeInDown 1.5s ease-in-out; /* New animation */
             letter-spacing: 1px; /* Increased letter spacing */
             cursor: default;
-            font-weight: 700; /* Bolder font weight */
+            font-weight: 700; /* Bolder font weight - хотя у Lubrifont только один вес */
         }
 
          .date { /* Shared date class for news */
@@ -76,6 +79,7 @@
         }
 
         h2 {
+            font-family: 'WDXL Lubrifont JP N', sans-serif; /* Применяем WDXL Lubrifont для h2 */
             color: #fff;
             margin-bottom: 20px; /* More margin */
             font-size: 2.2rem; /* Larger heading */
@@ -84,7 +88,13 @@
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
         }
 
+        h3 { /* Добавляем стиль для h3, так как он используется в новостях */
+            font-family: 'WDXL Lubrifont JP N', sans-serif; /* Применяем WDXL Lubrifont для h3 */
+            font-weight: 500; /* Средний вес, если хотим */
+        }
+
         p {
+            font-family: 'Advent Pro', sans-serif; /* Применяем Advent Pro для основного текста */
             font-size: 1.2rem; /* Larger text */
             color: #ccc; /* Slightly lighter text color */
             cursor: default;
@@ -193,6 +203,7 @@
         }
 
         .news-item h3 {
+            font-family: 'WDXL Lubrifont JP N', sans-serif; /* Применяем WDXL Lubrifont для h3 */
             font-size: 1.3rem; /* Larger heading */
             color: #eee; /* Slightly brighter heading */
             margin-bottom: 8px; /* More margin */
@@ -212,6 +223,7 @@
         }
 
         .news-item p {
+            font-family: 'Advent Pro', sans-serif; /* Применяем Advent Pro для p в news-item */
             font-size: 1rem; /* Larger text */
             color: #bbb; /* Lighter text color */
             cursor: default;
@@ -336,6 +348,7 @@
         }
 
         .contact-text p {
+            font-family: 'Advent Pro', sans-serif; /* Применяем Advent Pro для p в contact-text */
             cursor: text; /* Allow text selection */
         }
 
@@ -460,6 +473,7 @@
         }
 
         .menu a {
+            font-family: 'Advent Pro', sans-serif; /* Применяем Advent Pro для ссылок меню */
             color: #fff;
             text-decoration: none;
             display: block;
@@ -496,7 +510,6 @@
                 margin: 20px 0;
             }
 
-             /* УДАЛЕН display: none для .button-container */
              .button-container {
                 margin-bottom: 20px; /* More margin */
                 display: block; /* Убедимся, что он всегда отображается */
@@ -627,7 +640,6 @@
 
     <div class="menu">
         <ul>
-            <!-- Добавлена ссылка на галерею в мобильное меню -->
             <li><a href="#gallery" onclick="openModal('galleryModal'); closeMenu();">Галерея</a></li>
             <li><a href="#description" onclick="closeMenu()">Описание</a></li>
             <li><a href="#news" onclick="closeMenu()">Новости</a></li>
