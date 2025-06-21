@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -26,129 +27,129 @@
 
         body {
             font-family: 'Advent Pro', sans-serif;
-            background: linear-gradient(to bottom, #181818, #0a0a0a);
+            background: linear-gradient(to bottom, #181818, #0a0a0a); /* Deeper dark gradient */
             color: #f0f0f0;
             text-align: center;
             line-height: 1.6;
-            min-height: 100vh;
-            scroll-behavior: smooth;
+            min-height: 100vh; /* Ensure full height */
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1000px; /* Slightly wider container */
             margin: auto;
-            padding: 0 20px;
+            padding: 0 20px; /* Adjusted padding */
         }
 
         h1 {
-            font-family: 'WDXL Lubrifont JP N', sans-serif;
-            font-size: 3rem;
+            font-family: 'WDXL Lubrifont JP N', sans-serif; /* Применяем WDXL Lubrifont для h1 */
+            font-size: 3rem; /* Larger heading */
             margin-bottom: 25px;
-            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.25);
-            animation: fadeInDown 1.5s ease-in-out;
-            letter-spacing: 1px;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.25); /* Stronger shadow */
+            animation: fadeInDown 1.5s ease-in-out; /* New animation */
+            letter-spacing: 1px; /* Increased letter spacing */
             cursor: default;
-            font-weight: 700;
+            font-weight: 700; /* Bolder font weight - хотя у Lubrifont только один вес */
         }
 
-         .date {
+         .date { /* Shared date class for news */
             font-size: 1rem;
             color: #bbb;
             margin-bottom: 20px;
             animation: fadeIn 1.5s ease-in-out;
             cursor: default;
-            font-weight: 400;
+            font-weight: 400; /* Standard weight */
         }
 
 
         .block {
-            background: linear-gradient(135deg, #2e2e2e, #3f3f3f);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
-            animation: fadeInUp 0.8s ease-in-out;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, #2e2e2e, #3f3f3f); /* Slightly lighter gradient */
+            border-radius: 15px; /* More rounded corners */
+            padding: 30px; /* More padding */
+            margin: 30px 0; /* More margin */
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+            animation: fadeInUp 0.8s ease-in-out; /* New animation */
+            transition: transform 0.4s ease, box-shadow 0.4s ease; /* Slower transition */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
         }
 
         .block:hover {
-            transform: translateY(-8px);
-            box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.15);
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.15); /* Lighter, more spread shadow on hover */
         }
 
         h2 {
-            font-family: 'WDXL Lubrifont JP N', sans-serif;
+            font-family: 'WDXL Lubrifont JP N', sans-serif; /* Применяем WDXL Lubrifont для h2 */
             color: #fff;
-            margin-bottom: 20px;
-            font-size: 2.2rem;
+            margin-bottom: 20px; /* More margin */
+            font-size: 2.2rem; /* Larger heading */
             cursor: default;
-            font-weight: 700;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            font-weight: 700; /* Bolder font weight */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
         }
 
-        h3 {
-            font-family: 'WDXL Lubrifont JP N', sans-serif;
-            font-weight: 500;
+        h3 { /* Добавляем стиль для h3, так как он используется в новостях */
+            font-family: 'WDXL Lubrifont JP N', sans-serif; /* Применяем WDXL Lubrifont для h3 */
+            font-weight: 500; /* Средний вес, если хотим */
         }
 
         p {
-            font-family: 'Advent Pro', sans-serif;
-            font-size: 1.2rem;
-            color: #ccc;
+            font-family: 'Advent Pro', sans-serif; /* Применяем Advent Pro для основного текста */
+            font-size: 1.2rem; /* Larger text */
+            color: #ccc; /* Slightly lighter text color */
             cursor: default;
             font-weight: 400;
         }
 
         .button-container {
-            margin-bottom: 30px;
+            margin-bottom: 30px; /* More margin */
         }
 
         .button {
-            background-color: #4a4a4a;
+            background-color: #4a4a4a; /* Darker button */
             color: white;
-            padding: 12px 25px;
+            padding: 12px 25px; /* Larger padding */
             border: none;
-            border-radius: 8px;
+            border-radius: 8px; /* More rounded */
             cursor: pointer;
-            font-size: 1.1rem;
-            margin: 8px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem; /* Larger font */
+            margin: 8px; /* More margin */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Add transform transition */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
         }
 
         .button:hover {
-            background-color: #5a5a5a;
-            transform: translateY(-2px);
+            background-color: #5a5a5a; /* Lighter on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
         }
 
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 10px; /* Gap between images */
         }
 
         .gallery img {
-            width: calc(33.33% - 15px);
+            width: calc(33.33% - 15px); /* Adjust width with gap */
             height: auto;
-            border-radius: 10px;
+            border-radius: 10px; /* More rounded corners */
             cursor: pointer;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            object-fit: cover;
+            transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smoother transition */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow on images */
+            object-fit: cover; /* Maintain aspect ratio */
         }
 
         .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
+            transform: scale(1.05); /* Slightly larger scale */
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15); /* Lighter, more spread shadow on hover */
         }
 
         .map-container {
-            height: 400px;
-            border-radius: 15px;
+            height: 400px; /* Taller map */
+            border-radius: 15px; /* Match block radius */
             overflow: hidden;
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4); /* Shadow on map */
         }
 
         .map-container iframe {
@@ -174,65 +175,68 @@
 
 
         .copyright {
-            margin-top: 50px;
-            padding: 25px;
-            background-color: #1f1f1f;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            color: #888;
+            margin-top: 50px; /* More margin */
+            padding: 25px; /* More padding */
+            background-color: #1f1f1f; /* Darker background */
+            border-radius: 15px; /* Match block radius */
+            font-size: 0.9rem; /* Slightly larger font */
+            color: #888; /* Darker text color */
             cursor: default;
         }
 
         .news-item {
-            margin-bottom: 20px;
-            padding: 20px;
-            border-bottom: 2px solid #383838;
+            margin-bottom: 20px; /* More space between news items */
+            padding: 20px; /* More padding */
+            border-bottom: 2px solid #383838; /* Slightly lighter border */
             text-align: left;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.05); /* Very subtle background */
+            border-radius: 10px; /* Rounded corners */
             transition: background-color 0.3s ease;
         }
 
         .news-item:last-child {
-            border-bottom: none;
+            border-bottom: none; /* No border on the last item */
         }
 
         .news-item:hover {
-            background-color: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.08); /* Slightly more visible on hover */
         }
 
         .news-item h3 {
-            font-family: 'WDXL Lubrifont JP N', sans-serif;
-            font-size: 1.3rem;
-            color: #eee;
-            margin-bottom: 8px;
+            font-family: 'WDXL Lubrifont JP N', sans-serif; /* Применяем WDXL Lubrifont для h3 */
+            font-size: 1.3rem; /* Larger heading */
+            color: #eee; /* Slightly brighter heading */
+            margin-bottom: 8px; /* More margin */
             cursor: default;
-            font-weight: 500;
+            font-weight: 500; /* Medium font weight */
         }
 
+        /* Specific news date style */
         .news-item .news-date {
-            font-size: 1rem;
-            color: #999;
-            margin-bottom: 12px;
+            font-size: 1rem; /* Larger date font */
+            color: #999; /* Lighter date color */
+            margin-bottom: 12px; /* More margin */
             cursor: default;
             font-weight: 400;
+            /* Remove animation inherited from general .date */
             animation: none;
         }
 
         .news-item p {
-            font-family: 'Advent Pro', sans-serif;
-            font-size: 1rem;
-            color: #bbb;
+            font-family: 'Advent Pro', sans-serif; /* Применяем Advent Pro для p в news-item */
+            font-size: 1rem; /* Larger text */
+            color: #bbb; /* Lighter text color */
             cursor: default;
             font-weight: 400;
         }
 
         .news-container {
-            max-height: 500px;
+            max-height: 500px; /* Taller news container */
             overflow-y: auto;
-            padding-right: 10px;
+            padding-right: 10px; /* Padding for scrollbar */
         }
 
+        /* Custom Scrollbar */
         .news-container::-webkit-scrollbar {
             width: 8px;
         }
@@ -254,30 +258,30 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 100;
+            z-index: 100; /* Higher z-index */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
             background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.95);
-            padding-top: 20px;
-            animation: fadeIn 0.3s ease-in-out;
+            background-color: rgba(0,0,0,0.95); /* More opaque background */
+            padding-top: 20px; /* Less padding at the top */
+            animation: fadeIn 0.3s ease-in-out; /* Fade in animation */
         }
 
         .modal-content {
             background-color: #292929;
-            margin: 2% auto;
-            padding: 30px;
-            border: 1px solid #444;
-            width: 95%;
-            max-width: 900px;
-            border-radius: 15px;
+            margin: 2% auto; /* Adjust margin */
+            padding: 30px; /* More padding */
+            border: 1px solid #444; /* Darker border */
+            width: 95%; /* Wider modal */
+            max-width: 900px; /* Larger max width */
+            border-radius: 15px; /* More rounded corners */
             text-align: center;
-            position: relative;
-            animation: zoomIn 0.4s ease-in-out;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative; /* Needed for close button absolute positioning */
+            animation: zoomIn 0.4s ease-in-out; /* New animation */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow */
         }
 
         @keyframes zoomIn {
@@ -288,75 +292,75 @@
 
         .modal-content img {
             max-width: 100%;
-            max-height: 85vh;
+            max-height: 85vh; /* Take up more vertical space */
             display: block;
             margin: 0 auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            border-radius: 10px; /* Rounded corners for image */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Shadow on modal image */
         }
 
         .close {
-            color: #fff;
-            position: absolute;
+            color: #fff; /* White close button */
+            position: absolute; /* Position relative to modal-content */
             top: 15px;
             right: 25px;
-            font-size: 35px;
+            font-size: 35px; /* Larger font size */
             font-weight: bold;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease; /* Add transition */
         }
 
         .close:hover,
         .close:focus {
-            color: #ccc;
+            color: #ccc; /* Lighter on hover */
             text-decoration: none;
             cursor: pointer;
-            transform: rotate(90deg);
+            transform: rotate(90deg); /* Rotate on hover */
         }
 
         .contact-container {
             display: flex;
-            flex-direction: row;
+            flex-direction: row; /* Horizontal layout */
             align-items: center;
             justify-content: center;
-            gap: 30px;
-            text-align: left;
+            gap: 30px; /* Space between text and image */
+            text-align: left; /* Align text to the left */
         }
 
         .contact-text {
-            flex-grow: 1;
-            text-align: left;
+            flex-grow: 1; /* Allow text to grow */
+            text-align: left; /* Ensure text is left aligned */
             padding-right: 0;
             cursor: default;
         }
 
         .contact-image {
-            flex-shrink: 0;
-            text-align: center;
+            flex-shrink: 0; /* Prevent image from shrinking */
+            text-align: center; /* Center image within its container */
         }
 
         .contact-image img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+            width: 150px; /* Larger image */
+            height: 150px; /* Larger image */
+            border-radius: 50%; /* Perfect circle */
             object-fit: cover;
-            border: 4px solid #4a4a4a;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 4px solid #4a4a4a; /* Border around image */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow on image */
         }
 
         .contact-text p {
-            font-family: 'Advent Pro', sans-serif;
-            cursor: text;
+            font-family: 'Advent Pro', sans-serif; /* Применяем Advent Pro для p в contact-text */
+            cursor: text; /* Allow text selection */
         }
 
         .contact-text a {
-            color: #ccc;
-            text-decoration: none;
+            color: #ccc; /* Match parent text color */
+            text-decoration: none; /* Remove underline */
             transition: color 0.3s ease;
         }
 
          .contact-text a:hover {
-            color: #fff;
-            text-decoration: underline;
+            color: #fff; /* Lighter on hover */
+            text-decoration: underline; /* Add underline on hover for emphasis */
          }
 
 
@@ -364,11 +368,11 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            display: none;
-            width: 35px;
-            height: 35px;
+            display: none; /* Initially hidden, shown by media query */
+            width: 35px; /* Larger toggle */
+            height: 35px; /* Larger toggle */
             cursor: pointer;
-            z-index: 101;
+            z-index: 101; /* Higher z-index than overlay */
             transition: transform 0.3s ease;
         }
 
@@ -381,7 +385,7 @@
             top: 50%;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 3px; /* Thicker lines */
             background-color: #fff;
             transform: translateY(-50%);
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -394,18 +398,18 @@
             position: absolute;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 3px; /* Thicker lines */
             background-color: #fff;
             transition: transform 0.3s ease;
             border-radius: 2px;
         }
 
         .menu-toggle span:before {
-            top: -10px;
+            top: -10px; /* More space */
         }
 
         .menu-toggle span:after {
-            top: 10px;
+            top: 10px; /* More space */
         }
 
         .menu-toggle.open span {
@@ -413,11 +417,11 @@
         }
 
         .menu-toggle.open span:before {
-            transform: translateY(10px) rotate(45deg);
+            transform: translateY(10px) rotate(45deg); /* Adjust translation */
         }
 
         .menu-toggle.open span:after {
-            transform: translateY(-10px) rotate(-45deg);
+            transform: translateY(-10px) rotate(-45deg); /* Adjust translation */
         }
 
         .overlay {
@@ -426,10 +430,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.7); /* Slightly less opaque */
+            z-index: 100; /* Match modal z-index */
             display: none;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px); /* Add blur effect */
             transition: opacity 0.3s ease;
             opacity: 0;
         }
@@ -442,15 +446,15 @@
         .menu {
             position: fixed;
             top: 0;
-            left: -280px;
-            width: 280px;
+            left: -280px; /* Wider menu */
+            width: 280px; /* Wider menu */
             height: 100%;
             background-color: #222;
-            z-index: 102;
-            transition: left 0.4s ease;
-            padding-top: 80px;
+            z-index: 102; /* Higher than overlay */
+            transition: left 0.4s ease; /* Slower transition */
+            padding-top: 80px; /* More padding */
             text-align: left;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Shadow on menu */
         }
 
         .menu.open {
@@ -464,22 +468,22 @@
         }
 
         .menu li {
-            padding: 18px 25px;
-            border-bottom: 1px solid #383838;
+            padding: 18px 25px; /* More padding */
+            border-bottom: 1px solid #383838; /* Lighter border */
         }
 
         .menu a {
-            font-family: 'Advent Pro', sans-serif;
+            font-family: 'Advent Pro', sans-serif; /* Применяем Advent Pro для ссылок меню */
             color: #fff;
             text-decoration: none;
             display: block;
-            font-size: 1.1rem;
+            font-size: 1.1rem; /* Larger font */
             transition: background-color 0.3s ease, padding-left 0.3s ease;
         }
 
         .menu a:hover {
             background-color: #333;
-            padding-left: 10px;
+            padding-left: 10px; /* Indent on hover */
         }
 
         @media (max-width: 768px) {
@@ -507,8 +511,8 @@
             }
 
              .button-container {
-                margin-bottom: 20px;
-                display: block;
+                margin-bottom: 20px; /* More margin */
+                display: block; /* Убедимся, что он всегда отображается */
             }
 
             .button {
@@ -518,11 +522,11 @@
             }
 
             .gallery {
-                gap: 5px;
+                gap: 5px; /* Smaller gap */
             }
 
             .gallery img {
-                width: calc(50% - 7.5px);
+                width: calc(50% - 7.5px); /* Two images per row on smaller screens */
             }
 
             .map-container {
@@ -530,7 +534,7 @@
             }
 
             .menu-toggle {
-                display: block;
+                display: block; /* Show hamburger menu on mobile */
                 width: 30px;
                 height: 30px;
                  top: 15px;
@@ -563,12 +567,12 @@
              }
 
             .contact-container {
-                flex-direction: column;
+                flex-direction: column; /* Stack elements vertically */
                 gap: 20px;
             }
 
             .contact-text {
-                text-align: center;
+                text-align: center; /* Center text */
             }
 
              .contact-image img {
@@ -587,7 +591,7 @@
              }
 
              .menu {
-                 width: 220px;
+                 width: 220px; /* Smaller menu */
                  left: -220px;
                  padding-top: 70px;
              }
@@ -603,7 +607,7 @@
 
         @media (min-width: 769px) {
             .menu-toggle {
-                display: none;
+                display: none; /* Hide hamburger menu on desktop */
             }
         }
 
@@ -611,6 +615,7 @@
 </head>
 <body>
 
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
@@ -625,6 +630,7 @@
         });
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/100472478" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
     <div class="menu-toggle">
         <span></span>
@@ -650,6 +656,7 @@
             <button class="button" onclick="openModal('galleryModal')">Галерея</button>
         </div>
 
+        <!-- Gallery Modal -->
         <div id="galleryModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('galleryModal')">×</span>
@@ -668,6 +675,7 @@
             </div>
         </div>
 
+        <!-- Image Modal -->
         <div id="imageModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('imageModal')">×</span>
@@ -675,11 +683,13 @@
             </div>
         </div>
 
+        <!-- Description Block -->
         <div class="block" id="description">
             <h2>Описание СПК "Спортзнак"</h2>
             <p>СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
         </div>
 
+        <!-- News Block -->
         <div class="block" id="news">
             <h2>Новости</h2>
             <div class="news-container">
@@ -723,11 +733,13 @@
             </div>
         </div>
 
+        <!-- Development Block -->
         <div class="block" id="development">
             <h2>Развитие</h2>
             <p>В СПК "Спортзнак" часто проводятся собрания для обсуждения планов по улучшению территории, и работоспособности объектов, таких как: дороги, освещение, мусорные площадки и т. д.</p>
         </div>
 
+        <!-- Contacts Block -->
         <div class="block" id="contacts">
             <h2>Контакты</h2>
             <div class="contact-container">
@@ -743,6 +755,7 @@
             </div>
         </div>
 
+        <!-- Map Block -->
         <div class="block" id="map">
             <h2>Расположение на карте</h2>
             <div class="map-container">
@@ -751,12 +764,15 @@
             </div>
         </div>
 
+        <!-- Copyright -->
         <div class="copyright">
             © 2025 СПК "Спортзнак". Все права защищены.
         </div>
     </div>
 
+    <!-- === JAVASCRIPT === -->
     <script>
+        // --- Basic Menu and Modal Functionality ---
         const menuToggle = document.querySelector('.menu-toggle');
         const menu = document.querySelector('.menu');
         const overlay = document.querySelector('.overlay');
@@ -780,12 +796,14 @@
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) modal.style.display = "block";
+            // Prevent body scrolling when modal is open
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) modal.style.display = "none";
+             // Restore body scrolling
             document.body.style.overflow = '';
         }
 
@@ -797,6 +815,7 @@
             }
         }
 
+        // Close modal if clicking outside the content
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 closeModal(event.target.id);
