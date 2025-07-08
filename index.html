@@ -1,23 +1,35 @@
-<!DOCTYPE html>
-<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="спк спортзнак, спортзнак, снт спортзнак">
-    <meta name="description" content="Официальный сайт СПК 'Спортзнак' в Наро-Фоминском районе Московской области. Узнайте больше о нашем уютном посёлке: расположение, преимущества, контакты председателя, фотогалерея.">
-    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="SPK Sportznak" />
-    <link rel="manifest" href="site.webmanifest" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
-    <link href="favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="description" content="Официальный сайт СПК 'Спортзнак' в Наро-Фоминском районе Московской области. Узнайте больше о нашем уютном посёлке: расположение, преимущества, контакты председателя, фотогалерея и новости">
+    
+    <!-- Favicon для тёмной темы -->
+    <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="favicon-dark.ico" type="image/x-icon" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" href="apple-touch-icon-dark.png" sizes="180x180" media="(prefers-color-scheme: dark)">
+    <link rel="manifest" href="site.webmanifest" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="favicon-dark-16x16.png" sizes="16x16" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="favicon-dark-32x32.png" sizes="32x32" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="favicon-dark-96x96.png" sizes="96x96" media="(prefers-color-scheme: dark)">
+
+    <!-- Favicon для светлой темы -->
+    <link rel="icon" href="favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="favicon-light.ico" type="image/x-icon" media="(prefers-color-scheme: light)">
+    <link rel="apple-touch-icon" href="apple-touch-icon-light.png" sizes="180x180" media="(prefers-color-scheme: light)">
+    <link rel="manifest" href="site.webmanifest" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="favicon-light-16x16.png" sizes="16x16" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="favicon-light-32x32.png" sizes="32x32" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="favicon-light-96x96.png" sizes="96x96" media="(prefers-color-scheme: light)">
+
+    <!-- Fallback-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
     <title>Официальный сайт СПК "Спортзнак"</title>
     <style>
 
         @font-face {
-        font-family: 'Caviar Dreams Bold Local'; /* Даем ему уникальное имя */
+        font-family: 'Caviar Dreams Bold Local';
         src: url('./fonts/CaviarDreams_Bold.woff2') format('woff2'),
              url('./fonts/CaviarDreams_Bold.woff') format('woff'),
              url('./fonts/CaviarDreams_Bold.ttf') format('truetype');
@@ -27,11 +39,11 @@
     }
 
         @font-face {
-        font-family: 'Novartis Headline'; /* Даем ему уникальное имя */
+        font-family: 'Novartis Headline';
         src: url('./fonts/Novartis.woff2') format('woff2'),
              url('./fonts/Novartis.woff') format('woff'),
              url('./fonts/Novartis.ttf') format('truetype');
-        font-weight: normal; /* Обычный вес, если это базовый файл Novartis */
+        font-weight: normal;
         font-style: normal;
         font-display: swap;
     }
@@ -43,7 +55,7 @@
         }
 
         body {
-        font-family: 'Caviar Dreams Bold Local', sans-serif; /* Теперь CaviarDreams_Bold для всего основного текста */
+        font-family: 'Caviar Dreams Bold Local', sans-serif;
         background: linear-gradient(to bottom, #181818, #0a0a0a);
         color: #f0f0f0;
         text-align: center;
@@ -59,7 +71,7 @@
         }
 
     h1 {
-        font-family: 'Novartis Headline', sans-serif; /* Novartis для H1 */
+        font-family: 'Novartis Headline', sans-serif;
         font-size: 3rem;
         margin-bottom: 25px;
         text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.25);
@@ -96,7 +108,7 @@
         }
 
     h2 {
-        font-family: 'Novartis Headline', sans-serif; /* Novartis для H2 */
+        font-family: 'Novartis Headline', sans-serif;
         color: #fff;
         margin-bottom: 20px;
         font-size: 2.2rem;
@@ -106,12 +118,12 @@
     }
 
     h3 {
-        font-family: 'Novartis Headline', sans-serif; /* Novartis для H3 */
+        font-family: 'Novartis Headline', sans-serif;
         font-weight: 100;
     }
 
     p {
-        font-family: 'Caviar Dreams Bold Local', sans-serif; /* Caviar Dreams Bold для параграфов */
+        font-family: 'Caviar Dreams Bold Local', sans-serif;
         font-size: 1.2rem;
         color: #ccc;
         cursor: default;
@@ -131,7 +143,7 @@
         cursor: pointer;
         font-size: 1.1rem;
         margin: 8px;
-        font-family: 'Caviar Dreams Bold Local', sans-serif; /* Caviar Dreams Bold для кнопок */
+        font-family: 'Caviar Dreams Bold Local', sans-serif;
         transition: background-color 0.3s ease, transform 0.2s ease;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
@@ -221,7 +233,7 @@
         }
 
         .news-item h3 {
-        font-family: 'Novartis Headline', sans-serif; /* Novartis для заголовков новостей */
+        font-family: 'Novartis Headline', sans-serif;
         font-size: 1.3rem;
         color: #eee;
         margin-bottom: 8px;
@@ -239,7 +251,7 @@
         }
 
     .news-item p {
-        font-family: 'Caviar Dreams Bold Local', sans-serif; /* Caviar Dreams Bold для текста новостей */
+        font-family: 'Caviar Dreams Bold Local', sans-serif;
         font-size: 1rem;
         color: #bbb;
         cursor: default;
@@ -363,7 +375,7 @@
         }
 
     .contact-text p {
-        font-family: 'Caviar Dreams Bold Local', sans-serif; /* Caviar Dreams Bold для контактного текста */
+        font-family: 'Caviar Dreams Bold Local', sans-serif;
         cursor: text;
     }
 
@@ -488,7 +500,7 @@
         }
 
          .menu a {
-        font-family: 'Caviar Dreams Bold Local', sans-serif; /* Caviar Dreams Bold для меню */
+        font-family: 'Caviar Dreams Bold Local', sans-serif;
         color: #fff;
         text-decoration: none;
         display: block;
