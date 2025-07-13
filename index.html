@@ -24,6 +24,11 @@
 
     <!-- Fallback-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="preload" href="./fonts/CaviarDreams_Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/Novartis.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <title>Официальный сайт СПК "Спортзнак"</title>
     <style>
@@ -107,6 +112,7 @@
             line-height: 1.6;
             min-height: 100vh;
             scroll-behavior: smooth;
+            overflow-y: scroll;
             --text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.1);
         }
 
@@ -256,6 +262,10 @@
             font-size: 0.9rem;
             color: var(--text-secondary);
             cursor: default;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
         .news-item {
@@ -368,6 +378,23 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px var(--shadow-color);
         }
+        .modal.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.modal-content.zoom-out {
+    animation: zoomOut 0.3s ease-in-out forwards;
+}
+
+@keyframes zoomOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.9); }
+}
 
         .close {
             color: var(--text-color);
@@ -511,6 +538,35 @@
             display: block;
             opacity: 1;
         }
+
+        .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.social-icons a {
+    color: var(--text-secondary);
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--text-color);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .social-icons {
+        gap: 15px;
+    }
+    
+    .social-icons a {
+        font-size: 20px;
+    }
+}
 
         .menu {
             position: fixed;
@@ -753,7 +809,7 @@
         </div>
 
         <div class="block" id="description">
-            <h2>Описание СПК "Спортзнак"</h2>
+            <h2>Описание</h2>
             <p>СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
         </div>
 
@@ -763,7 +819,7 @@
 
                 <div class="news-item">
                     <h3>Обновление сайта!</h3>
-                    <div class="news-date">8 июля 2025</div>
+                    <div class="news-date">14 июля 2025</div>
                     <p>Новое обновление сайта!</p>
                 </div>
 
@@ -833,6 +889,11 @@
 
         <div class="copyright">
             © 2025 СПК "Спортзнак". Все права защищены.
+                            <div class="social-icons">
+        <a href="https://www.youtube.com/@spksportznak" target="_blank" title="YouTube" alt="Наш YouTube канал!">
+            <i class="fab fa-youtube"></i>
+        </a>
+            </div>
         </div>
     </div>
 
@@ -882,6 +943,26 @@
                 closeModal(event.target.id);
             }
         }
+
+        function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('fade-out');
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.classList.add('zoom-out');
+        }
+        
+        setTimeout(() => {
+            modal.style.display = "none";
+            modal.classList.remove('fade-out');
+            if (modalContent) {
+                modalContent.classList.remove('zoom-out');
+            }
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
     </script>
 </body>
 </html>
