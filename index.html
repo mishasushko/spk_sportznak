@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,6 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="спк спортзнак, спортзнак, снт спортзнак">
     <meta name="description" content="Официальный сайт СПК 'Спортзнак' в Наро-Фоминском районе Московской области. Узнайте больше о нашем уютном посёлке: расположение, преимущества, контакты председателя, фотогалерея и новости">
+    <meta property="og:title" content="Официальный сайт СПК 'Спортзнак'" />
+    <meta property="og:description" content="СПК 'Спортзнак' — уютный посёлок в Наро-Фоминском районе Московской области. Новости, контакты, фотогалерея." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://spksportznak.ru/" />
+    <meta property="og:image" content="https://spksportznak.ru/Photos/image1.jpg" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Официальный сайт СПК 'Спортзнак'" />
+    <meta name="twitter:description" content="СПК 'Спортзнак' — уютный посёлок в Наро-Фоминском районе Московской области." />
+    <meta name="twitter:image" content="https://spksportznak.ru/Photos/image1.jpg" />
+
+    <!-- Микроразметка Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "СПК Спортзнак",
+      "url": "https://spksportznak.ru/",
+      "logo": "https://spksportznak.ru/favicon-dark.svg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7 916 600-94-60",
+        "contactType": "customer service",
+        "email": "spksportznak@gmail.com"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Наро-Фоминский район, Московская область",
+        "addressCountry": "RU"
+      }
+    }
+    </script>
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://spksportznak.ru/" />
     
     <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
     <link rel="icon" href="favicon-dark.ico" type="image/x-icon" media="(prefers-color-scheme: dark)">
@@ -60,7 +98,7 @@
         :root {
             --bg-color: #181818;
             --bg-secondary: #0a0a0a;
-            --block-bg: linear-gradient(135deg, #2e2e2e, #3f3f3f);
+            --block-bg: linear-gradient(135deg, #2e2e2e, #3f3f3f, #2e2e2e);
             --text-color: #f0f0f0;
             --text-secondary: #ccc;
             --button-bg: #4a4a4a;
@@ -74,6 +112,7 @@
             --modal-bg: #292929;
             --menu-bg: #222;
             --menu-border: #383838;
+            transition: background-color 0.3s ease, color 0.3s ease
         }
 
         @media (prefers-color-scheme: light) {
@@ -82,7 +121,7 @@
                 --bg-secondary: #e0e0e0;
                 --block-bg: linear-gradient(135deg, #ffffff, #eaeaea);
                 --text-color: #333333;
-                --text-secondary: #555555;
+                --text-secondary: #666666;
                 --button-bg: #6a6a6a;
                 --button-hover: #7a7a7a;
                 --border-color: rgba(0, 0, 0, 0.1);
@@ -106,7 +145,7 @@
             background: linear-gradient(to bottom, var(--bg-color), var(--bg-secondary));
             color: var(--text-color);
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.7;
             min-height: 100vh;
             scroll-behavior: smooth;
             overflow-y: scroll;
@@ -128,6 +167,12 @@
             letter-spacing: 1px;
             cursor: default;
             font-weight: 100; 
+        }
+        
+        
+        a:focus, button:focus {
+            outline: 2px solid var(--button-hover);
+            outline-offset: 2px;
         }
 
         .date {
@@ -184,6 +229,7 @@
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
             padding-bottom: 15px;
+            scroll-behavior: smooth;
         }
 
         .gallery-container::-webkit-scrollbar {
@@ -462,66 +508,6 @@
             text-decoration: underline;
         }
 
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            display: none;
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            z-index: 101;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .menu-toggle span {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--text-color);
-            transform: translateY(-50%);
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .menu-toggle span:before,
-        .menu-toggle span:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--text-color);
-            transition: transform 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .menu-toggle span:before {
-            top: -10px;
-        }
-
-        .menu-toggle span:after {
-            top: 10px;
-        }
-
-        .menu-toggle.open span {
-            background-color: transparent;
-        }
-
-        .menu-toggle.open span:before {
-            transform: translateY(10px) rotate(45deg);
-        }
-
-        .menu-toggle.open span:after {
-            transform: translateY(-10px) rotate(-45deg);
-        }
-
         .overlay {
             position: fixed;
             top: 0;
@@ -558,6 +544,10 @@
         .social-icons a:hover {
             color: var(--text-color);
             transform: translateY(-3px);
+        }
+
+        .social-icons a[href*="youtube"]:hover {
+            color: #8d8d8d;
         }
 
         @media (max-width: 768px) {
@@ -615,17 +605,17 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 0 15px;
+                padding: 0 10px;
             }
 
             h1 {
                 font-size: 2rem;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
 
             h2 {
-                 font-size: 1.8rem;
-                 margin-bottom: 15px;
+                font-size: 1.6rem;
+                margin-bottom: 12px;
             }
 
             p {
@@ -633,8 +623,9 @@
             }
 
             .block {
-                padding: 20px;
-                margin: 20px 0;
+                padding: 15px;
+                margin: 15px 0;
+                border-radius: 12px;
             }
 
             .gallery-container {
@@ -646,95 +637,62 @@
             }
 
             .gallery img {
-                width: 250px;
-                height: 170px;
+                width: 200px;
+                height: 200px;
             }
 
             .map-container {
-                height: 300px;
+                height: 250px;
+                border-radius: 10px;
             }
-
-            .menu-toggle {
-                display: block;
-                width: 30px;
-                height: 30px;
-                 top: 15px;
-                 left: 15px;
-            }
-
-             .menu-toggle span {
-                 height: 2px;
-             }
-
-            .menu-toggle span:before,
-            .menu-toggle span:after {
-                 height: 2px;
-            }
-
-             .menu-toggle span:before {
-                 top: -8px;
-             }
-
-            .menu-toggle span:after {
-                 top: 8px;
-             }
-
-             .menu-toggle.open span:before {
-                 transform: translateY(8px) rotate(45deg);
-             }
-
-            .menu-toggle.open span:after {
-                 transform: translateY(-8px) rotate(-45deg);
-             }
 
             .contact-container {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
             }
 
             .contact-text {
                 text-align: center;
             }
 
-             .contact-image img {
-                 width: 100px;
-                 height: 100px;
-             }
+            .contact-image img {
+                width: 80px;
+                height: 80px;
+                border-width: 2px;
+            }
 
-             .modal-content {
-                 padding: 20px;
-             }
+            .modal-content {
+                padding: 15px;
+                width: 100%;
+            }
 
-             .close {
-                 font-size: 30px;
-                 top: 10px;
-                 right: 15px;
-             }
-
-             .menu {
-                 width: 220px;
-                 left: -220px;
-                 padding-top: 70px;
-             }
-
-              .menu li {
-                 padding: 12px 20px;
-             }
-
-              .menu a {
-                 font-size: 1rem;
-              }
-        }
-
-        @media (min-width: 769px) {
-            .menu-toggle {
+            .close {
+                font-size: 30px;
+                top: 100px;
+                right: 15px;
                 display: none;
             }
         }
+        /* Стили меню и бургер-меню удалены */
+
+        @media (max-width: 480px) {
+            .gallery img {
+                width: 180px;
+                height: 120px;
+            }
+
+            .contact-text p {
+                font-size: 0.9rem;
+            }
+
+            .news-item h3 {
+                font-size: 1.1rem;
+            }
+            }
     </style>
 </head>
 <body>
-
+    <!-- Бургер-меню и мобильное меню удалены -->
     <script type="text/javascript" >
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
@@ -750,23 +708,6 @@
     </script>
     <noscript><div><div><img src="https://mc.yandex.ru/watch/100472478" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-    <div class="menu-toggle">
-        <span></span>
-    </div>
-
-    <div class="overlay"></div>
-
-    <div class="menu">
-        <ul>
-            <li><a href="#description" onclick="closeMenu()">Описание</a></li>
-            <li><a href="#news" onclick="closeMenu()">Новости</a></li>
-            <li><a href="#development" onclick="closeMenu()">Развитие</a></li>
-            <li><a href="#contacts" onclick="closeMenu()">Контакты</a></li>
-            <li><a href="#gallery-section" onclick="closeMenu();">Галерея</a></li>
-            <li><a href="#map" onclick="closeMenu()">Расположение</a></li>
-        </ul>
-    </div>
-
     <div class="container">
         <h1>Официальный сайт<br>СПК "Спортзнак"</h1>
 
@@ -781,7 +722,7 @@
 
                 <div class="news-item">
                     <h3>Обновление сайта!</h3>
-                    <div class="news-date">23 июля 2025</div>
+                    <div class="news-date">31 июля 2025</div>
                     <p>Новое обновление сайта!</p>
                 </div>
 
@@ -845,20 +786,20 @@
             <h2>Галерея</h2>
             <div class="gallery-container">
                 <div class="gallery">
-                    <img src="Photos/image1.jpg" alt="Изображение 1" onclick="openImageModal('Photos/image1.jpg')">
-                    <img src="Photos/image2.jpg" alt="Изображение 2" onclick="openImageModal('Photos/image2.jpg')">
-                    <img src="Photos/image3.jpg" alt="Изображение 3" onclick="openImageModal('Photos/image3.jpg')">
-                    <img src="Photos/image4.jpg" alt="Изображение 4" onclick="openImageModal('Photos/image4.jpg')">
-                    <img src="Photos/image5.jpg" alt="Изображение 5" onclick="openImageModal('Photos/image5.jpg')">
-                    <img src="Photos/image6.jpg" alt="Изображение 6" onclick="openImageModal('Photos/image6.jpg')">
-                    <img src="Photos/image7.jpg" alt="Изображение 7" onclick="openImageModal('Photos/image7.jpg')">
-                    <img src="Photos/image8.jpg" alt="Изображение 8" onclick="openImageModal('Photos/image8.jpg')">
-                    <img src="Photos/image9.jpg" alt="Изображение 9" onclick="openImageModal('Photos/image9.jpg')">
-                    <img src="Photos/image10.jpg" alt="Изображение 10" onclick="openImageModal('Photos/image10.jpg')">
-                    <img src="Photos/image11.jpg" alt="Изображение 11" onclick="openImageModal('Photos/image11.jpg')">
-                    <img src="Photos/image12.jpg" alt="Изображение 12" onclick="openImageModal('Photos/image12.jpg')">
-                    <img src="Photos/image13.jpg" alt="Изображение 13" onclick="openImageModal('Photos/image13.jpg')">
-                    <img src="Photos/image14.jpg" alt="Изображение 14" onclick="openImageModal('Photos/image14.jpg')">
+                    <img src="Photos/image1.jpg" alt="Изображение 1" loading="lazy" onclick="openImageModal('Photos/image1.jpg')">
+                    <img src="Photos/image2.jpg" alt="Изображение 2" loading="lazy" onclick="openImageModal('Photos/image2.jpg')">
+                    <img src="Photos/image3.jpg" alt="Изображение 3" loading="lazy" onclick="openImageModal('Photos/image3.jpg')">
+                    <img src="Photos/image4.jpg" alt="Изображение 4" loading="lazy" onclick="openImageModal('Photos/image4.jpg')">
+                    <img src="Photos/image5.jpg" alt="Изображение 5" loading="lazy" onclick="openImageModal('Photos/image5.jpg')">
+                    <img src="Photos/image6.jpg" alt="Изображение 6" loading="lazy" onclick="openImageModal('Photos/image6.jpg')">
+                    <img src="Photos/image7.jpg" alt="Изображение 7" loading="lazy" onclick="openImageModal('Photos/image7.jpg')">
+                    <img src="Photos/image8.jpg" alt="Изображение 8" loading="lazy" onclick="openImageModal('Photos/image8.jpg')">
+                    <img src="Photos/image9.jpg" alt="Изображение 9" loading="lazy" onclick="openImageModal('Photos/image9.jpg')">
+                    <img src="Photos/image10.jpg" alt="Изображение 10" loading="lazy" onclick="openImageModal('Photos/image10.jpg')">
+                    <img src="Photos/image11.jpg" alt="Изображение 11" loading="lazy" onclick="openImageModal('Photos/image11.jpg')">
+                    <img src="Photos/image12.jpg" alt="Изображение 12" loading="lazy" onclick="openImageModal('Photos/image12.jpg')">
+                    <img src="Photos/image13.jpg" alt="Изображение 13" loading="lazy" onclick="openImageModal('Photos/image13.jpg')">
+                    <img src="Photos/image14.jpg" alt="Изображение 14" loading="lazy" onclick="openImageModal('Photos/image14.jpg')">
                 </div>
             </div>
         </div>
@@ -889,27 +830,6 @@
     </div>
 
     <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('.menu');
-        const overlay = document.querySelector('.overlay');
-        const galleryContainer = document.querySelector('.gallery-container');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('open');
-            menu.classList.toggle('open');
-            overlay.classList.toggle('open');
-        });
-
-        overlay.addEventListener('click', () => {
-            closeMenu();
-        });
-
-        function closeMenu() {
-            menuToggle.classList.remove('open');
-            menu.classList.remove('open');
-            overlay.classList.remove('open');
-        }
-
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
