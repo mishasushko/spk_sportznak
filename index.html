@@ -12,6 +12,7 @@
     <meta property="og:url" content="https://spksportznak.ru/" />
     <meta property="og:image" content="https://spksportznak.ru/Photos/image1.webp" />
     <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="СПК Спортзнак">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -66,12 +67,19 @@
     <link rel="preload" href="./fonts/Novartis.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://mc.yandex.ru">
+    <link rel="preconnect" href="https://yandex.ru">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//mc.yandex.ru">
+    <link rel="dns-prefetch" href="//yandex.ru">
+
     
     <title>Официальный сайт СПК "Спортзнак"</title>
     <style>
         @font-face {
         font-family: 'Caviar Dreams Bold Local';
-        src: url('./fonts/CaviarDreams_Bold.woff2') format('woff2'),
+        src: url('./fonts/CaviarDreams_Bold.woff2') format('woff2');
         font-weight: 700;
         font-style: normal;
         font-display: swap;
@@ -79,7 +87,7 @@
 
         @font-face {
         font-family: 'Novartis Headline';
-        src: url('./fonts/Novartis.woff2') format('woff2'),
+        src: url('./fonts/Novartis.woff2') format('woff2');
         font-weight: 400;
         font-style: normal;
         font-display: swap;
@@ -137,7 +145,7 @@
         }
 
         body {
-            font-family: 'Caviar Dreams Bold Local', sans-serif;
+            font-family: 'Caviar Dreams Bold Local', system-ui, sans-serif;
             background: linear-gradient(to bottom, var(--bg-color), var(--bg-secondary));
             color: var(--text-color);
             text-align: center;
@@ -443,8 +451,8 @@
         .close {
             color: var(--text-color);
             position: absolute;
-            top: 0px;
-            right: 15px;
+            top: -10px;
+            right: 10px;
             font-size: 35px;
             font-weight: bold;
             cursor: pointer;
@@ -668,8 +676,8 @@
 
             .close {
                 font-size: 30px;
-                top: 100px;
-                right: 15px;
+                top: -10px;
+                right: 5px;
                 display: none;
             }
         }
@@ -691,7 +699,6 @@
     </style>
 </head>
 <body>
-    <!-- Бургер-меню и мобильное меню удалены -->
     <script type="text/javascript" >
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
@@ -715,48 +722,49 @@
             <p>СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
         </div>
 
-        <div class="block" id="news">
-            <h2>Новости</h2>
-            <div class="news-container">
+<div class="block" id="news">
+    <h2>Новости</h2>
+    <div class="news-container">
 
-                <div class="news-item">
-                    <h3>Обновление сайта!</h3>
-                    <div class="news-date">8 августа 2025</div>
-                    <p>Новое обновление сайта!</p>
-                </div>
-
-                <div class="news-item">
-                    <h3>Лето!</h3>
-                    <div class="news-date">1 июня 2025</div>
-                    <p>Поздравляем всех с летом!</p>
-                </div>
-
-                <div class="news-item">
-                    <h3>День Победы!</h3>
-                    <div class="news-date">9 мая 2025</div>
-                    <p>Поздравляем с Днём Победы!</p>
-                </div>
-                
-                <div class="news-item">
-                    <h3>День космонавтики!</h3>
-                    <div class="news-date">12 апреля 2025</div>
-                    <p>Поздравляем с Днём космонавтики!</p>
-                </div>
-
-                <div class="news-item">
-                    <h3>С 8 Марта!</h3>
-                    <div class="news-date">8 марта 2025</div>
-                    <p>Поздравляем всех женщин с праздником!</p>
-                    <p>Желаем вам счастья, любви, успехов и долгих лет жизни!</p>
-                </div>
-
-                  <div class="news-item">
-                    <h3>Сайт запущен!</h3>
-                    <div class="news-date">7 марта 2025</div>
-                    <p>Наш официальный сайт запущен в работу!</p>
-                </div>
-            </div>
+        <div class="news-item">
+            <h3>Обновление сайта!</h3>
+            <time class="news-date" datetime="2025-08-20">20 августа 2025</time>
+            <p>Новое обновление сайта!</p>
         </div>
+
+        <div class="news-item">
+            <h3>Лето!</h3>
+            <time class="news-date" datetime="2025-06-01">1 июня 2025</time>
+            <p>Поздравляем всех с летом!</p>
+        </div>
+
+        <div class="news-item">
+            <h3>День Победы!</h3>
+            <time class="news-date" datetime="2025-05-09">9 мая 2025</time>
+            <p>Поздравляем с Днём Победы!</p>
+        </div>
+        
+        <div class="news-item">
+            <h3>День космонавтики!</h3>
+            <time class="news-date" datetime="2025-04-12">12 апреля 2025</time>
+            <p>Поздравляем с Днём космонавтики!</p>
+        </div>
+
+        <div class="news-item">
+            <h3>С 8 Марта!</h3>
+            <time class="news-date" datetime="2025-03-08">8 марта 2025</time>
+            <p>Поздравляем всех женщин с праздником!</p>
+            <p>Желаем вам счастья, любви, успехов и долгих лет жизни!</p>
+        </div>
+
+        <div class="news-item">
+            <h3>Сайт запущен!</h3>
+            <time class="news-date" datetime="2025-03-07">7 марта 2025</time>
+            <p>Наш официальный сайт запущен в работу!</p>
+        </div>
+
+    </div>
+</div>
 
         <div class="block" id="development">
             <h2>Развитие</h2>
@@ -776,7 +784,7 @@
                     </p>
                 </div>
                 <div class="contact-image">
-                    <img src="Photos/Chairman/rushan.webp" alt="Фото председателя">
+                    <img src="Photos/Chairman/rushan.webp" alt="Фото председателя" loading="lazy" width="150" height="150" decoding="async">
                 </div>
             </div>
         </div>
@@ -785,20 +793,20 @@
             <h2>Галерея</h2>
             <div class="gallery-container">
                 <div class="gallery">
-                    <img src="Photos/image1.webp" alt="Главные ворота в 'Спортзнак'" loading="lazy" onclick="openImageModal('Photos/image1.webp')">
-                    <img src="Photos/image2.webp" alt="Волчий тупик" loading="lazy" onclick="openImageModal('Photos/image2.webp')">
-                    <img src="Photos/image3.webp" alt="Улица Виктора Цоя" loading="lazy" onclick="openImageModal('Photos/image3.webp')">
-                    <img src="Photos/image4.webp" alt="Центральная улица" loading="lazy" onclick="openImageModal('Photos/image4.webp')">
-                    <img src="Photos/image5.webp" alt="Детская площадка" loading="lazy" onclick="openImageModal('Photos/image5.webp')">
-                    <img src="Photos/image6.webp" alt="Спортзнаковский пруд" loading="lazy" onclick="openImageModal('Photos/image6.webp')">
-                    <img src="Photos/image7.webp" alt="Баскетбольная площадка" loading="lazy" onclick="openImageModal('Photos/image7.webp')">
-                    <img src="Photos/image8.webp" alt="Волейбольная площадка" loading="lazy" onclick="openImageModal('Photos/image8.webp')">
-                    <img src="Photos/image9.webp" alt="Дома СПК" loading="lazy" onclick="openImageModal('Photos/image9.webp')">
-                    <img src="Photos/image10.webp" alt="Северная улица" loading="lazy" onclick="openImageModal('Photos/image10.webp')">
-                    <img src="Photos/image11.webp" alt="Трансформатор" loading="lazy" onclick="openImageModal('Photos/image11.webp')">
-                    <img src="Photos/image12.webp" alt="Стрелковый тупик" loading="lazy" onclick="openImageModal('Photos/image12.webp')">
-                    <img src="Photos/image13.webp" alt="Главные ворота с обратной стороны" loading="lazy" onclick="openImageModal('Photos/image13.webp')">
-                    <img src="Photos/image14.webp" alt="Место для отдыха на пруду" loading="lazy" onclick="openImageModal('Photos/image14.webp')">
+                    <img src="Photos/image1.webp" alt="Главные ворота в 'Спортзнак'" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image1.webp')" decoding="async">
+                    <img src="Photos/image2.webp" alt="Волчий тупик" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image2.webp')" decoding="async">
+                    <img src="Photos/image3.webp" alt="Улица Виктора Цоя" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image3.webp')" decoding="async">
+                    <img src="Photos/image4.webp" alt="Центральная улица" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image4.webp')" decoding="async">
+                    <img src="Photos/image5.webp" alt="Детская площадка" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image5.webp')" decoding="async">
+                    <img src="Photos/image6.webp" alt="Спортзнаковский пруд" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image6.webp')" decoding="async">
+                    <img src="Photos/image7.webp" alt="Баскетбольная площадка" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image7.webp')" decoding="async">
+                    <img src="Photos/image8.webp" alt="Волейбольная площадка" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image8.webp')" decoding="async">
+                    <img src="Photos/image9.webp" alt="Дома СПК" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image9.webp')" decoding="async">
+                    <img src="Photos/image10.webp" alt="Северная улица" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image10.webp')" decoding="async">
+                    <img src="Photos/image11.webp" alt="Трансформатор" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image11.webp')" decoding="async">
+                    <img src="Photos/image12.webp" alt="Стрелковый тупик" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image12.webp')" decoding="async">
+                    <img src="Photos/image13.webp" alt="Главные ворота с обратной стороны" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image13.webp')" decoding="async">
+                    <img src="Photos/image14.webp" alt="Место для отдыха на пруду" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image14.webp')" decoding="async">
                 </div>
             </div>
         </div>
@@ -806,19 +814,24 @@
         <div class="block" id="map">
             <h2>Расположение на карте</h2>
             <div class="map-container">
-                <iframe src="https://yandex.ru/map-widget/v1/?ll=36.402552%2C55.314090&z=17&l=sat,skl,stv,sta&whatshere%5Bpoint%5D=36.402552%2C55.314090&whatshere%5Bzoom%5D=100"
-        width="100%" height="400" frameborder="0" allowfullscreen="true"></iframe>
+                <iframe
+                src="https://yandex.ru/map-widget/v1/?ll=36.402552%2C55.314090&z=17&l=sat,skl,stv,sta&whatshere%5Bpoint%5D=36.402552%2C55.314090&whatshere%5Bzoom%5D=100"
+                width="100%" height="400" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin allow-popups"
+                allowfullscreen>
+                </iframe>
             </div>
         </div>
 
         <div class="copyright">
             © 2025 СПК "Спортзнак". Все права защищены.
             <div class="social-icons">
-                <a href="https://www.youtube.com/@spksportznak" target="_blank" title="YouTube" alt="Наш YouTube канал!">
-                    <i class="fab fa-youtube"></i>
+                <a href="https://www.youtube.com/@spksportznak" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
+                <i class="fab fa-youtube" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.tiktok.com/@spksportznak" target="_blank" title="TikTok" alt="Наш TikTok!">
-                    <i class="fab fa-tiktok"></i>
+                <a href="https://www.tiktok.com/@spksportznak" target="_blank" rel="noopener" title="TikTok" aria-label="TikTok">
+                <i class="fab fa-tiktok" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -831,52 +844,53 @@
         </div>
     </div>
 
-    <script>
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = "block";
-                if (galleryContainer) {
-                    galleryContainer.classList.add('no-scroll');
-                }
-            }
-        }
+<script>
+  const body = document.body;
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+  const closeBtn = modal.querySelector('.close');
 
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.add('fade-out');
-                const modalContent = modal.querySelector('.modal-content');
-                if (modalContent) {
-                    modalContent.classList.add('zoom-out');
-                }
-                
-                setTimeout(() => {
-                    modal.style.display = "none";
-                    modal.classList.remove('fade-out');
-                    if (modalContent) {
-                        modalContent.classList.remove('zoom-out');
-                    }
-                    if (galleryContainer) {
-                        galleryContainer.classList.remove('no-scroll');
-                    }
-                }, 300);
-            }
-        }
+  // ширина вертикального скроллбара
+  function getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
+  }
 
-        function openImageModal(imageSrc) {
-            const modalImage = document.getElementById('modalImage');
-            if (modalImage) {
-                 modalImage.src = imageSrc;
-                 openModal('imageModal');
-            }
-        }
+  function openModal() {
+    modal.style.display = 'block';
+    const scrollBarWidth = getScrollbarWidth();
+    body.style.paddingRight = scrollBarWidth + 'px'; // компенсируем исчезновение скроллбара
+    body.style.overflow = 'hidden';
+    closeBtn?.focus();
+  }
 
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                closeModal(event.target.id);
-            }
-        }
-    </script>
+  function closeModal() {
+    modal.classList.add('fade-out');
+    const modalContent = modal.querySelector('.modal-content');
+    modalContent?.classList.add('zoom-out');
+
+    setTimeout(() => {
+      modal.style.display = 'none';
+      modal.classList.remove('fade-out');
+      modalContent?.classList.remove('zoom-out');
+      body.style.overflow = '';
+      body.style.paddingRight = ''; // снимаем компенсацию
+    }, 300);
+  }
+
+  function openImageModal(src) {
+    modalImage.src = src;
+    openModal();
+  }
+
+  // закрытие по клику на фон
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) closeModal();
+  });
+
+  // закрытие по ESC
+  window.addEventListener('keydown', (e) => {
+    if (modal.style.display === 'block' && e.key === 'Escape') closeModal();
+  });
+</script>
 </body>
 </html>
