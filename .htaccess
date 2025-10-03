@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^spksportznak\.ru$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www\.spksportznak\.ru$ [NC]
+RewriteRule ^(.*)$ https://spk-sportznak.ru/$1 [R=301,L]
