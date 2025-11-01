@@ -198,13 +198,20 @@
             margin: 30px 0;
             box-shadow: 0px 6px 15px var(--shadow-color);
             animation: fadeInUp 0.8s ease-in-out;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
             border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .block.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .block:hover {
-            transform: translateY(-8px);
-            box-shadow: 0px 10px 25px var(--shadow-hover);
+            transform: translateY(-10px);
+            box-shadow: 0px 12px 30px var(--shadow-hover);
         }
 
         h2 {
@@ -269,14 +276,26 @@
             flex-shrink: 0;
             border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             object-fit: cover;
+            opacity: 0;
+            animation: fadeInImage 0.6s ease forwards;
+        }
+
+        .gallery img.loaded {
+            opacity: 1;
         }
 
         .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 1px 1px var(--shadow-hover);
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 8px 16px var(--shadow-hover);
+            filter: brightness(1.1);
+        }
+
+        @keyframes fadeInImage {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .map-container {
@@ -329,8 +348,21 @@
             text-align: left;
             background-color: var(--news-bg);
             border-radius: 10px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInNews 0.6s ease forwards;
         }
+
+        .news-item:nth-child(1) { animation-delay: 0.1s; }
+        .news-item:nth-child(2) { animation-delay: 0.2s; }
+        .news-item:nth-child(3) { animation-delay: 0.3s; }
+        .news-item:nth-child(4) { animation-delay: 0.4s; }
+        .news-item:nth-child(5) { animation-delay: 0.5s; }
+        .news-item:nth-child(6) { animation-delay: 0.6s; }
+        .news-item:nth-child(7) { animation-delay: 0.7s; }
+        .news-item:nth-child(8) { animation-delay: 0.8s; }
+        .news-item:nth-child(9) { animation-delay: 0.9s; }
 
         .news-item:last-child {
             border-bottom: none;
@@ -338,6 +370,13 @@
 
         .news-item:hover {
             background-color: var(--news-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px var(--shadow-color);
+        }
+
+        @keyframes slideInNews {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .news-item h3 {
@@ -417,13 +456,14 @@
             border-radius: 15px;
             text-align: center;
             position: relative;
-            animation: zoomIn 0.4s ease-in-out;
+            animation: zoomIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             box-shadow: 0 10px 30px var(--shadow-color);
+            transform-origin: center;
         }
 
         @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: scale(0.8) rotate(-2deg); }
+            to { opacity: 1; transform: scale(1) rotate(0deg); }
         }
 
         .modal-content img {
@@ -585,12 +625,17 @@
         .social-icons a {
             color: var(--text-secondary);
             font-size: 24px;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+            display: inline-block;
+            border-radius: 50%;
+            padding: 8px;
+            margin: 0 4px;
         }
 
         .social-icons a:hover {
             color: var(--text-color);
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.1);
+            filter: drop-shadow(0 4px 8px var(--shadow-color));
         }
 
         .social-icons a[href*="youtube"]:hover {
@@ -707,14 +752,21 @@
             }
 
             .contact-image img {
-                width: 80px;
-                height: 80px;
+                width: 120px;
+                height: 120px;
                 border-width: 2px;
+            }
+
+            .modal {
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .modal-content {
                 padding: 15px;
                 width: 100%;
+                margin: auto;
             }
 
             .close {
@@ -743,6 +795,523 @@
                 font-size: 1.1rem;
             }
             }
+
+        /* Seasonal Themes */
+        .halloween-theme {
+            --bg-color: #050505;
+            --bg-secondary: #000000;
+            --block-bg: linear-gradient(135deg, #1a0a00, #8b4513, #1a0a00);
+            --text-color: #ffffff;
+            --text-secondary: #daa520;
+            --button-bg: #2d1810;
+            --button-hover: #8b4513;
+            --border-color: rgba(45, 24, 16, 0.6);
+            --shadow-color: rgba(0, 0, 0, 0.9);
+            --shadow-hover: rgba(139, 69, 19, 0.4);
+            --copyright-bg: #0a0a0a;
+            --news-bg: rgba(45, 24, 16, 0.3);
+            --news-hover: rgba(139, 69, 19, 0.4);
+            --modal-bg: #0a0a0a;
+            --menu-bg: #050505;
+            --menu-border: #2d1810;
+        }
+
+        .halloween-theme body {
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 30%, #000000 70%, #0a0a0a 100%);
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(218, 165, 32, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(45, 24, 16, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 50% 10%, rgba(139, 69, 19, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 30% 80%, rgba(101, 67, 33, 0.15) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='2' fill='%23daa520' opacity='0.2'/%3E%3C/svg%3E") 0 0 / 150px 150px;
+            animation: halloween-flicker 10s ease-in-out infinite alternate;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .halloween-theme .block {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .halloween-theme .block::before {
+            content: "🎃";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 3rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+
+        .halloween-theme .block::after {
+            content: "🎃";
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            font-size: 2.8rem;
+            opacity: 0.12;
+            transform: rotate(-10deg);
+            pointer-events: none;
+        }
+
+        /* Additional floating pumpkins */
+        .halloween-theme .floating-pumpkin-1::before {
+            content: "🎃";
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            font-size: 1.5rem;
+            opacity: 0.15;
+            animation: float-pumpkin-1 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .halloween-theme .floating-pumpkin-2::after {
+            content: "🎃";
+            position: fixed;
+            top: 80%;
+            right: 8%;
+            font-size: 1.8rem;
+            opacity: 0.1;
+            animation: float-pumpkin-2 10s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .halloween-theme .floating-pumpkin-3::before {
+            content: "🎃";
+            position: fixed;
+            top: 50%;
+            left: 80%;
+            font-size: 1.2rem;
+            opacity: 0.08;
+            animation: float-pumpkin-3 12s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .halloween-theme h1 {
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(218, 165, 32, 0.4), 0 0 30px rgba(139, 69, 19, 0.2);
+        }
+
+        .halloween-theme h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 12px rgba(218, 165, 32, 0.3), 0 0 25px rgba(139, 69, 19, 0.15);
+        }
+
+        .halloween-theme p {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        @keyframes halloween-flicker {
+            0% { filter: brightness(1) contrast(1); }
+            50% { filter: brightness(0.95) contrast(1.05); }
+            100% { filter: brightness(1.05) contrast(0.95); }
+        }
+
+        /* Flying Halloween Creatures Animation */
+        .halloween-theme::before {
+            content: "🦇";
+            position: fixed;
+            top: 15%;
+            left: -50px;
+            font-size: 2rem;
+            color: rgba(0, 0, 0, 0.6);
+            animation: fly-bat-diagonal-1 14s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .halloween-theme::after {
+            content: "🦇";
+            position: fixed;
+            top: 70%;
+            right: -50px;
+            font-size: 1.8rem;
+            color: rgba(0, 0, 0, 0.5);
+            animation: fly-bat-diagonal-2 18s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Additional flying ghosts */
+        .halloween-theme .flying-ghost-1::before {
+            content: "👻";
+            position: fixed;
+            top: 40%;
+            left: -60px;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.4);
+            animation: fly-ghost-diagonal-1 16s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .halloween-theme .flying-ghost-2::after {
+            content: "👻";
+            position: fixed;
+            top: 25%;
+            right: -60px;
+            font-size: 2.2rem;
+            color: rgba(255, 255, 255, 0.3);
+            animation: fly-ghost-diagonal-2 20s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes fly-bat-diagonal-1 {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(calc(80vw)) translateY(calc(40vh)) rotate(15deg); }
+            50% { transform: translateX(calc(100vw + 50px)) translateY(calc(20vh)) rotate(-10deg); }
+            75% { transform: translateX(calc(120vw)) translateY(calc(-10vh)) rotate(5deg); }
+            100% { transform: translateX(calc(140vw)) translateY(calc(-20vh)) rotate(0deg); }
+        }
+
+        @keyframes fly-bat-diagonal-2 {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            20% { transform: translateX(calc(-60vw)) translateY(calc(-35vh)) rotate(-12deg); }
+            40% { transform: translateX(calc(-90vw)) translateY(calc(-15vh)) rotate(8deg); }
+            60% { transform: translateX(calc(-110vw)) translateY(calc(25vh)) rotate(-6deg); }
+            80% { transform: translateX(calc(-130vw)) translateY(calc(45vh)) rotate(4deg); }
+            100% { transform: translateX(calc(-150vw)) translateY(calc(30vh)) rotate(0deg); }
+        }
+
+        @keyframes fly-ghost-diagonal-1 {
+            0% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); }
+            15% { transform: translateX(calc(70vw)) translateY(calc(-25vh)) rotate(8deg) scale(1.1); }
+            35% { transform: translateX(calc(90vw)) translateY(calc(15vh)) rotate(-5deg) scale(0.9); }
+            55% { transform: translateX(calc(110vw)) translateY(calc(-10vh)) rotate(12deg) scale(1.05); }
+            75% { transform: translateX(calc(130vw)) translateY(calc(20vh)) rotate(-8deg) scale(0.95); }
+            100% { transform: translateX(calc(150vw)) translateY(calc(5vh)) rotate(0deg) scale(1); }
+        }
+
+        @keyframes fly-ghost-diagonal-2 {
+            0% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); }
+            18% { transform: translateX(calc(-75vw)) translateY(calc(30vh)) rotate(-10deg) scale(1.15); }
+            38% { transform: translateX(calc(-95vw)) translateY(calc(-20vh)) rotate(6deg) scale(0.85); }
+            58% { transform: translateX(calc(-115vw)) translateY(calc(35vh)) rotate(-14deg) scale(1.1); }
+            78% { transform: translateX(calc(-135vw)) translateY(calc(-15vh)) rotate(9deg) scale(0.9); }
+            100% { transform: translateX(calc(-155vw)) translateY(calc(10vh)) rotate(0deg) scale(1); }
+        }
+
+        @keyframes float-pumpkin-1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(5deg); }
+            50% { transform: translateY(-5px) rotate(-3deg); }
+            75% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        @keyframes float-pumpkin-2 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            20% { transform: translateY(8px) rotate(-4deg); }
+            40% { transform: translateY(-6px) rotate(6deg); }
+            60% { transform: translateY(12px) rotate(-2deg); }
+            80% { transform: translateY(-4px) rotate(3deg); }
+        }
+
+        @keyframes float-pumpkin-3 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            30% { transform: translateY(-8px) rotate(4deg); }
+            60% { transform: translateY(6px) rotate(-5deg); }
+            90% { transform: translateY(-12px) rotate(1deg); }
+        }
+
+        .christmas-theme {
+            --bg-color: #0f0f0f;
+            --bg-secondary: #050505;
+            --block-bg: linear-gradient(135deg, #000080, #ffffff, #000080);
+            --text-color: #ffffff;
+            --text-secondary: #add8e6;
+            --button-bg: #000080;
+            --button-hover: #4169e1;
+            --border-color: rgba(0, 0, 128, 0.3);
+            --shadow-color: rgba(0, 0, 128, 0.4);
+            --shadow-hover: rgba(65, 105, 225, 0.2);
+            --copyright-bg: #1a1a1a;
+            --news-bg: rgba(0, 0, 128, 0.1);
+            --news-hover: rgba(0, 0, 128, 0.2);
+            --modal-bg: #2a2a2a;
+            --menu-bg: #1a1a1a;
+            --menu-border: #000080;
+        }
+
+        .christmas-theme body {
+            background-image: radial-gradient(circle at 10% 30%, rgba(0, 0, 128, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 70%, rgba(65, 105, 225, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .christmas-theme::before {
+            content: "❄";
+            position: fixed;
+            top: -10px;
+            left: 10%;
+            font-size: 2rem;
+            color: rgba(173, 216, 230, 0.5);
+            animation: snowfall 10s linear infinite;
+            pointer-events: none;
+        }
+
+        .christmas-theme::after {
+            content: "❄";
+            position: fixed;
+            top: -10px;
+            left: 70%;
+            font-size: 1.5rem;
+            color: rgba(173, 216, 230, 0.4);
+            animation: snowfall 15s linear infinite;
+            pointer-events: none;
+        }
+
+        /* Additional snowflakes */
+        .christmas-theme .snowflake-1::before {
+            content: "❄";
+            position: fixed;
+            top: -10px;
+            left: 30%;
+            font-size: 1.8rem;
+            color: rgba(173, 216, 230, 0.6);
+            animation: snowfall 12s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .christmas-theme .snowflake-2::after {
+            content: "❄";
+            position: fixed;
+            top: -10px;
+            left: 50%;
+            font-size: 1.2rem;
+            color: rgba(173, 216, 230, 0.3);
+            animation: snowfall 8s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .christmas-theme .snowflake-3::before {
+            content: "❄";
+            position: fixed;
+            top: -10px;
+            left: 90%;
+            font-size: 2.2rem;
+            color: rgba(173, 216, 230, 0.4);
+            animation: snowfall 14s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .christmas-theme .snowflake-4::after {
+            content: "❄";
+            position: fixed;
+            top: -10px;
+            left: 20%;
+            font-size: 1.6rem;
+            color: rgba(173, 216, 230, 0.5);
+            animation: snowfall 11s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .christmas-theme .snowflake-5::before {
+            content: "❄";
+            position: fixed;
+            top: -10px;
+            left: 80%;
+            font-size: 1.4rem;
+            color: rgba(173, 216, 230, 0.4);
+            animation: snowfall 9s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Santa Claus */
+        .christmas-theme .santa-claus::before {
+            content: "🎅";
+            position: fixed;
+            top: 20%;
+            right: -60px;
+            font-size: 3rem;
+            color: rgba(255, 0, 0, 0.8);
+            animation: santa-fly 25s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Reindeer */
+        .christmas-theme .reindeer-1::after {
+            content: "🦌";
+            position: fixed;
+            top: 25%;
+            right: -70px;
+            font-size: 2.5rem;
+            color: rgba(139, 69, 19, 0.7);
+            animation: reindeer-fly-1 22s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .christmas-theme .reindeer-2::before {
+            content: "🦌";
+            position: fixed;
+            top: 30%;
+            right: -80px;
+            font-size: 2.2rem;
+            color: rgba(139, 69, 19, 0.6);
+            animation: reindeer-fly-2 20s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .christmas-theme .reindeer-3::after {
+            content: "🦌";
+            position: fixed;
+            top: 15%;
+            right: -90px;
+            font-size: 2.8rem;
+            color: rgba(139, 69, 19, 0.8);
+            animation: reindeer-fly-3 28s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .christmas-theme .block::before {
+            content: "🎄";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 3rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+
+        .christmas-theme .block::after {
+            content: "🎄";
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            font-size: 2.8rem;
+            opacity: 0.12;
+            transform: rotate(-10deg);
+            pointer-events: none;
+        }
+
+        @keyframes snowfall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        @keyframes santa-fly {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(calc(-80vw)) translateY(-20px) rotate(-5deg); }
+            50% { transform: translateX(calc(-100vw)) translateY(10px) rotate(5deg); }
+            75% { transform: translateX(calc(-120vw)) translateY(-15px) rotate(-3deg); }
+            100% { transform: translateX(calc(-140vw)) translateY(0) rotate(0deg); }
+        }
+
+        @keyframes reindeer-fly-1 {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            20% { transform: translateX(calc(-75vw)) translateY(-25px) rotate(-4deg); }
+            40% { transform: translateX(calc(-95vw)) translateY(15px) rotate(6deg); }
+            60% { transform: translateX(calc(-115vw)) translateY(-10px) rotate(-2deg); }
+            80% { transform: translateX(calc(-135vw)) translateY(20px) rotate(4deg); }
+            100% { transform: translateX(calc(-155vw)) translateY(0) rotate(0deg); }
+        }
+
+        @keyframes reindeer-fly-2 {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            15% { transform: translateX(calc(-70vw)) translateY(30px) rotate(7deg); }
+            35% { transform: translateX(calc(-90vw)) translateY(-20px) rotate(-5deg); }
+            55% { transform: translateX(calc(-110vw)) translateY(25px) rotate(3deg); }
+            75% { transform: translateX(calc(-130vw)) translateY(-15px) rotate(-6deg); }
+            100% { transform: translateX(calc(-150vw)) translateY(0) rotate(0deg); }
+        }
+
+        @keyframes reindeer-fly-3 {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            18% { transform: translateX(calc(-85vw)) translateY(-35px) rotate(-8deg); }
+            38% { transform: translateX(calc(-105vw)) translateY(20px) rotate(4deg); }
+            58% { transform: translateX(calc(-125vw)) translateY(-25px) rotate(-3deg); }
+            78% { transform: translateX(calc(-145vw)) translateY(30px) rotate(6deg); }
+            100% { transform: translateX(calc(-165vw)) translateY(0) rotate(0deg); }
+        }
+.skip-links {
+    position: absolute;
+    left: -9999px;
+}
+
+.skip-links a {
+    display: block;
+    padding: 10px;
+    background: var(--button-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.skip-links a:focus {
+    position: static;
+    left: auto;
+}
+
+.search-container {
+    margin-top: 20px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.search-input:focus {
+    outline: 2px solid var(--button-hover);
+}
+
+.search-results {
+    margin-top: 20px;
+}
+
+.search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.search-result-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.search-result-item h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+}
+
+.search-result-item h4 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.search-result-item h4 a:hover {
+    text-decoration: underline;
+}
+
+.search-result-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
     </style>
 </head>
 <body>
@@ -766,12 +1335,26 @@
         </div>
     </noscript>
 
-    <div class="container">
+    <div class="skip-links">
+        <a href="#main-content">Перейти к основному содержимому</a>
+        <a href="#navigation">Перейти к навигации</a>
+        <a href="#gallery-section">Перейти к галерее</a>
+        <a href="#contacts">Перейти к контактам</a>
+    </div>
+
+
+    <div class="container flying-ghost-1 flying-ghost-2 floating-pumpkin-1 floating-pumpkin-2 floating-pumpkin-3 santa-claus reindeer-1 reindeer-2 reindeer-3 snowflake-1 snowflake-2 snowflake-3 snowflake-4 snowflake-5" id="main-content">
         <h1>Официальный сайт<br>СПК "Спортзнак"</h1>
 
         <div class="block" id="description">
             <h2>Описание</h2>
             <p>СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
+
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Поиск по сайту..." aria-label="Поиск">
+            </div>
+
+            <div class="search-results" aria-live="polite"></div>
         </div>
 
 <div class="block" id="news">
@@ -780,8 +1363,14 @@
 
         <div class="news-item">
             <h3>Обновление сайта!</h3>
-            <time class="news-date" datetime="2025-10-19">19 октября 2025</time>
+            <time class="news-date" datetime="2025-10-31">31 октября 2025</time>
             <p>Новое обновление сайта!</p>
+        </div>
+
+        <div class="news-item">
+            <h3>Хэллоуин!</h3>
+            <time class="news-date" datetime="2025-10-31">31 октября 2025</time>
+            <p>Поздравляем всех с Хэллоуином!</p>
         </div>
 
         <div class="news-item">
@@ -840,6 +1429,7 @@
                     <p>
                         Почта: <a href="mailto:spksportznak@gmail.com">spksportznak@gmail.com</a>
                     </p>
+
                 </div>
                 <div class="contact-image">
                     <img src="Photos/Chairman/rushan.webp" alt="Фото председателя" loading="lazy" width="150" height="150" decoding="async">
@@ -905,6 +1495,164 @@
     </div>
 
 <script>
+  // Error handling wrapper
+  function safeExecute(fn, fallback = null) {
+    try {
+      return fn();
+    } catch (error) {
+      console.error('JavaScript Error:', error);
+      if (fallback) fallback();
+      return null;
+    }
+  }
+
+  // Seasonal theme application
+  function applySeasonalTheme() {
+    const now = new Date();
+    const month = now.getMonth() + 1; // getMonth() returns 0-11
+    const day = now.getDate();
+
+    // Remove existing seasonal classes
+    document.body.classList.remove('halloween-theme', 'christmas-theme');
+
+    // Halloween: October 1 - November 1
+    if ((month === 10 && day >= 1) || (month === 11 && day === 1)) {
+      document.body.classList.add('halloween-theme');
+    }
+    // Christmas/New Year: December 1 - March 1
+    else if (month === 12 || month === 1 || month === 2 || (month === 3 && day <= 1)) {
+      document.body.classList.add('christmas-theme');
+    }
+  }
+
+
+  // Search functionality
+  function initializeSearch() {
+    const searchInput = document.querySelector('.search-input');
+    const searchResults = document.querySelector('.search-results');
+
+    if (!searchInput || !searchResults) return;
+
+    const searchableContent = [
+      { title: 'Описание', content: 'СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.', url: '#description' },
+      { title: 'Новости', content: 'Обновление сайта, Хэллоуин, День отца, Лето, День Победы, День космонавтики, С 8 Марта, Сайт запущен', url: '#news' },
+      { title: 'Развитие', content: 'Собрания для обсуждения планов по улучшению территории, дороги, освещение, мусорные площадки', url: '#development' },
+      { title: 'Галерея', content: 'Главные ворота, Северная улица, Центральная улица, Волчий тупик, Альтернативный въезд, Площадка, Детская площадка, Волейбольная площадка, Баскетбольная площадка, Спортзнаковский пруд, Место для отдыха на пруду, Улица Виктора Цоя, Стрелковый тупик', url: '#gallery-section' },
+      { title: 'Расположение', content: 'Карта расположения СПК Спортзнак в Наро-Фоминском районе', url: '#map' },
+      { title: 'Контакты', content: 'Председатель Фаттяхетдинов Рушан Шамилевич, телефон +7 916 600-94-60, email spksportznak@gmail.com', url: '#contacts' }
+    ];
+
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase().trim();
+      searchResults.innerHTML = '';
+
+      if (query.length < 2) return;
+
+      const results = searchableContent.filter(item =>
+        item.title.toLowerCase().includes(query) ||
+        item.content.toLowerCase().includes(query)
+      );
+
+      results.forEach(result => {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'search-result-item show';
+        resultItem.innerHTML = `
+          <h4><a href="${result.url}">${result.title}</a></h4>
+          <p>${result.content.substring(0, 100)}...</p>
+        `;
+        searchResults.appendChild(resultItem);
+      });
+    });
+  }
+
+
+
+
+  // Performance monitoring
+  function initializePerformanceMonitoring() {
+    if ('performance' in window && 'PerformanceObserver' in window) {
+      // Monitor Largest Contentful Paint
+      const lcpObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        console.log('LCP:', lastEntry.startTime);
+      });
+      lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+
+      // Monitor First Input Delay
+      const fidObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          console.log('FID:', entry.processingStart - entry.startTime);
+        }
+      });
+      fidObserver.observe({ entryTypes: ['first-input'] });
+
+      // Monitor Cumulative Layout Shift
+      const clsObserver = new PerformanceObserver((list) => {
+        let clsValue = 0;
+        for (const entry of list.getEntries()) {
+          if (!entry.hadRecentInput) {
+            clsValue += entry.value;
+          }
+        }
+        console.log('CLS:', clsValue);
+      });
+      clsObserver.observe({ entryTypes: ['layout-shift'] });
+    }
+  }
+
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered:', registration);
+        })
+        .catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+
+  // Apply theme on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    safeExecute(() => applySeasonalTheme());
+    safeExecute(() => initializeSearch());
+    safeExecute(() => initializePerformanceMonitoring());
+
+    // Add scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all blocks
+    document.querySelectorAll('.block').forEach(block => {
+      observer.observe(block);
+    });
+
+    // Add loading animation to gallery images
+    const galleryImages = document.querySelectorAll('.gallery img');
+    galleryImages.forEach((img, index) => {
+      img.style.animationDelay = `${index * 0.1}s`;
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+      });
+      // If already loaded
+      if (img.complete) {
+        img.classList.add('loaded');
+      }
+    });
+  });
+
   const body = document.body;
   const modal = document.getElementById('imageModal');
   const modalImage = document.getElementById('modalImage');
