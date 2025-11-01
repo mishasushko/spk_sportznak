@@ -11,12 +11,10 @@
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content='СПК "Спортзнак"'>
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content='Официальный сайт СПК "Спортзнак"'/>
     <meta name="twitter:description" content='СПК "Спортзнак" — уютный посёлок в Наро-Фоминском районе Московской области.'/>
 
-    <!-- Микроразметка Schema.org -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -46,7 +44,6 @@
     }
     </script>
 
-    <!-- Canonical -->
     <link rel="canonical" href="https://spksportznak.ru/"/>
     
     <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
@@ -437,13 +434,16 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
+            /* УДАЛЕНЫ overflow: auto и padding-top: 20px, добавлены свойства для центрирования */
+            align-items: center; /* ДОБАВЛЕНО для центрирования */
+            justify-content: center; /* ДОБАВЛЕНО для центрирования */
+            overflow: hidden; /* ИЗМЕНЕНО, чтобы предотвратить прокрутку фона */
             background-color: rgb(0,0,0);
             background-color: rgba(0,0,0,0.95);
-            padding-top: 20px;
+            /* padding-top: 20px; удален */
             animation: fadeIn 0.3s ease-in-out;
             user-select: none;
-            overflow-y: hidden;
+            /* overflow-y: hidden; удален */
         }
 
         .modal-content {
@@ -726,15 +726,20 @@
 
             .gallery-container {
                 padding-bottom: 10px;
+                overflow: visible;
+                white-space: normal;
             }
 
             .gallery {
                 gap: 10px;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
 
             .gallery img {
-                width: 200px;
-                height: 200px;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1;
             }
 
             .map-container {
@@ -757,12 +762,9 @@
                 border-width: 2px;
             }
 
-            .modal {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
+            /* УДАЛЕН БЛОК .modal, так как display: flex; был причиной ошибки */
+            /* Свойства центрирования перенесены в глобальный .modal выше */
+            
             .modal-content {
                 padding: 15px;
                 width: 100%;
@@ -1441,20 +1443,20 @@
             <h2>Галерея</h2>
             <div class="gallery-container">
                 <div class="gallery">
-                    <img src="Photos/image1.webp" alt="Главные ворота в 'Спортзнак'" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image1.webp')" decoding="async">
-                    <img src="Photos/image2.webp" alt="Северная улица" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image2.webp')" decoding="async">
-                    <img src="Photos/image3.webp" alt="Центральная улица" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image3.webp')" decoding="async">
-                    <img src="Photos/image4.webp" alt="Центральная улица (вид с конца улицы)" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image4.webp')" decoding="async">
-                    <img src="Photos/image5.webp" alt="Волчий тупик" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image5.webp')" decoding="async">
-                    <img src="Photos/image6.webp" alt="Альтернативный въезд в 'Спортзнак'" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image6.webp')" decoding="async">
-                    <img src="Photos/image7.webp" alt="Площадка" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image7.webp')" decoding="async">
-                    <img src="Photos/image8.webp" alt="Детская площадка" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image8.webp')" decoding="async">
-                    <img src="Photos/image9.webp" alt="Волейбольная площадка" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image9.webp')" decoding="async">
-                    <img src="Photos/image10.webp" alt="Баскетбольная площадка" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image10.webp')" decoding="async">
-                    <img src="Photos/image11.webp" alt="Спортзнаковский пруд" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image11.webp')" decoding="async">
-                    <img src="Photos/image12.webp" alt="Место для отдыха на пруду" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image12.webp')" decoding="async">
-                    <img src="Photos/image13.webp" alt="Улица Виктора Цоя" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image13.webp')" decoding="async">
-                    <img src="Photos/image14.webp" alt="Стрелковый тупик" loading="lazy" width="200" height="200" onclick="openImageModal('Photos/image14.webp')" decoding="async">
+                    <img src="Photos/image1.webp" alt="Главные ворота в 'Спортзнак'" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image1.webp')" decoding="async">
+                    <img src="Photos/image2.webp" alt="Северная улица" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image2.webp')" decoding="async">
+                    <img src="Photos/image3.webp" alt="Центральная улица" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image3.webp')" decoding="async">
+                    <img src="Photos/image4.webp" alt="Центральная улица (вид с конца улицы)" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image4.webp')" decoding="async">
+                    <img src="Photos/image5.webp" alt="Волчий тупик" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image5.webp')" decoding="async">
+                    <img src="Photos/image6.webp" alt="Альтернативный въезд в 'Спортзнак'" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image6.webp')" decoding="async">
+                    <img src="Photos/image7.webp" alt="Площадка" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image7.webp')" decoding="async">
+                    <img src="Photos/image8.webp" alt="Детская площадка" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image8.webp')" decoding="async">
+                    <img src="Photos/image9.webp" alt="Волейбольная площадка" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image9.webp')" decoding="async">
+                    <img src="Photos/image10.webp" alt="Баскетбольная площадка" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image10.webp')" decoding="async">
+                    <img src="Photos/image11.webp" alt="Спортзнаковский пруд" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image11.webp')" decoding="async">
+                    <img src="Photos/image12.webp" alt="Место для отдыха на пруду" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image12.webp')" decoding="async">
+                    <img src="Photos/image13.webp" alt="Улица Виктора Цоя" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image13.webp')" decoding="async">
+                    <img src="Photos/image14.webp" alt="Стрелковый тупик" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image14.webp')" decoding="async">
                 </div>
             </div>
         </div>
@@ -1602,7 +1604,7 @@
   }
 
   // Register service worker
-  if ('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
         .then((registration) => {
@@ -1665,7 +1667,7 @@
   }
 
   function openModal() {
-    modal.style.display = 'block';
+    modal.style.display = 'flex'; // ИЗМЕНЕНО с 'block' на 'flex' для центрирования
     const scrollBarWidth = getScrollbarWidth();
     body.style.paddingRight = scrollBarWidth + 'px';
     body.style.overflow = 'hidden';
@@ -1684,6 +1686,11 @@
       body.style.overflow = '';
       body.style.paddingRight = '';
     }, 300);
+  }
+
+  function handleImageClick(event, src) {
+    event.preventDefault();
+    openImageModal(src);
   }
 
   function openImageModal(src) {
@@ -1742,4 +1749,3 @@
 </script>
 </body>
 </html>
-
