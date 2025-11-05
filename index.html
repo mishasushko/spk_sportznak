@@ -116,6 +116,9 @@
             --modal-bg: #292929;
             --menu-bg: #222;
             --menu-border: #383838;
+            --accent-color: #008cff;
+            --accent-hover: #006bbd;
+            --accent-light: rgba(0, 140, 255, 0.1);
             transition: background-color 0.3s ease, color 0.3s ease
         }
 
@@ -131,12 +134,15 @@
                 --border-color: rgba(0, 0, 0, 0.1);
                 --shadow-color: rgba(0, 0, 0, 0.2);
                 --shadow-hover: rgba(0, 0, 0, 0.25);
-                --copyright-bg: #e0e0e0;
+                --copyright-bg: #d0d0d0;
                 --news-bg: rgba(0, 0, 0, 0.05);
                 --news-hover: rgba(0, 0, 0, 0.08);
                 --modal-bg: #f9f9f9;
                 --menu-bg: #f0f0f0;
                 --menu-border: #d0d0d0;
+                --accent-color: #007bff;
+                --accent-hover: #0056b3;
+                --accent-light: rgba(0, 123, 255, 0.1);
             }
 
             body {
@@ -154,6 +160,9 @@
             scroll-behavior: smooth;
             overflow-y: scroll;
             --text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.1);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         .container {
@@ -163,16 +172,45 @@
         }
 
         h1 {
-            font-family: 'Novartis Headline', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 25px;
+            font-family: 'Novartis Headline', system-ui, sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: clamp(15px, 4vw, 25px);
             text-shadow: 2px 2px 10px var(--text-shadow);
             animation: fadeInDown 1.5s ease-in-out;
             letter-spacing: 1px;
             cursor: default;
-            font-weight: 100; 
+            font-weight: 100;
+            line-height: 1.2;
         }
         
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        a:not(.social-icons a)::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-hover);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        a:hover:not(.social-icons a)::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
         
         a:focus, button:focus {
             outline: 2px solid var(--button-hover);
@@ -180,19 +218,20 @@
         }
 
         .date {
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: clamp(15px, 3vw, 20px);
             animation: fadeIn 1.5s ease-in-out;
             cursor: default;
             font-weight: 400;
+            line-height: 1.4;
         }
 
         .block {
             background: var(--block-bg);
             border-radius: 15px;
             padding: 30px;
-            margin: 30px 0;
+            margin: 40px 0;
             box-shadow: 0px 6px 15px var(--shadow-color);
             animation: fadeInUp 0.8s ease-in-out;
             transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
@@ -209,29 +248,42 @@
         .block:hover {
             transform: translateY(-10px);
             box-shadow: 0px 12px 30px var(--shadow-hover);
+            transition: transform 0.4s ease, box-shadow 0.6s ease;
         }
 
         h2 {
-            font-family: 'Novartis Headline', sans-serif;
+            font-family: 'Novartis Headline', system-ui, sans-serif;
             color: var(--text-color);
-            margin-bottom: 20px;
-            font-size: 2.2rem;
+            margin-bottom: clamp(15px, 3vw, 20px);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
             cursor: default;
             font-weight: 100;
             text-shadow: var(--text-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 15px);
+            line-height: 1.3;
+        }
+        
+        h2 .fas {
+            color: var(--accent-color);
+            font-size: 2rem;
+            padding-bottom: 5px;
         }
 
         h3 {
-            font-family: 'Novartis Headline', sans-serif;
+            font-family: 'Novartis Headline', system-ui, sans-serif;
             font-weight: 100;
         }
 
         p {
             font-family: 'Caviar Dreams Bold Local', sans-serif;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             color: var(--text-secondary);
             cursor: default;
             font-weight: 400;
+            line-height: 1.6;
         }
 
         .gallery-container {
@@ -241,6 +293,42 @@
             -webkit-overflow-scrolling: touch;
             padding-bottom: 15px;
             scroll-behavior: smooth;
+            position: relative;
+        }
+
+        .gallery-nav {
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 5;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .gallery-nav.prev {
+            left: -20px;
+        }
+
+        .gallery-nav.next {
+            right: -20px;
+        }
+
+        @media (min-width: 769px) {
+            .gallery-nav {
+                display: block;
+            }
         }
 
         .gallery-container::-webkit-scrollbar {
@@ -253,12 +341,12 @@
         }
 
         .gallery-container::-webkit-scrollbar-thumb {
-            background: var(--button-bg);
+            background: var(--accent-color);
             border-radius: 4px;
         }
 
         .gallery-container::-webkit-scrollbar-thumb:hover {
-            background: var(--button-hover);
+            background: var(--accent-hover);
         }
 
         .gallery {
@@ -325,23 +413,25 @@
 
 
         .copyright {
-            margin-top: 50px;
-            padding: 15px;
+            margin-top: clamp(30px, 8vw, 50px);
+            padding: clamp(10px, 3vw, 15px);
             background-color: var(--copyright-bg);
             border-radius: 15px;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             color: var(--text-secondary);
             cursor: default;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: clamp(8px, 2vw, 10px);
+            line-height: 1.4;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .news-item {
             margin-bottom: 20px;
             padding: 20px;
-            border-bottom: 2px solid var(--menu-border);
             text-align: left;
             background-color: var(--news-bg);
             border-radius: 10px;
@@ -349,6 +439,10 @@
             opacity: 0;
             transform: translateY(20px);
             animation: slideInNews 0.6s ease forwards;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 2px 5px var(--shadow-color);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .news-item:nth-child(1) { animation-delay: 0.1s; }
@@ -367,8 +461,8 @@
 
         .news-item:hover {
             background-color: var(--news-hover);
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px var(--shadow-color);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px var(--shadow-color);
         }
 
         @keyframes slideInNews {
@@ -377,29 +471,32 @@
         }
 
         .news-item h3 {
-            font-family: 'Novartis Headline', sans-serif;
-            font-size: 1.3rem;
+            font-family: 'Novartis Headline', system-ui, sans-serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
             color: var(--text-color);
-            margin-bottom: 8px;
+            margin-bottom: clamp(5px, 1vw, 8px);
             cursor: default;
             font-weight: 100;
+            line-height: 1.3;
         }
 
         .news-item .news-date {
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             color: var(--text-secondary);
-            margin-bottom: 12px;
+            margin-bottom: clamp(8px, 2vw, 12px);
             cursor: default;
             font-weight: 400;
             animation: none;
+            line-height: 1.4;
         }
 
         .news-item p {
             font-family: 'Caviar Dreams Bold Local', sans-serif;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             color: var(--text-secondary);
             cursor: default;
             font-weight: 400;
+            line-height: 1.5;
         }
 
         .news-container {
@@ -418,12 +515,12 @@
         }
 
         .news-container::-webkit-scrollbar-thumb {
-            background: var(--button-bg);
+            background: var(--accent-color);
             border-radius: 4px;
         }
 
         .news-container::-webkit-scrollbar-thumb:hover {
-            background: var(--button-hover);
+            background: var(--accent-hover);
         }
 
         .modal {
@@ -434,16 +531,12 @@
             top: 0;
             width: 100%;
             height: 100%;
-            /* УДАЛЕНЫ overflow: auto и padding-top: 20px, добавлены свойства для центрирования */
-            align-items: center; /* ДОБАВЛЕНО для центрирования */
-            justify-content: center; /* ДОБАВЛЕНО для центрирования */
-            overflow: hidden; /* ИЗМЕНЕНО, чтобы предотвратить прокрутку фона */
-            background-color: rgb(0,0,0);
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
             background-color: rgba(0,0,0,0.95);
-            /* padding-top: 20px; удален */
             animation: fadeIn 0.3s ease-in-out;
             user-select: none;
-            /* overflow-y: hidden; удален */
         }
 
         .modal-content {
@@ -557,6 +650,30 @@
             gap: 30px;
             text-align: left;
         }
+        
+        .contact-text p {
+            display: flex;
+            align-items: center;
+            gap: clamp(8px, 2vw, 12px);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.5;
+        }
+
+        .contact-text p strong {
+            font-weight: 900;
+        }
+
+        .contact-text p a[href^="tel:"] {
+            white-space: nowrap;
+            word-break: keep-all;
+        }
+
+        .contact-text p .fas {
+            color: var(--accent-color);
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
 
         .contact-text {
             flex-grow: 1;
@@ -575,7 +692,7 @@
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--button-bg);
+            border: 4px solid var(--accent-color);
             box-shadow: 0 4px 10px var(--shadow-color);
         }
 
@@ -585,14 +702,13 @@
         }
 
         .contact-text a {
-            color: var(--text-secondary);
+            color: var(--accent-color);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .contact-text a:hover {
-            color: var(--text-color);
-            text-decoration: underline;
+            color: var(--accent-hover);
         }
 
         .overlay {
@@ -633,27 +749,43 @@
         }
 
         .social-icons a:hover {
-            color: var(--text-color);
+            color: var(--accent-color);
             transform: translateY(-5px) scale(1.1);
             filter: drop-shadow(0 4px 8px var(--shadow-color));
         }
 
-        .social-icons a[href*="youtube"]:hover {
-            color: #8d8d8d;
-        }
-
-        .social-icons a[href*="tiktok"]:hover {
-            color: #8d8d8d;
-        }
-
         @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+
             .social-icons {
                 gap: 15px;
             }
-            
+
             .social-icons a {
                 font-size: 20px;
             }
+        }
+
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 103;
+            display: none;
+            background: var(--button-bg);
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+
+        .hamburger-menu:hover {
+            background: var(--button-hover);
         }
 
         .menu {
@@ -695,8 +827,20 @@
         }
 
         .menu a:hover {
-            background-color: var(--button-bg);
-            padding-left: 10px;
+            background-color: var(--accent-color);
+            padding-left: 35px;
+        }
+
+        .menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
         }
 
         @media (max-width: 768px) {
@@ -704,23 +848,35 @@
                 padding: 0 10px;
             }
 
+            body {
+                line-height: 1.8;
+            }
+
             h1 {
                 font-size: 2rem;
                 margin-bottom: 15px;
+                line-height: 1.3;
             }
 
             h2 {
                 font-size: 1.6rem;
                 margin-bottom: 12px;
+                line-height: 1.4;
+            }
+
+            h2 .fas {
+                font-size: 1.5rem;
             }
 
             p {
-                font-size: 1rem;
+                font-size: 1.1rem;
+                line-height: 1.8;
+                word-wrap: break-word;
             }
 
             .block {
                 padding: 15px;
-                margin: 15px 0;
+                margin: 25px 0;
                 border-radius: 12px;
             }
 
@@ -733,8 +889,8 @@
             }
 
             .gallery img {
-                width: 200px;
-                height: 200px;
+                width: 180px;
+                height: 180px;
             }
 
             .map-container {
@@ -751,15 +907,17 @@
                 text-align: center;
             }
 
+            .contact-text p {
+                font-size: 1rem;
+                word-wrap: break-word;
+            }
+
             .contact-image img {
                 width: 120px;
                 height: 120px;
                 border-width: 2px;
             }
 
-            /* УДАЛЕН БЛОК .modal, так как display: flex; был причиной ошибки */
-            /* Свойства центрирования перенесены в глобальный .modal выше */
-            
             .modal-content {
                 padding: 15px;
                 width: 100%;
@@ -776,22 +934,144 @@
             .nav-arrow {
                 transition: background 0.3s ease;
             }
+
+            .search-input {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+
+            .news-item p {
+                word-wrap: break-word;
+            }
+
+            .search-result-item p {
+                word-wrap: break-word;
+            }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .gallery img {
-                width: 180px;
-                height: 180px;
+                width: 160px;
+                height: 160px;
             }
 
             .contact-text p {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
+                line-height: 1.7;
             }
 
             .news-item h3 {
                 font-size: 1.1rem;
+                line-height: 1.4;
             }
+
+            .news-item p {
+                font-size: 0.95rem;
+                line-height: 1.7;
             }
+
+            .search-input {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+
+            .search-result-item h4 {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+
+            .search-result-item p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .copyright {
+                font-size: 0.85rem;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .contact-text p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .news-item h3 {
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+
+            .news-item p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+                line-height: 1.3;
+            }
+
+            h2 .fas {
+                font-size: 1.3rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .block {
+                padding: 12px;
+                margin: 20px 0;
+            }
+
+            .search-input {
+                font-size: 0.8rem;
+                padding: 8px 10px;
+            }
+
+            .search-result-item h4 {
+                font-size: 0.95rem;
+                line-height: 1.3;
+            }
+
+            .search-result-item p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .contact-image img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .copyright {
+                font-size: 0.8rem;
+                padding: 10px;
+                line-height: 1.5;
+            }
+
+            .social-icons a {
+                font-size: 18px;
+                padding: 6px;
+            }
+
+            .date {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+        }
 
         /* Seasonal Themes */
         .halloween-theme {
@@ -852,7 +1132,6 @@
             pointer-events: none;
         }
 
-        /* Additional floating pumpkins */
         .halloween-theme .floating-pumpkin-1::before {
             content: "🎃";
             position: fixed;
@@ -907,7 +1186,6 @@
             100% { filter: brightness(1.05) contrast(0.95); }
         }
 
-        /* Flying Halloween Creatures Animation */
         .halloween-theme::before {
             content: "🦇";
             position: fixed;
@@ -932,7 +1210,6 @@
             z-index: 1;
         }
 
-        /* Additional flying ghosts */
         .halloween-theme .flying-ghost-1::before {
             content: "👻";
             position: fixed;
@@ -1061,7 +1338,6 @@
             pointer-events: none;
         }
 
-        /* Additional snowflakes */
         .christmas-theme .snowflake-1::before {
             content: "❄";
             position: fixed;
@@ -1122,7 +1398,6 @@
             z-index: 0;
         }
 
-        /* Santa Claus */
         .christmas-theme .santa-claus::before {
             content: "🎅";
             position: fixed;
@@ -1135,7 +1410,6 @@
             z-index: 1;
         }
 
-        /* Reindeer */
         .christmas-theme .reindeer-1::after {
             content: "🦌";
             position: fixed;
@@ -1260,17 +1534,30 @@
 
 .search-input {
     width: 100%;
-    padding: 12px 20px;
+    padding: 12px 45px 12px 20px;
     border: 1px solid var(--border-color);
     border-radius: 25px;
     background: var(--bg-color);
     color: var(--text-color);
     font-family: inherit;
     font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    pointer-events: none;
 }
 
 .search-input:focus {
-    outline: 2px solid var(--button-hover);
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-light);
 }
 
 .search-results {
@@ -1283,6 +1570,8 @@
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s, transform 0.3s;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .search-result-item.show {
@@ -1308,6 +1597,34 @@
     margin: 0;
     font-size: 0.9rem;
     color: var(--text-secondary);
+}
+
+.block#description {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+@media (prefers-color-scheme: light) {
+    .block#description {
+        background-image: none;
+        color: var(--text-color);
+    }
+
+    .block#description h2, .block#description p {
+        color: var(--text-color);
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .block#description h2, .block#description p {
+        color: white;
+    }
+}
+
+.block#contacts {
+    background: var(--accent-light);
+    border: 1px solid var(--accent-color);
 }
     </style>
 </head>
@@ -1340,27 +1657,44 @@
     </div>
 
 
+    <button class="hamburger-menu" onclick="toggleMenu()" aria-label="Открыть меню">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="menu" id="navigation">
+        <button class="menu-close" onclick="closeMenu()">&times;</button>
+        <ul>
+            <li><a href="#description">Описание</a></li>
+            <li><a href="#news">Новости</a></li>
+            <li><a href="#development">Развитие</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="#gallery-section">Галерея</a></li>
+            <li><a href="#map">Карта</a></li>
+        </ul>
+    </div>
+
     <div class="container flying-ghost-1 flying-ghost-2 floating-pumpkin-1 floating-pumpkin-2 floating-pumpkin-3 santa-claus reindeer-1 reindeer-2 reindeer-3 snowflake-1 snowflake-2 snowflake-3 snowflake-4 snowflake-5" id="main-content">
         <h1>Официальный сайт<br>СПК "Спортзнак"</h1>
 
         <div class="block" id="description">
-            <h2>Описание</h2>
+            <h2><i class="fas fa-info-circle"></i>Описание</h2>
             <p>СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
 
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Поиск по сайту..." aria-label="Поиск">
+                <i class="fas fa-search search-icon"></i>
             </div>
 
             <div class="search-results" aria-live="polite"></div>
         </div>
 
 <div class="block" id="news">
-    <h2>Новости</h2>
+    <h2><i class="fas fa-newspaper"></i>Новости</h2>
     <div class="news-container">
 
         <div class="news-item">
             <h3>Обновление сайта!</h3>
-            <time class="news-date" datetime="2025-10-31">31 октября 2025</time>
+            <time class="news-date" datetime="2025-11-05">5 ноября 2025</time>
             <p>Новое обновление сайта!</p>
         </div>
 
@@ -1411,22 +1745,21 @@
 </div>
 
         <div class="block" id="development">
-            <h2>Развитие</h2>
+            <h2><i class="fas fa-chart-line"></i>Развитие</h2>
             <p>В СПК "Спортзнак" часто проводятся собрания для обсуждения планов по улучшению территории, и работоспособности объектов, таких как: дороги, освещение, мусорные площадки и т. д.</p>
         </div>
 
         <div class="block" id="contacts">
-            <h2>Контакты</h2>
+            <h2><i class="fas fa-address-book"></i>Контакты</h2>
             <div class="contact-container">
                 <div class="contact-text">
-                    <p>Председатель: Фаттяхетдинов Рушан Шамилевич</p>
+                    <p><i class="fas fa-user"></i>Председатель: <strong>Фаттяхетдинов Рушан Шамилевич</strong></p>
                     <p>
-                        Телефон: <a href="tel:+79166009460">+7 916 600-94-60</a> (только для срочных вопросов)
+                        <i class="fas fa-phone"></i>Телефон: <a href="tel:+79166009460">+7 916 600-94-60</a> (только для срочных вопросов)
                     </p>
                     <p>
-                        Почта: <a href="mailto:spksportznak@gmail.com">spksportznak@gmail.com</a>
+                        <i class="fas fa-envelope"></i>Почта: <a href="mailto:spksportznak@gmail.com">spksportznak@gmail.com</a>
                     </p>
-
                 </div>
                 <div class="contact-image">
                     <img src="Photos/Chairman/rushan.webp" alt="Фото председателя" loading="lazy" width="150" height="150" decoding="async">
@@ -1435,8 +1768,9 @@
         </div>
 
         <div class="block" id="gallery-section">
-            <h2>Галерея</h2>
+            <h2><i class="fas fa-images"></i>Галерея</h2>
             <div class="gallery-container">
+                <button class="gallery-nav prev" onclick="scrollGallery(-1)" aria-label="Предыдущие изображения">&larr;</button>
                 <div class="gallery">
                     <img src="Photos/image1.webp" alt="Главные ворота в 'Спортзнак'" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image1.webp')" decoding="async">
                     <img src="Photos/image2.webp" alt="Северная улица" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image2.webp')" decoding="async">
@@ -1453,11 +1787,12 @@
                     <img src="Photos/image13.webp" alt="Улица Виктора Цоя" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image13.webp')" decoding="async">
                     <img src="Photos/image14.webp" alt="Стрелковый тупик" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image14.webp')" decoding="async">
                 </div>
+                <button class="gallery-nav next" onclick="scrollGallery(1)" aria-label="Следующие изображения">&rarr;</button>
             </div>
         </div>
 
         <div class="block" id="map">
-            <h2>Расположение на карте</h2>
+            <h2><i class="fas fa-map-marked-alt"></i>Расположение на карте</h2>
             <div class="map-container">
                 <iframe
                 src="https://yandex.ru/map-widget/v1/?ll=36.402552%2C55.314090&z=17&l=sat,skl,stv,sta&whatshere%5Bpoint%5D=36.402552%2C55.314090&whatshere%5Bzoom%5D=100"
@@ -1501,6 +1836,31 @@
       if (fallback) fallback();
       return null;
     }
+  }
+
+  // Hamburger menu functions
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    const body = document.body;
+    const hamburger = document.querySelector('.hamburger-menu');
+
+    if (menu.classList.contains('open')) {
+      closeMenu();
+    } else {
+      menu.classList.add('open');
+      body.style.overflow = 'hidden';
+      hamburger.setAttribute('aria-label', 'Закрыть меню');
+    }
+  }
+
+  function closeMenu() {
+    const menu = document.querySelector('.menu');
+    const body = document.body;
+    const hamburger = document.querySelector('.hamburger-menu');
+
+    menu.classList.remove('open');
+    body.style.overflow = '';
+    hamburger.setAttribute('aria-label', 'Открыть меню');
   }
 
   // Seasonal theme application
@@ -1648,6 +2008,28 @@
         img.classList.add('loaded');
       }
     });
+
+    // Close menu when clicking on menu links
+    const menuLinks = document.querySelectorAll('.menu a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger-menu');
+      if (!menu.contains(event.target) && !hamburger.contains(event.target) && menu.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    });
   });
 
   const body = document.body;
@@ -1709,6 +2091,16 @@
     modalImage.src = galleryImages[currentImageIndex].src;
   }
 
+  function scrollGallery(direction) {
+    const galleryContainer = document.querySelector('.gallery-container');
+    const scrollAmount = 400; // Adjust scroll distance as needed
+    if (direction === 1) {
+      galleryContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    } else {
+      galleryContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
+  }
+
   // Swipe support for mobile
   let startX = 0;
   let endX = 0;
@@ -1735,7 +2127,7 @@
   });
 
   window.addEventListener('keydown', (e) => {
-    if (modal.style.display === 'block') {
+    if (modal.style.display === 'block' || modal.style.display === 'flex') {
       if (e.key === 'Escape') closeModal();
       else if (e.key === 'ArrowLeft') navigateImage(-1);
       else if (e.key === 'ArrowRight') navigateImage(1);
