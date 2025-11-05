@@ -755,10 +755,6 @@
         }
 
         @media (max-width: 768px) {
-            .hamburger-menu {
-                display: block;
-            }
-
             .social-icons {
                 gap: 15px;
             }
@@ -768,80 +764,7 @@
             }
         }
 
-        .hamburger-menu {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 103;
-            display: none;
-            background: var(--button-bg);
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
-            color: var(--text-color);
-            font-size: 1.2rem;
-            transition: background 0.3s ease;
-        }
 
-        .hamburger-menu:hover {
-            background: var(--button-hover);
-        }
-
-        .menu {
-            position: fixed;
-            top: 0;
-            left: -280px;
-            width: 280px;
-            height: 100%;
-            background-color: var(--menu-bg);
-            z-index: 102;
-            transition: left 0.4s ease;
-            padding-top: 80px;
-            text-align: left;
-            box-shadow: 2px 0 10px var(--shadow-color);
-        }
-
-        .menu.open {
-            left: 0;
-        }
-
-        .menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .menu li {
-            padding: 18px 25px;
-            border-bottom: 1px solid var(--menu-border);
-        }
-
-        .menu a {
-            font-family: 'Caviar Dreams Bold Local', sans-serif;
-            color: var(--text-color);
-            text-decoration: none;
-            display: block;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease, padding-left 0.3s ease;
-        }
-
-        .menu a:hover {
-            background-color: var(--accent-color);
-            padding-left: 35px;
-        }
-
-        .menu-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 5px;
-        }
 
         @media (max-width: 768px) {
             .container {
@@ -1651,26 +1574,8 @@
 
     <div class="skip-links">
         <a href="#main-content">Перейти к основному содержимому</a>
-        <a href="#navigation">Перейти к навигации</a>
         <a href="#gallery-section">Перейти к галерее</a>
         <a href="#contacts">Перейти к контактам</a>
-    </div>
-
-
-    <button class="hamburger-menu" onclick="toggleMenu()" aria-label="Открыть меню">
-        <i class="fas fa-bars"></i>
-    </button>
-
-    <div class="menu" id="navigation">
-        <button class="menu-close" onclick="closeMenu()">&times;</button>
-        <ul>
-            <li><a href="#description">Описание</a></li>
-            <li><a href="#news">Новости</a></li>
-            <li><a href="#development">Развитие</a></li>
-            <li><a href="#contacts">Контакты</a></li>
-            <li><a href="#gallery-section">Галерея</a></li>
-            <li><a href="#map">Карта</a></li>
-        </ul>
     </div>
 
     <div class="container flying-ghost-1 flying-ghost-2 floating-pumpkin-1 floating-pumpkin-2 floating-pumpkin-3 santa-claus reindeer-1 reindeer-2 reindeer-3 snowflake-1 snowflake-2 snowflake-3 snowflake-4 snowflake-5" id="main-content">
@@ -1678,7 +1583,7 @@
 
         <div class="block" id="description">
             <h2><i class="fas fa-info-circle"></i>Описание</h2>
-            <p>СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
+            <p>СПК "Спортзнак" (ранее СНТ "Спортзнак") — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
 
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Поиск по сайту..." aria-label="Поиск">
@@ -1770,7 +1675,6 @@
         <div class="block" id="gallery-section">
             <h2><i class="fas fa-images"></i>Галерея</h2>
             <div class="gallery-container">
-                <button class="gallery-nav prev" onclick="scrollGallery(-1)" aria-label="Предыдущие изображения">&larr;</button>
                 <div class="gallery">
                     <img src="Photos/image1.webp" alt="Главные ворота в 'Спортзнак'" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image1.webp')" decoding="async">
                     <img src="Photos/image2.webp" alt="Северная улица" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image2.webp')" decoding="async">
@@ -1787,7 +1691,6 @@
                     <img src="Photos/image13.webp" alt="Улица Виктора Цоя" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image13.webp')" decoding="async">
                     <img src="Photos/image14.webp" alt="Стрелковый тупик" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image14.webp')" decoding="async">
                 </div>
-                <button class="gallery-nav next" onclick="scrollGallery(1)" aria-label="Следующие изображения">&rarr;</button>
             </div>
         </div>
 
@@ -1838,30 +1741,6 @@
     }
   }
 
-  // Hamburger menu functions
-  function toggleMenu() {
-    const menu = document.querySelector('.menu');
-    const body = document.body;
-    const hamburger = document.querySelector('.hamburger-menu');
-
-    if (menu.classList.contains('open')) {
-      closeMenu();
-    } else {
-      menu.classList.add('open');
-      body.style.overflow = 'hidden';
-      hamburger.setAttribute('aria-label', 'Закрыть меню');
-    }
-  }
-
-  function closeMenu() {
-    const menu = document.querySelector('.menu');
-    const body = document.body;
-    const hamburger = document.querySelector('.hamburger-menu');
-
-    menu.classList.remove('open');
-    body.style.overflow = '';
-    hamburger.setAttribute('aria-label', 'Открыть меню');
-  }
 
   // Seasonal theme application
   function applySeasonalTheme() {
@@ -2009,27 +1888,6 @@
       }
     });
 
-    // Close menu when clicking on menu links
-    const menuLinks = document.querySelectorAll('.menu a');
-    menuLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const menu = document.querySelector('.menu');
-      const hamburger = document.querySelector('.hamburger-menu');
-      if (!menu.contains(event.target) && !hamburger.contains(event.target) && menu.classList.contains('open')) {
-        closeMenu();
-      }
-    });
-
-    // Close menu on escape key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeMenu();
-      }
-    });
   });
 
   const body = document.body;
