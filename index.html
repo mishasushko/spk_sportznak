@@ -1133,6 +1133,39 @@
                 padding-right: 4px;
             }
         }
+        /* Anniversary Styles */
+        .anniversary-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffa500);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            border: 2px solid #fff;
+            animation: anniversary-pulse 2s infinite;
+            display: none; /* Hidden by default, shown via JS on March 7 */
+        }
+        @keyframes anniversary-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -20px;
+            z-index: 10001;
+            pointer-events: none;
+            animation: confetti-fall linear forwards;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
         /* Winter Snowflakes */
         .snowflake {
             position: absolute;
@@ -1526,6 +1559,7 @@
     </div>
     <div class="container" id="main-content">
         <h1>Официальный сайт<br>СПК "Спортзнак"</h1>
+        <div id="anniversary-badge" class="anniversary-badge">🎉 Нам 1 год!</div>
         <section class="block" id="description" aria-labelledby="description-title">
             <h2 id="description-title"><i class="fas fa-info-circle" aria-hidden="true"></i>Описание</h2>
             <p>СПК "Спортзнак" (ранее СНТ "Спортзнак") — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
@@ -1549,6 +1583,24 @@
     <h2 id="news-title"><i class="fas fa-newspaper" aria-hidden="true"></i>Новости</h2>
     <div class="news-container" role="list">
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
+            <h3 itemprop="headline">С 8 Марта!</h3>
+            <time class="news-date" datetime="2026-03-08" itemprop="datePublished" content="2026-03-08" aria-label="Дата публикации: 8 марта 2026">8 марта 2026</time>
+            <p itemprop="articleBody">Милые дамы! Поздравляем вас с праздником весны. Пусть каждый ваш день будет наполнен любовью, заботой и улыбками. Вы — главное украшение нашего поселка!</p>
+            <meta itemprop="author" content='СПК "Спортзнак"'>
+        </article>
+        <article class="news-item" style="border-left-color: #ffd700; background: rgba(255, 215, 0, 0.05);" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
+            <h3 itemprop="headline">🎉 Нам 1 год!</h3>
+            <time class="news-date" datetime="2026-03-07" itemprop="datePublished" content="2026-03-07" aria-label="Дата публикации: 7 марта 2026">7 марта 2026</time>
+            <p itemprop="articleBody">Сегодня нашему официальному сайту исполняется ровно один год! Поздравляем всех жителей СПК "Спортзнак" с этой маленькой, но важной датой! Спасибо, что вы с нами.</p>
+            <meta itemprop="author" content='СПК "Спортзнак"'>
+        </article>
+        <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
+            <h3 itemprop="headline">Техническое обновление!</h3>
+            <time class="news-date" datetime="2026-03-07" itemprop="datePublished" content="2026-03-07" aria-label="Дата публикации: 7 марта 2026">7 марта 2026</time>
+            <p itemprop="articleBody">К первому дню рождения сайта мы подготовили масштабное обновление! Мы оптимизировали код для быстрой загрузки, улучшили работу поиска и добавили праздничные эффекты. Мы продолжаем развиваться для вашего удобства!</p>
+            <meta itemprop="author" content='СПК "Спортзнак"'>
+        </article>
+        <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">С 23 Февраля!</h3>
             <time class="news-date" datetime="2026-02-23" itemprop="datePublished" content="2026-02-23" aria-label="Дата публикации: 23 февраля 2026">23 февраля 2026</time>
             <p itemprop="articleBody">Поздравляем всех защитников Отечества с праздником! Желаем мужества, силы духа и успехов во всех начинаниях!</p>
@@ -1558,60 +1610,63 @@
             <h3 itemprop="headline">Рождество!</h3>
             <time class="news-date" datetime="2026-01-07" itemprop="datePublished" content="2026-01-07" aria-label="Дата публикации: 7 января 2026">7 января 2026</time>
             <p itemprop="articleBody">Поздравляем всех с Рождеством!</p>
+            <p itemprop="articleBody">Поздравляем всех жителей с Рождеством Христовым! Пусть этот светлый праздник наполнит ваши дома теплом, уютом и радостью, а сердца — миром и благополучием.</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">Новый Год!</h3>
             <time class="news-date" datetime="2026-01-01" itemprop="datePublished" content="2026-01-01" aria-label="Дата публикации: 1 января 2026">1 января 2026</time>
             <p itemprop="articleBody">Поздравляем всех с Новым Годом!</p>
-            <meta itemprop="author" content='СПК "Спортзнак"'>
-        </article>
-        <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
-            <h3 itemprop="headline">Обновление сайта!</h3>
-            <time class="news-date" datetime="2025-12-20" itemprop="datePublished" content="2025-12-20" aria-label="Дата публикации: 20 декабря 2025">20 декабря 2025</time>
-            <p itemprop="articleBody">Новое обновление сайта!</p>
+            <p itemprop="articleBody">С Новым 2026 годом! Желаем, чтобы наступающий год принес в каждую семью нашего поселка процветание, крепкое здоровье и исполнение самых заветных желаний!</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">Хэллоуин!</h3>
             <time class="news-date" datetime="2025-10-31" itemprop="datePublished" content="2025-10-31" aria-label="Дата публикации: 31 октября 2025">31 октября 2025</time>
             <p itemprop="articleBody">Поздравляем всех с Хэллоуином!</p>
+            <p itemprop="articleBody">Желаем всем веселого и немного таинственного вечера! Пусть этот праздник добавит ярких красок в осенние будни и подарит повод для добрых шуток с соседями.</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">День отца!</h3>
             <time class="news-date" datetime="2025-10-19" itemprop="datePublished" content="2025-10-19" aria-label="Дата публикации: 19 октября 2025">19 октября 2025</time>
             <p itemprop="articleBody">Поздравляем всех отцов с праздником!</p>
+            <p itemprop="articleBody">Поздравляем всех пап нашего СПК! Спасибо за вашу силу, поддержку и мудрость. Желаем вам крепкого здоровья и как можно больше поводов для гордости за своих детей!</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">Лето!</h3>
             <time class="news-date" datetime="2025-06-01" itemprop="datePublished" content="2025-06-01" aria-label="Дата публикации: 1 июня 2025">1 июня 2025</time>
             <p itemprop="articleBody">Поздравляем всех с летом!</p>
+            <p itemprop="articleBody">Ура, лето пришло! Желаем всем жителям отличного дачного сезона, богатого урожая и прекрасного отдыха на свежем воздухе в нашем уютном "Спортзнаке".</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">День Победы!</h3>
             <time class="news-date" datetime="2025-05-09" itemprop="datePublished" content="2025-05-09" aria-label="Дата публикации: 9 мая 2025">9 мая 2025</time>
             <p itemprop="articleBody">Поздравляем с Днём Победы!</p>
+            <p itemprop="articleBody">С великим праздником Победы! Мы помним и чтим подвиг наших героев. Желаем всем мирного неба над головой, счастья, добра и долгих лет жизни!</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">День космонавтики!</h3>
             <time class="news-date" datetime="2025-04-12" itemprop="datePublished" content="2025-04-12" aria-label="Дата публикации: 12 апреля 2025">12 апреля 2025</time>
             <p itemprop="articleBody">Поздравляем с Днём космонавтики!</p>
+            <p itemprop="articleBody">Поздравляем с Днём космонавтики! Желаем всем космических успехов в делах, новых горизонтов и веры в то, что даже самые смелые мечты достижимы!</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">С 8 Марта!</h3>
             <time class="news-date" datetime="2025-03-08" itemprop="datePublished" content="2025-03-08" aria-label="Дата публикации: 8 марта 2025">8 марта 2025</time>
             <p itemprop="articleBody">Поздравляем всех женщин с праздником!</p>
+            <p itemprop="articleBody">Милые дамы! Поздравляем вас с праздником весны. Пусть каждый ваш день будет наполнен любовью, заботой и улыбками. Вы — главное украшение нашего поселка!</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">Сайт запущен!</h3>
             <time class="news-date" datetime="2025-03-07" itemprop="datePublished" content="2025-03-07" aria-label="Дата публикации: 7 марта 2025">7 марта 2025</time>
             <p itemprop="articleBody">Наш официальный сайт запущен в работу!</p>
+            <p itemprop="articleBody">Рады сообщить, что наш официальный сайт запущен! Теперь вся актуальная информация, новости и контакты СПК "Спортзнак" всегда будут у вас под рукой.</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
     </div>
@@ -1641,12 +1696,12 @@
             <h2 id="gallery-title"><i class="fas fa-images" aria-hidden="true"></i>Галерея</h2>
             <div class="gallery-container" role="region" aria-label="Галерея фотографий">
                 <div class="gallery" role="list">
-                    <img src="Photos/image1.webp" alt='Главные ворота в "Спортзнак"' data-caption="Главные ворота в 'Спортзнак'" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image1.webp')" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Главные ворота в 'Спортзнак'">
+                    <img src="Photos/image1.webp" alt='Главные ворота в "Спортзнак"' data-caption='Главные ворота в "Спортзнак"' loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image1.webp')" decoding="async" role="listitem" tabindex="0" aria-label='Открыть изображение: Главные ворота в "Спортзнак"'>
                     <img src="Photos/image2.webp" alt="Северная улица" data-caption="Северная улица" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image2.webp')" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Северная улица">
                     <img src="Photos/image3.webp" alt="Центральная улица" data-caption="Центральная улица" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image3.webp')" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Центральная улица">
                     <img src="Photos/image4.webp" alt="Центральная улица (вид с конца улицы)" data-caption="Центральная улица (вид с конца улицы)" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image4.webp')" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Центральная улица (вид с конца улицы)">
                     <img src="Photos/image5.webp" alt="Волчий тупик" data-caption="Волчий тупик" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image5.webp')" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Волчий тупик">
-                    <img src="Photos/image6.webp" alt="Альтернативный въезд в 'Спортзнак'" data-caption="Альтернативный въезд в 'Спортзнак'" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image6.webp')" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Альтернативный въезд в 'Спортзнак'">
+                    <img src="Photos/image6.webp" alt='Альтернативный въезд в "Спортзнак"' data-caption='Альтернативный въезд в "Спортзнак"' loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image6.webp')" decoding="async" role="listitem" tabindex="0" aria-label='Открыть изображение: Альтернативный въезд в "Спортзнак"'>
                     <img src="Photos/image7.webp" alt="Площадка" data-caption="Площадка" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image7.webp')" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Площадка">
                     <img src="Photos/image8.webp" alt="Детская площадка" data-caption="Детская площадка" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image8.webp')" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Детская площадка">
                     <img src="Photos/image9.webp" alt="Волейбольная площадка" data-caption="Волейбольная площадка" loading="lazy" width="200" height="200" onclick="handleImageClick(event, 'Photos/image9.webp')" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Волейбольная площадка">
@@ -1812,6 +1867,28 @@
         snowflake.style.animationDelay = Math.random() * 2 + 's';
         snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
         snowContainer.appendChild(snowflake);
+      }
+    }
+  }
+  // Anniversary confetti and badge logic
+  function createAnniversaryEffects() {
+    const now = new Date();
+    // Check if it's March 7th (Month is 0-indexed, so 2 is March)
+    if (now.getMonth() === 2 && now.getDate() === 7) {
+      const badge = document.getElementById('anniversary-badge');
+      if (badge) badge.style.display = 'inline-block';
+
+      const colors = ['#ffd700', '#ff4500', '#00ff00', '#00bfff', '#ff1493', '#ffffff'];
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        confetti.style.animationDelay = Math.random() * 5 + 's';
+        confetti.style.opacity = Math.random();
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        document.body.appendChild(confetti);
       }
     }
   }
@@ -2070,6 +2147,7 @@
     safeExecute(() => initializeSearch());
     safeExecute(() => initializePerformanceMonitoring());
     safeExecute(() => createSnowflakes());
+    safeExecute(() => createAnniversaryEffects());
     // Add scroll-triggered animations
     const observerOptions = {
       threshold: 0.1,
@@ -2256,8 +2334,3 @@
 </body>
 
 </html>
-
-
-
-
-
