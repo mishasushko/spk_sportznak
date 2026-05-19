@@ -1,4 +1,4 @@
-const CACHE_NAME = 'spk-sportznak-v2';
+const CACHE_NAME = 'spk-sportznak-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -32,6 +32,23 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   // Only handle same-origin requests
   if (url.origin !== location.origin) return;
+
+  // Для HTML-страниц (запросы навигации) используем стратегию Network First
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).then((response) => {
+        const respClone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, respClone));
+        return response;
+      }).catch(() => {
+        // Если интернета нет, достаем последнюю удачную копию из кэша
+        return caches.match('/index.html');
+      })
+    );
+    return;
+  }
+
+  // Для остальных ресурсов (CSS, JS, картинки) оставляем стратегию Cache First
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
@@ -42,11 +59,6 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, respClone));
         }
         return response;
-      }).catch(() => {
-        // Fallback to cached index.html for navigation requests
-        if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
-        }
       });
     })
   );
