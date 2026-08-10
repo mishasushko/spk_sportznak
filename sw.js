@@ -1,11 +1,13 @@
-const CACHE_NAME = 'spk-sportznak-v3';
+const CACHE_NAME = 'spk-sportznak-v5';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
+  '/offline.html',
   '/css/styles.css?v=1.1',
   '/js/main.js?v=1.1',
   '/site.webmanifest',
-  '/favicon.ico'
+  '/favicon.ico',
+  '/flag-russia-1990s.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -41,8 +43,8 @@ self.addEventListener('fetch', (event) => {
         caches.open(CACHE_NAME).then(cache => cache.put(event.request, respClone));
         return response;
       }).catch(() => {
-        // Если интернета нет, достаем последнюю удачную копию из кэша
-        return caches.match('/index.html');
+        // Если интернета нет, показываем понятную автономную страницу
+        return caches.match('/offline.html');
       })
     );
     return;

@@ -316,6 +316,22 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
+        .russian-flag {
+            display: block;
+            width: 45px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 1px 4px var(--shadow-color);
+            opacity: 0.92;
+        }
+        .footer-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
         .sr-only {
             position: absolute;
             width: 1px;
@@ -1444,4 +1460,133 @@
     .mobile-instruction {
         display: block;
     }
+}
+
+/* Shared styles for standalone site states (404 and offline pages) */
+.state-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-y: auto;
+}
+.state-page .container {
+    width: 100%;
+    max-width: 800px;
+}
+.error-block,
+.offline-card {
+    background: var(--block-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px var(--shadow-color);
+    animation: fadeInUp 0.8s ease;
+}
+.error-block {
+    padding: 40px;
+    margin: 20px 0;
+}
+.not-found-page h1 {
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-size: clamp(3.2rem, 10vw, 5rem);
+    letter-spacing: 1px;
+    animation: fadeInDown 1.2s ease;
+}
+.not-found-page h2 {
+    margin-bottom: 24px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+.not-found-page .error-block p {
+    margin-bottom: 28px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+.state-page .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    background: var(--button-bg);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+.state-page .btn:hover {
+    background: var(--button-hover);
+    color: var(--text-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px var(--shadow-hover);
+}
+.state-page .social-icons {
+    margin-top: 24px;
+}
+.state-page .copyright {
+    margin-top: 28px;
+}
+.offline-card {
+    width: min(100%, 560px);
+    padding: clamp(28px, 7vw, 52px) clamp(22px, 7vw, 56px);
+    text-align: center;
+}
+.signal {
+    width: 74px;
+    height: 74px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 22px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    color: var(--accent-color);
+    font-size: 36px;
+}
+.offline-card h1 {
+    margin-bottom: 14px;
+    font-size: clamp(1.7rem, 6vw, 2.5rem);
+    line-height: 1.2;
+}
+.offline-card p {
+    max-width: 440px;
+    margin: 0 auto 26px;
+    font-size: clamp(1rem, 3vw, 1.15rem);
+}
+.offline-card button {
+    border: 0;
+    border-radius: 999px;
+    padding: 13px 26px;
+    background: var(--accent-color);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 5px 14px var(--accent-light);
+    transition: transform 0.2s, background 0.2s;
+}
+.offline-card button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+.offline-card button:focus-visible {
+    outline: 3px solid var(--text-color);
+    outline-offset: 3px;
+}
+.brand {
+    margin-top: 28px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+.flag {
+    display: inline-block;
+    width: 34px;
+    height: 22px;
+    margin-left: 8px;
+    vertical-align: middle;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px var(--shadow-color);
+    background: linear-gradient(#fff 0 33.33%, #0039a6 33.33% 66.66%, #d52b1e 66.66%);
+}
+@media (max-width: 768px) {
+    .state-page { padding: 16px; }
+    .error-block { padding: 28px 18px; }
+    .state-page .btn { padding: 10px 22px; font-size: 1rem; }
+    .offline-card { padding: 32px 22px; }
 }
