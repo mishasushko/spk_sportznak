@@ -1,14 +1,15 @@
-const CACHE_NAME = 'spk-sportznak-v5';
+const CACHE_NAME = 'spk-sportznak-v6';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/offline.html',
-  '/css/styles.css?v=1.1',
+  '/css/styles.css?v=1.2',
   '/js/main.js?v=1.1',
   '/site.webmanifest',
   '/favicon.ico',
-  '/flag-russia-1990s.png'
+  '/flag-russia.png'
 ];
+
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

@@ -4,21 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#181818">
-  <link rel="stylesheet" href="css/styles.css?v=1.1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content='Нет подключения к интернету — СПК "Спортзнак". Проверьте сеть и обновите страницу.'>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+
+  <link rel="preload" href="./fonts/CaviarDreams_Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/Novartis.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css?v=1.2">
+
   <title>Нет подключения | СПК "Спортзнак"</title>
 </head>
 <body class="state-page offline-page">
-  <main class="offline-card" aria-labelledby="offline-title">
-    <div class="signal" aria-hidden="true">⌁</div>
-    <h1 id="offline-title">Нет подключения к интернету</h1>
-    <p>Сейчас сайт не может загрузить эту страницу. Проверьте соединение и попробуйте ещё раз.</p>
-    <button type="button" onclick="location.reload()">Повторить попытку</button>
+  <div class="container">
+    <main class="offline-card" aria-labelledby="offline-title" role="alert" aria-live="polite">
+      <div class="offline-icon" aria-hidden="true">
+        <span class="wifi-slash"></span>
+        <div class="wifi">
+          <span class="wifi-bar bar-1"></span>
+          <span class="wifi-bar bar-2"></span>
+          <span class="wifi-bar bar-3"></span>
+        </div>
+      </div>
+
+      <span class="offline-badge">Офлайн</span>
+      <h1 id="offline-title">Нет подключения к интернету</h1>
+      <p class="offline-desc">
+        Сайт сейчас недоступен без сети. Проверьте соединение и попробуйте снова —
+        главная страница и основные материалы могут открыться из кэша.
+      </p>
+
+      <ul class="offline-tips">
+        <li>Включите Wi‑Fi или мобильный интернет</li>
+        <li>Отключите режим «В самолёте»</li>
+        <li>Если сеть есть — обновите страницу</li>
+      </ul>
+
+      <div class="offline-actions">
+        <button type="button" class="offline-retry" onclick="location.reload()">
+          Повторить попытку
+        </button>
+        <a href="/" class="offline-home" rel="nofollow">На главную</a>
+      </div>
+    </main>
+
     <footer class="copyright">
       <div class="footer-main">
         <span>© 1990-2026 СПК "Спортзнак". Все права защищены.</span>
-        <img class="russian-flag" src="flag-russia-1990s.png" alt="Флаг России" width="45" height="30" decoding="async">
+        <img class="russian-flag" src="flag-russia.png" alt="Флаг России" width="45" height="30" decoding="async">
       </div>
     </footer>
-  </main>
+  </div>
 </body>
 </html>

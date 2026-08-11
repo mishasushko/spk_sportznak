@@ -1525,68 +1525,185 @@
 }
 .offline-card {
     width: min(100%, 560px);
-    padding: clamp(28px, 7vw, 52px) clamp(22px, 7vw, 56px);
+    margin: 0 auto;
+    padding: clamp(32px, 7vw, 52px) clamp(22px, 7vw, 48px);
     text-align: center;
 }
-.signal {
-    width: 74px;
-    height: 74px;
+.offline-icon {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 20px;
     display: grid;
     place-items: center;
-    margin: 0 auto 22px;
-    border: 2px solid var(--accent-color);
     border-radius: 50%;
-    color: var(--accent-color);
-    font-size: 36px;
+    border: 2px solid var(--accent-color);
+    background: var(--accent-light);
+    box-shadow: 0 0 0 8px rgba(0, 140, 255, 0.06);
+}
+.wifi {
+    position: relative;
+    width: 42px;
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    opacity: 0.9;
+    transform: rotate(180deg);
+}
+
+.wifi-bar {
+    display: block;
+    border: 3px solid var(--accent-color);
+    border-top: 0;
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    opacity: 0.35;
+    animation: wifiPulse 1.8s ease-in-out infinite;
+}
+.wifi-bar.bar-1 {
+    width: 12px;
+    height: 8px;
+    animation-delay: 0s;
+}
+.wifi-bar.bar-2 {
+    width: 22px;
+    height: 12px;
+    animation-delay: 0.15s;
+}
+.wifi-bar.bar-3 {
+    width: 32px;
+    height: 16px;
+    animation-delay: 0.3s;
+}
+.wifi-slash {
+    position: absolute;
+    inset: 18px auto auto 50%;
+    width: 3px;
+    height: 52px;
+    background: #e74c3c;
+    border-radius: 3px;
+    transform: translateX(-50%) rotate(-38deg);
+    box-shadow: 0 0 0 2px var(--block-bg);
+    z-index: 2;
+}
+.offline-badge {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ff8a80;
+    background: rgba(231, 76, 60, 0.12);
+    border: 1px solid rgba(231, 76, 60, 0.28);
 }
 .offline-card h1 {
     margin-bottom: 14px;
-    font-size: clamp(1.7rem, 6vw, 2.5rem);
+    font-size: clamp(1.65rem, 5.5vw, 2.35rem);
     line-height: 1.2;
+    animation: fadeInDown 1s ease;
 }
-.offline-card p {
+.offline-desc {
     max-width: 440px;
-    margin: 0 auto 26px;
-    font-size: clamp(1rem, 3vw, 1.15rem);
+    margin: 0 auto 22px;
+    font-size: clamp(1rem, 2.8vw, 1.12rem);
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
-.offline-card button {
+.offline-tips {
+    list-style: none;
+    max-width: 380px;
+    margin: 0 auto 28px;
+    padding: 14px 18px;
+    text-align: left;
+    border-radius: 12px;
+    background: var(--news-bg);
+    border: 1px solid var(--border-color);
+}
+.offline-tips li {
+    position: relative;
+    padding: 6px 0 6px 22px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+.offline-tips li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    transform: translateY(-50%);
+    opacity: 0.75;
+}
+.offline-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+.offline-retry {
     border: 0;
     border-radius: 999px;
-    padding: 13px 26px;
+    padding: 13px 28px;
     background: var(--accent-color);
     color: #fff;
     font: inherit;
     font-weight: 700;
     cursor: pointer;
     box-shadow: 0 5px 14px var(--accent-light);
-    transition: transform 0.2s, background 0.2s;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
-.offline-card button:hover {
+.offline-retry:hover {
     background: var(--accent-hover);
     transform: translateY(-2px);
+    box-shadow: 0 8px 18px var(--accent-light);
 }
-.offline-card button:focus-visible {
+.offline-retry:focus-visible {
     outline: 3px solid var(--text-color);
     outline-offset: 3px;
 }
-.brand {
-    margin-top: 28px;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-}
-.flag {
+.offline-home {
     display: inline-block;
-    width: 34px;
-    height: 22px;
-    margin-left: 8px;
-    vertical-align: middle;
-    border-radius: 2px;
-    box-shadow: 0 1px 4px var(--shadow-color);
-    background: linear-gradient(#fff 0 33.33%, #0039a6 33.33% 66.66%, #d52b1e 66.66%);
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.offline-home:hover {
+    background: var(--news-hover);
+    border-color: var(--accent-color);
+    color: var(--text-color);
+    transform: translateY(-2px);
+}
+.offline-home::after {
+    display: none;
+}
+@keyframes wifiPulse {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.85; }
 }
 @media (max-width: 768px) {
     .state-page { padding: 16px; }
     .error-block { padding: 28px 18px; }
     .state-page .btn { padding: 10px 22px; font-size: 1rem; }
-    .offline-card { padding: 32px 22px; }
+    .offline-card { padding: 28px 18px; }
+    .offline-actions { flex-direction: column; }
+    .offline-retry,
+    .offline-home { width: min(100%, 280px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .wifi-bar { animation: none; opacity: 0.5; }
+    .offline-card,
+    .offline-card h1 { animation: none; }
 }

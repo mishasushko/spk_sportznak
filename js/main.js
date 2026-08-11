@@ -113,10 +113,11 @@ function initializeSearch() {
       },
       { 
         title: 'Контакты', 
-        content: 'Председатель Фаттяхетдинов Рушан Шамилевич, телефон +7 916 600-94-60, email spksportznak@gmail.com', 
+        content: 'Председатель Фаттяхетдинов Рушан Шамилевич, телефон +7 916 600-94-60, почта email spksportznak@mail.ru', 
         url: '#contacts',
         type: 'section'
       }
+
     ];
     const newsItems = document.querySelectorAll('.news-item');
     newsItems.forEach((item, index) => {
