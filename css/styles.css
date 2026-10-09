@@ -1867,3 +1867,117 @@ html.theme-halloween .news-item--highlight {
     .halloween-item,
     .halloween-spider { animation: none; display: none; }
 }
+
+/* ===== Политика конфиденциальности и cookie ===== */
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 18px;
+}
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible {
+    color: var(--accent-color);
+}
+.cookie-banner {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+    z-index: 95;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    padding: 16px 18px;
+    background: var(--modal-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px var(--shadow-color);
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.cookie-banner p {
+    flex: 1 1 320px;
+    margin: 0;
+}
+.cookie-banner a {
+    color: var(--accent-color);
+}
+.cookie-banner__actions {
+    display: flex;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+.cookie-banner button {
+    font: inherit;
+    padding: 8px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid var(--accent-color);
+}
+.cookie-banner__accept {
+    background: var(--accent-color);
+    color: #fff;
+}
+.cookie-banner__decline {
+    background: transparent;
+    color: var(--text-color);
+}
+.cookie-banner button:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+@media (max-width: 480px) {
+    .cookie-banner { left: 10px; right: 10px; bottom: 10px; }
+    .cookie-banner__actions { width: 100%; }
+    .cookie-banner button { flex: 1; }
+}
+.legal-page h1 {
+    margin-top: clamp(20px, 5vw, 40px);
+    font-size: clamp(1rem, 5vw, 2.6rem);
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+}
+.legal-block li {
+    font-size: inherit;
+}
+.legal-block {
+    text-align: left;
+    line-height: 1.6;
+}
+.legal-block:hover {
+    transform: none;
+}
+.legal-block h2 {
+    font-size: clamp(1.15rem, 3vw, 1.5rem);
+    margin: 28px 0 10px;
+    text-align: left;
+}
+.legal-block p,
+.legal-block li {
+    margin-bottom: 10px;
+}
+.legal-block ul {
+    padding-left: 22px;
+    margin-bottom: 10px;
+}
+.legal-block a {
+    color: var(--accent-color);
+}
+.legal-updated {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+.legal-back {
+    margin-top: 24px;
+}

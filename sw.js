@@ -1,9 +1,10 @@
-const CACHE_NAME = 'spk-sportznak-v7';
+const CACHE_NAME = 'spk-sportznak-v8';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/offline.html',
-  '/css/styles.css?v=1.3',
+  '/css/styles.css?v=1.4',
+  '/js/consent.js?v=1.0',
   '/js/main.js?v=1.2',
   '/site.webmanifest',
   '/favicon.ico',
