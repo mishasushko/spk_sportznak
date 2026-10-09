@@ -1981,3 +1981,98 @@ html.theme-halloween .news-item--highlight {
 .legal-back {
     margin-top: 24px;
 }
+
+/* ===== Закреплённое меню разделов ===== */
+html {
+    scroll-padding-top: 70px;
+}
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    background: color-mix(in srgb, var(--bg-color) 85%, transparent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+.site-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 8px 16px;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.site-nav ul::-webkit-scrollbar {
+    display: none;
+}
+.site-nav a {
+    display: block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    color: var(--text-color);
+    white-space: nowrap;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.site-nav a::after {
+    display: none;
+}
+.site-nav a:hover,
+.site-nav a:focus-visible {
+    background: var(--accent-light);
+    color: var(--accent-color);
+}
+.site-nav a.active {
+    background: var(--accent-color);
+    color: #fff;
+}
+@media (max-width: 600px) {
+    .site-nav ul {
+        justify-content: flex-start;
+        padding: 8px 10px;
+    }
+    .site-nav a {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== Компактная плашка cookie ===== */
+.cookie-banner {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: none;
+    border-radius: 0;
+    border-width: 1px 0 0;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    box-shadow: 0 -4px 16px var(--shadow-color);
+}
+.cookie-banner p {
+    flex: 0 1 auto;
+    max-width: 760px;
+    font-size: inherit;
+    line-height: 1.45;
+}
+.cookie-banner button {
+    padding: 6px 16px;
+}
+@media (max-width: 480px) {
+    .cookie-banner {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 10px 12px;
+        gap: 8px;
+        font-size: 0.8rem;
+    }
+}
+.site-nav + main > h1 {
+    margin-top: clamp(16px, 4vw, 32px);
+}

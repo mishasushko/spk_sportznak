@@ -329,9 +329,29 @@ function scrollGallery(direction) {
 
 function getScrollbarWidth() { return window.innerWidth - document.documentElement.clientWidth; }
 
+// Highlight the current section in the sticky menu
+function initializeSectionNav() {
+  const links = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  const byId = new Map(links.map(link => [link.getAttribute('href').slice(1), link]));
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      links.forEach(link => link.classList.remove('active'));
+      const active = byId.get(entry.target.id);
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  byId.forEach((link, id) => { const section = document.getElementById(id); if (section) navObserver.observe(section); });
+}
+
 // Initialize handlers on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
   safeExecute(() => initializeSearch());
+  safeExecute(() => initializeSectionNav());
   safeExecute(() => createSnowflakes());
   safeExecute(() => createAnniversaryEffects());
   safeExecute(() => createHalloweenEffects());
