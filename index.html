@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="keywords" content="спк спортзнак, спортзнак, снт спортзнак">
     <meta name="description" content='Официальный сайт СПК "Спортзнак" (ранее СНТ "Спортзнак") в Наро-Фоминском районе Московской области. Узнайте больше о нашем уютном посёлке: расположение, преимущества, контакты председателя, фотогалерея и новости.'>
     <meta property="og:title" content='Официальный сайт СПК "Спортзнак"' />
     <meta property="og:description" content='СПК "Спортзнак" (ранее СНТ "Спортзнак") — уютный посёлок в Наро-Фоминском районе Московской области. Новости, контакты, фотогалерея.'/>
-    <meta property="og:image" content="https://spksportznak.ru/Photos/image1.webp">
+    <meta property="og:image" content="https://spksportznak.ru/Photos/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content='Главные ворота в "Спортзнак"'>
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://spksportznak.ru/"/>
     <meta property="og:locale" content="ru_RU" />
@@ -15,7 +17,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content='Официальный сайт СПК "Спортзнак"'/>
     <meta name="twitter:description" content='СПК "Спортзнак" — уютный посёлок в Наро-Фоминском районе Московской области.'/>
-    <meta name="twitter:image" content="https://spksportznak.ru/Photos/image1.webp" />
+    <meta name="twitter:image" content="https://spksportznak.ru/Photos/og-image.jpg" />
     <meta name="author" content='СПК "Спортзнак"'>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
@@ -26,6 +28,7 @@
     <meta name="theme-color" content="#181818" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#f5f5f5" media="(prefers-color-scheme: light)">
     <meta name="format-detection" content="telephone=yes">
+    <script>if (new Date().getMonth() === 9 || /[?&]theme=halloween\b/.test(location.search)) document.documentElement.classList.add('theme-halloween');</script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -90,7 +93,7 @@
     <link rel="dns-prefetch" href="//mc.yandex.ru">
     <link rel="dns-prefetch" href="//yandex.ru">
     <title>Официальный сайт СПК "Спортзнак"</title>
-<link rel="stylesheet" href="css/styles.css?v=1.2">
+<link rel="stylesheet" href="css/styles.css?v=1.3">
 </head>
 <body>
     <div class="skip-links">
@@ -100,7 +103,7 @@
     </div>
     <main class="container" id="main-content">
         <h1>Официальный сайт<br>СПК "Спортзнак"</h1>
-        <div id="anniversary-badge" class="anniversary-badge">🎉 Нам 1 год!</div>
+        <div id="anniversary-badge" class="anniversary-badge" hidden></div>
         <section class="block" id="description" aria-labelledby="description-title">
             <h2 id="description-title"><i class="fas fa-info-circle" aria-hidden="true"></i>Описание</h2>
             <p>СПК "Спортзнак" (ранее СНТ "Спортзнак") — это уютный посёлок в Наро-Фоминском районе Московской области.</p>
@@ -122,7 +125,7 @@
         </section>
 <section class="block" id="news" aria-labelledby="news-title">
     <h2 id="news-title"><i class="fas fa-newspaper" aria-hidden="true"></i>Новости</h2>
-    <div class="news-container" role="list">
+    <div class="news-container" role="list" tabindex="0" aria-label="Список новостей">
         <article class="news-item" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">Лето!</h3>
             <time class="news-date" datetime="2026-06-01" itemprop="datePublished" content="2026-06-01" aria-label="Дата публикации: 1 июня 2026">1 июня 2026</time>
@@ -159,7 +162,7 @@
             <p itemprop="articleBody">Милые дамы! Поздравляем вас с праздником весны. Пусть каждый ваш день будет наполнен любовью, заботой и улыбками. Вы — главное украшение нашего поселка!</p>
             <meta itemprop="author" content='СПК "Спортзнак"'>
         </article>
-        <article class="news-item" style="border-left-color: #ffd700; background: rgba(255, 215, 0, 0.05);" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
+        <article class="news-item news-item--highlight" itemscope itemtype="https://schema.org/NewsArticle" role="listitem">
             <h3 itemprop="headline">🎉 Нам 1 год!</h3>
             <time class="news-date" datetime="2026-03-07" itemprop="datePublished" content="2026-03-07" aria-label="Дата публикации: 7 марта 2026">7 марта 2026</time>
             <p itemprop="articleBody">Сегодня нашему официальному сайту исполняется ровно один год! Поздравляем всех жителей СПК "Спортзнак" с этой маленькой, но важной датой! Спасибо, что вы с нами.</p>
@@ -236,38 +239,38 @@
             <h2 id="contacts-title"><i class="fas fa-address-book" aria-hidden="true"></i>Контакты</h2>
             <div class="contact-container">
                 <div class="contact-text">
-                    <p><i class="fas fa-user"></i>Председатель: <strong>Фаттяхетдинов Рушан Шамилевич</strong></p>
+                    <p><i class="fas fa-user" aria-hidden="true"></i><span>Председатель: <strong>Фаттяхетдинов Рушан Шамилевич</strong></span></p>
                     <p>
-                        <i class="fas fa-phone"></i>Телефон: <a href="tel:+79166009460">+7 916 600-94-60</a> (только для срочных вопросов)
+                        <i class="fas fa-phone" aria-hidden="true"></i><span>Телефон: <a href="tel:+79166009460">+7 916 600-94-60</a> (только для срочных вопросов)</span>
                     </p>
                     <p>
-                        <i class="fas fa-envelope"></i>Почта: <a href="mailto:spksportznak@mail.ru">spksportznak@mail.ru</a>
+                        <i class="fas fa-envelope" aria-hidden="true"></i><span>Почта: <a href="mailto:spksportznak@mail.ru">spksportznak@mail.ru</a></span>
                     </p>
                 </div>
                 <div class="contact-image">
-                    <img src="Photos/Chairman/rushan.webp" alt="Фото председателя" loading="lazy" width="150" height="150" decoding="async">
+                    <img src="Photos/Chairman/rushan-300.webp" alt="Фото председателя, Фаттяхетдинова Рушана Шамилевича" loading="lazy" width="150" height="150" decoding="async">
                 </div>
             </div>
         </section>
         <section class="block" id="gallery-section" aria-labelledby="gallery-title">
             <h2 id="gallery-title"><i class="fas fa-images" aria-hidden="true"></i>Галерея</h2>
             <div class="gallery-container" role="region" aria-label="Галерея фотографий">
-                <div class="gallery" role="list">
-                    <img src="Photos/image1.webp" alt='Главные ворота в "Спортзнак"' data-caption='Главные ворота в "Спортзнак"' loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label='Открыть изображение: Главные ворота в "Спортзнак"'>
-                    <img src="Photos/image2.webp" alt="Северная улица" data-caption="Северная улица" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Северная улица">
-                    <img src="Photos/image3.webp" alt="Центральная улица" data-caption="Центральная улица" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Центральная улица">
-                    <img src="Photos/image4.webp" alt="Центральная улица (вид с конца улицы)" data-caption="Центральная улица (вид с конца улицы)" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Центральная улица (вид с конца улицы)">
-                    <img src="Photos/image5.webp" alt="Волчий тупик" data-caption="Волчий тупик" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Волчий тупик">
-                    <img src="Photos/image6.webp" alt='Альтернативный въезд в "Спортзнак"' data-caption='Альтернативный въезд в "Спортзнак"' loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label='Открыть изображение: Альтернативный въезд в "Спортзнак"'>
-                    <img src="Photos/image7.webp" alt="Площадка" data-caption="Площадка" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Площадка">
-                    <img src="Photos/image8.webp" alt="Детская площадка" data-caption="Детская площадка" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Детская площадка">
-                    <img src="Photos/image9.webp" alt="Волейбольная площадка" data-caption="Волейбольная площадка" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Волейбольная площадка">
-                    <img src="Photos/image10.webp" alt="Баскетбольная площадка" data-caption="Баскетбольная площадка" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Баскетбольная площадка">
-                    <img src="Photos/image11.webp" alt="Спортзнаковский пруд" data-caption="Спортзнаковский пруд" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Спортзнаковский пруд">
-                    <img src="Photos/image12.webp" alt="Место для отдыха на пруду" data-caption="Место для отдыха на пруду" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Место для отдыха на пруду">
-                    <img src="Photos/image13.webp" alt="Улица Виктора Цоя" data-caption="Улица Виктора Цоя" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Улица Виктора Цоя">
-                    <img src="Photos/image14.webp" alt="Стрелковый тупик" data-caption="Стрелковый тупик" loading="lazy" width="200" height="200" decoding="async" role="listitem" tabindex="0" aria-label="Открыть изображение: Стрелковый тупик">
-                </div>
+                <ul class="gallery">
+                    <li><img src="Photos/thumbs/image1.webp" data-full="Photos/image1.webp" alt='Главные ворота в "Спортзнак"' data-caption='Главные ворота в "Спортзнак"' loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image2.webp" data-full="Photos/image2.webp" alt="Северная улица" data-caption="Северная улица" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image3.webp" data-full="Photos/image3.webp" alt="Центральная улица" data-caption="Центральная улица" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image4.webp" data-full="Photos/image4.webp" alt="Центральная улица (вид с конца улицы)" data-caption="Центральная улица (вид с конца улицы)" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image5.webp" data-full="Photos/image5.webp" alt="Волчий тупик" data-caption="Волчий тупик" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image6.webp" data-full="Photos/image6.webp" alt='Альтернативный въезд в "Спортзнак"' data-caption='Альтернативный въезд в "Спортзнак"' loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image7.webp" data-full="Photos/image7.webp" alt="Площадка" data-caption="Площадка" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image8.webp" data-full="Photos/image8.webp" alt="Детская площадка" data-caption="Детская площадка" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image9.webp" data-full="Photos/image9.webp" alt="Волейбольная площадка" data-caption="Волейбольная площадка" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image10.webp" data-full="Photos/image10.webp" alt="Баскетбольная площадка" data-caption="Баскетбольная площадка" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image11.webp" data-full="Photos/image11.webp" alt="Спортзнаковский пруд" data-caption="Спортзнаковский пруд" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image12.webp" data-full="Photos/image12.webp" alt="Место для отдыха на пруду" data-caption="Место для отдыха на пруду" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image13.webp" data-full="Photos/image13.webp" alt="Улица Виктора Цоя" data-caption="Улица Виктора Цоя" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                    <li><img src="Photos/thumbs/image14.webp" data-full="Photos/image14.webp" alt="Стрелковый тупик" data-caption="Стрелковый тупик" loading="lazy" width="200" height="200" decoding="async" tabindex="0"></li>
+                </ul>
             </div>
         </section>
         <section class="block" id="map" aria-labelledby="map-title">
@@ -284,9 +287,11 @@
                 </iframe>
             </div>
         </section>
-        <footer class="copyright">
+    </main>
+    <div class="container footer-wrap">
+    <footer class="copyright">
             <div class="footer-main">
-                <span>© 1990-2026 СПК "Спортзнак". Все права защищены.</span>
+                <span>© 1990-<span class="current-year">2026</span> СПК "Спортзнак". Все права защищены.</span>
                 <img class="russian-flag" src="flag-russia.png" alt="Флаг России" width="45" height="30" loading="lazy" decoding="async">
 
             </div>
@@ -298,21 +303,21 @@
                 <i class="fab fa-tiktok" aria-hidden="true"></i>
                 </a>
             </div>
-        </footer>
-    </main>
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Наверх" title="Наверх">
+    </footer>
+    </div>
+    <button type="button" id="scrollToTop" class="scroll-to-top" aria-label="Наверх" title="Наверх">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
-        <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalImage" aria-hidden="true">
+        <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" aria-describedby="modalCaption" aria-hidden="true">
                 <div class="modal-content">
-                        <span class="close" aria-label="Закрыть модальное окно" tabindex="0" role="button">×</span>
-                        <button class="nav-arrow prev-arrow" aria-label="Предыдущее изображение" tabindex="0">&larr;</button>
-                        <img id="modalImage" src="" alt="Полное изображение" role="img">
+                        <button type="button" class="close" aria-label="Закрыть просмотр">×</button>
+                        <button type="button" class="nav-arrow prev-arrow" aria-label="Предыдущее изображение">&larr;</button>
+                        <img id="modalImage" alt="">
                         <p id="modalCaption" class="modal-caption"></p>
                         <div class="mobile-instruction">
                                 Нажмите вне изображения для закрытия
                         </div>
-                        <button class="nav-arrow next-arrow" aria-label="Следующее изображение" tabindex="0">&rarr;</button>
+                        <button type="button" class="nav-arrow next-arrow" aria-label="Следующее изображение">&rarr;</button>
                 </div>
         </div>
     <!-- Yandex.Metrika: загружаем асинхронно после полной загрузки страницы -->
@@ -331,6 +336,6 @@
             <img src="https://mc.yandex.ru/watch/100472478" style="position:absolute; left:-9999px;" alt=""/>
         </div>
     </noscript>
-<script src="js/main.js?v=1.1" defer></script>
+<script src="js/main.js?v=1.2" defer></script>
 </body>
 </html>

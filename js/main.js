@@ -11,8 +11,11 @@ function safeExecute(fn, fallback = null) {
   }
 }
 
+const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Create winter snowflakes
 function createSnowflakes() {
+  if (prefersReducedMotion) return;
   const currentMonth = new Date().getMonth();
   if (currentMonth === 11 || currentMonth === 0 || currentMonth === 1) {
     const snowContainer = document.createElement('div');
@@ -39,12 +42,25 @@ function createSnowflakes() {
   }
 }
 
-// Anniversary confetti and badge logic
+function pluralYears(n) {
+  const mod10 = n % 10, mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return 'год';
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'года';
+  return 'лет';
+}
+
+// Anniversary confetti and badge logic (site launched on 7 March 2025)
 function createAnniversaryEffects() {
   const now = new Date();
   if (now.getMonth() === 2 && now.getDate() === 7) {
+    const years = now.getFullYear() - 2025;
     const badge = document.getElementById('anniversary-badge');
-    if (badge) badge.style.display = 'inline-block';
+    if (badge && years > 0) {
+      badge.textContent = `🎉 Нам ${years} ${pluralYears(years)}!`;
+      badge.hidden = false;
+      badge.style.display = 'inline-block';
+    }
+    if (prefersReducedMotion) return;
 
     const colors = ['#ffd700', '#ff4500', '#00ff00', '#00bfff', '#ff1493', '#ffffff'];
     for (let i = 0; i < 100; i++) {
@@ -61,7 +77,50 @@ function createAnniversaryEffects() {
   }
 }
 
-// Initialize search (copied from index.html)
+// Halloween theme: whole October (add ?theme=halloween to the URL to preview it)
+function isHalloweenSeason() {
+  return new Date().getMonth() === 9 || /[?&]theme=halloween\b/.test(location.search);
+}
+
+function createHalloweenEffects() {
+  if (!isHalloweenSeason()) return;
+  document.documentElement.classList.add('theme-halloween');
+  const metaDark = document.querySelector('meta[name="theme-color"][media*="dark"]');
+  if (metaDark) metaDark.setAttribute('content', '#1a1020');
+
+  const title = document.querySelector('h1');
+  if (title && !document.querySelector('.halloween-badge')) {
+    const badge = document.createElement('div');
+    badge.className = 'halloween-badge';
+    badge.textContent = '🎃 Счастливого Хэллоуина! 👻';
+    title.insertAdjacentElement('afterend', badge);
+  }
+
+  if (prefersReducedMotion) return;
+  const container = document.createElement('div');
+  container.id = 'halloween-container';
+  container.setAttribute('aria-hidden', 'true');
+  const symbols = ['🎃', '🦇', '👻', '🍂', '🦇', '🍁'];
+  const count = window.innerWidth < 600 ? 10 : 18;
+  for (let i = 0; i < count; i++) {
+    const item = document.createElement('span');
+    item.className = 'halloween-item';
+    item.textContent = symbols[i % symbols.length];
+    item.style.left = Math.random() * 95 + '%';
+    item.style.fontSize = (Math.random() * 14 + 16) + 'px';
+    item.style.animationDuration = (Math.random() * 10 + 14) + 's';
+    item.style.animationDelay = (Math.random() * 14) + 's';
+    container.appendChild(item);
+  }
+  document.body.appendChild(container);
+
+  const spider = document.createElement('div');
+  spider.className = 'halloween-spider';
+  spider.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(spider);
+}
+
+// Initialize search
 function initializeSearch() {
   const searchInput = document.querySelector('.search-input');
   const searchResults = document.querySelector('.search-results');
@@ -86,39 +145,21 @@ function initializeSearch() {
     return text.replace(regex, '<mark class="search-highlight">$1</mark>');
   }
   function getSearchableContent() {
+    // Sections are read from the page itself, so the search stays in sync with the text
+    const clean = (t) => (t || '').replace(/\s+/g, ' ').trim();
+    const sectionText = (id) => clean(Array.from(document.querySelectorAll(`#${id} p`)).filter(p => !p.closest('.search-no-results')).map(p => p.textContent).join(' '));
     const content = [
-      { 
-        title: 'Описание', 
-        content: 'СПК "Спортзнак" — это уютный посёлок в Наро-Фоминском районе Московской области.', 
-        url: '#description',
-        type: 'section'
-      },
-      { 
-        title: 'Развитие', 
-        content: 'Собрания для обсуждения планов по улучшению территории, дороги, освещение, мусорные площадки', 
-        url: '#development',
-        type: 'section'
-      },
-      { 
-        title: 'Галерея', 
-        content: 'Главные ворота, Северная улица, Центральная улица, Волчий тупик, Альтернативный въезд, Площадка, Детская площадка, Волейбольная площадка, Баскетбольная площадка, Спортзнаковский пруд, Место для отдыха на пруду, Улица Виктора Цоя, Стрелковый тупик', 
+      { title: 'Описание', content: sectionText('description'), url: '#description', type: 'section' },
+      { title: 'Развитие', content: sectionText('development'), url: '#development', type: 'section' },
+      {
+        title: 'Галерея',
+        content: clean(Array.from(document.querySelectorAll('.gallery img')).map(img => img.alt).join(', ')),
         url: '#gallery-section',
         type: 'section'
       },
-      { 
-        title: 'Расположение', 
-        content: 'Карта расположения СПК Спортзнак в Наро-Фоминском районе Московской области Наро-Фоминск', 
-        url: '#map',
-        type: 'section'
-      },
-      { 
-        title: 'Контакты', 
-        content: 'Председатель Фаттяхетдинов Рушан Шамилевич, телефон +7 916 600-94-60, почта email spksportznak@mail.ru', 
-        url: '#contacts',
-        type: 'section'
-      }
-
-    ];
+      { title: 'Расположение', content: 'Карта расположения СПК Спортзнак в Наро-Фоминском районе Московской области Наро-Фоминск', url: '#map', type: 'section' },
+      { title: 'Контакты', content: sectionText('contacts') + ' телефон почта email', url: '#contacts', type: 'section' }
+    ].filter(item => item.content);
     const newsItems = document.querySelectorAll('.news-item');
     newsItems.forEach((item, index) => {
       const title = item.querySelector('h3')?.textContent || '';
@@ -202,24 +243,11 @@ function initializeSearch() {
   document.addEventListener('keydown', function(e) { if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); searchInput.focus(); searchInput.select(); } });
 }
 
-// Performance monitoring
-function initializePerformanceMonitoring() {
-  if ('performance' in window && 'PerformanceObserver' in window) {
-    const lcpObserver = new PerformanceObserver((list) => { const entries = list.getEntries(); const lastEntry = entries[entries.length - 1]; console.log('LCP:', lastEntry && lastEntry.startTime); });
-    lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-    const fidObserver = new PerformanceObserver((list) => { for (const entry of list.getEntries()) { console.log('FID:', entry.processingStart - entry.startTime); } });
-    fidObserver.observe({ entryTypes: ['first-input'] });
-    const clsObserver = new PerformanceObserver((list) => { let clsValue = 0; for (const entry of list.getEntries()) { if (!entry.hadRecentInput) { clsValue += entry.value; } } console.log('CLS:', clsValue); });
-    clsObserver.observe({ entryTypes: ['layout-shift'] });
-  }
-}
-
 // Service worker registration (keeps original behavior)
 if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
-      .then((registration) => { console.log('Service Worker registered:', registration); })
-      .catch((error) => { console.log('Service Worker registration failed:', error); });
+      .catch((error) => { console.warn('Service Worker registration failed:', error); });
   });
 }
 
@@ -227,65 +255,57 @@ if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.p
 function initializeGalleryModal() {
   let modal = document.getElementById('imageModal');
   let modalImage = document.getElementById('modalImage');
-  let galleryImages = Array.from(document.querySelectorAll('.gallery img'));
-  if (!modal) modal = document.getElementById('imageModal');
-  if (!modalImage) modalImage = document.getElementById('modalImage');
   if (!modal || !modalImage) return;
   let startX = 0, endX = 0;
   modal.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
   modal.addEventListener('touchend', (e) => { endX = e.changedTouches[0].clientX; const diffX = startX - endX; if (Math.abs(diffX) > 50) { if (diffX > 0) { window.navigateImage(1); } else { window.navigateImage(-1); } } });
   if (!modal.hasAttribute('data-click-handler')) { modal.setAttribute('data-click-handler', 'true'); window.addEventListener('click', (e) => { if (e.target === modal) { window.closeModal(); } }); }
-  if (!document.documentElement.hasAttribute('data-keyboard-handler')) { document.documentElement.setAttribute('data-keyboard-handler', 'true'); window.addEventListener('keydown', (e) => { const currentModal = document.getElementById('imageModal'); if (currentModal && currentModal.style.display === 'flex') { if (e.key === 'Escape') { window.closeModal(); } else if (e.key === 'ArrowLeft') { window.navigateImage(-1); } else if (e.key === 'ArrowRight') { window.navigateImage(1); } } }); }
+  if (!document.documentElement.hasAttribute('data-keyboard-handler')) { document.documentElement.setAttribute('data-keyboard-handler', 'true'); window.addEventListener('keydown', (e) => { const currentModal = document.getElementById('imageModal'); if (currentModal && currentModal.style.display === 'flex') { if (e.key === 'Escape') { window.closeModal(); } else if (e.key === 'Tab') { const focusable = Array.from(currentModal.querySelectorAll('button')); if (focusable.length) { const first = focusable[0], last = focusable[focusable.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } else if (!currentModal.contains(document.activeElement)) { e.preventDefault(); first.focus(); } } } else if (e.key === 'ArrowLeft') { window.navigateImage(-1); } else if (e.key === 'ArrowRight') { window.navigateImage(1); } } }); }
   modal.addEventListener('wheel', (e) => { e.preventDefault(); if (e.deltaY > 0) { window.navigateImage(1); } else { window.navigateImage(-1); } });
-  modalImage.addEventListener('error', () => { modalImage.alt = 'Ошибка загрузки изображения'; console.error('Failed to load image:', modalImage.src); });
+  modalImage.addEventListener('error', () => { if (!modalImage.getAttribute('src')) return; modalImage.alt = 'Ошибка загрузки изображения'; console.error('Failed to load image:', modalImage.src); });
 }
 
-// Functions made global for inline handlers relied upon in HTML
-window.handleImageClick = function(event, src) {
-  if (event) event.preventDefault();
-  let modal = document.getElementById('imageModal');
-  let modalImage = document.getElementById('modalImage');
-  let modalCaption = document.getElementById('modalCaption');
-  let galleryImages = Array.from(document.querySelectorAll('.gallery img'));
+let lastFocusedElement = null;
+
+function showGalleryImage(index) {
+  const modalImage = document.getElementById('modalImage');
+  const modalCaption = document.getElementById('modalCaption');
+  const modal = document.getElementById('imageModal');
+  const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
   if (!modal || !modalImage || galleryImages.length === 0) return;
-  const imgElement = galleryImages.find(img => { const imgSrc = img.getAttribute('src') || img.src; return imgSrc.includes(src) || imgSrc.endsWith(src); });
-  if (imgElement) {
-    const currentImageIndex = galleryImages.indexOf(imgElement);
-    modalImage.src = imgElement.src;
-    modalImage.alt = imgElement.alt || 'Изображение галереи';
-    if (modalCaption) { modalCaption.textContent = imgElement.getAttribute('data-caption') || ''; }
-    modal.style.display = 'flex';
-    modal.setAttribute('aria-hidden', 'false');
-    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.paddingRight = scrollBarWidth + 'px';
-    document.body.style.overflow = 'hidden';
-    const closeBtn = modal.querySelector('.close'); if (closeBtn) closeBtn.focus();
-    modal.dataset.currentIndex = currentImageIndex;
-    modal.dataset.galleryImages = galleryImages.length;
-  }
+  const count = galleryImages.length;
+  const i = ((index % count) + count) % count;
+  const img = galleryImages[i];
+  modalImage.src = img.dataset.full || img.getAttribute('src');
+  modalImage.alt = img.alt || 'Изображение галереи';
+  if (modalCaption) { modalCaption.textContent = img.getAttribute('data-caption') || ''; }
+  modal.dataset.currentIndex = i;
+}
+
+window.openGalleryImage = function(imgElement) {
+  const modal = document.getElementById('imageModal');
+  const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
+  const index = galleryImages.indexOf(imgElement);
+  if (!modal || index === -1) return;
+  lastFocusedElement = document.activeElement;
+  showGalleryImage(index);
+  modal.style.display = 'flex';
+  modal.setAttribute('aria-hidden', 'false');
+  const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.paddingRight = scrollBarWidth + 'px';
+  document.body.style.overflow = 'hidden';
+  const closeBtn = modal.querySelector('.close'); if (closeBtn) closeBtn.focus();
 };
 
 window.navigateImage = function(direction) {
   const modal = document.getElementById('imageModal');
-  const modalImage = document.getElementById('modalImage');
-  const modalCaption = document.getElementById('modalCaption');
-  if (!modal || !modalImage) return;
-  const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
-  if (galleryImages.length === 0) return;
-  let currentIndex = parseInt(modal.dataset.currentIndex || '0');
-  currentIndex += direction;
-  if (currentIndex < 0) { currentIndex = galleryImages.length - 1; }
-  else if (currentIndex >= galleryImages.length) { currentIndex = 0; }
-  const img = galleryImages[currentIndex];
-  modalImage.src = img.src;
-  modalImage.alt = img.alt || 'Изображение галереи';
-  if (modalCaption) { modalCaption.textContent = img.getAttribute('data-caption') || ''; }
-  modal.dataset.currentIndex = currentIndex;
+  if (!modal) return;
+  showGalleryImage(parseInt(modal.dataset.currentIndex || '0', 10) + direction);
 };
 
 window.closeModal = function() {
   const modal = document.getElementById('imageModal');
-  if (!modal) return;
+  if (!modal || modal.style.display !== 'flex') return;
   modal.classList.add('fade-out');
   modal.setAttribute('aria-hidden', 'true');
   const modalContent = modal.querySelector('.modal-content');
@@ -296,6 +316,7 @@ window.closeModal = function() {
     if (modalContent) { modalContent.classList.remove('zoom-out'); }
     document.body.style.overflow = '';
     document.body.style.paddingRight = '';
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') { lastFocusedElement.focus(); }
   }, 300);
 };
 
@@ -311,9 +332,10 @@ function getScrollbarWidth() { return window.innerWidth - document.documentEleme
 // Initialize handlers on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
   safeExecute(() => initializeSearch());
-  safeExecute(() => initializePerformanceMonitoring());
   safeExecute(() => createSnowflakes());
   safeExecute(() => createAnniversaryEffects());
+  safeExecute(() => createHalloweenEffects());
+  document.querySelectorAll('.current-year').forEach(el => { el.textContent = new Date().getFullYear(); });
   const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
   const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, observerOptions);
   document.querySelectorAll('.block').forEach(block => { observer.observe(block); });
@@ -322,8 +344,8 @@ document.addEventListener('DOMContentLoaded', function() {
     img.style.animationDelay = `${index * 0.1}s`;
     img.addEventListener('load', () => { img.classList.add('loaded'); });
     img.addEventListener('error', function() { this.style.opacity = '0.5'; console.error('Failed to load image:', this.src); });
-    img.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); const src = this.getAttribute('src'); if (src) { handleImageClick(e, src); } } });
-    img.addEventListener('click', function(e) { const src = this.getAttribute('src'); if (src) { handleImageClick(e, src); } });
+    img.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGalleryImage(this); } });
+    img.addEventListener('click', function(e) { e.preventDefault(); openGalleryImage(this); });
     if (img.complete && img.naturalHeight !== 0) { img.classList.add('loaded'); }
   });
   initializeGalleryModal();

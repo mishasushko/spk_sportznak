@@ -1,6 +1,10 @@
 {
   "name": "СПК Спортзнак",
   "short_name": "Спортзнак",
+  "description": "Официальный сайт СПК \"Спортзнак\" в Наро-Фоминском районе Московской области",
+  "lang": "ru",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -12,10 +16,16 @@
       "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#181818",
+  "background_color": "#181818",
   "display": "standalone"
 }

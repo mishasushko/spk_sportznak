@@ -7,13 +7,13 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content='Нет подключения к интернету — СПК "Спортзнак". Проверьте сеть и обновите страницу.'>
 
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
 
-  <link rel="preload" href="./fonts/CaviarDreams_Bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="./fonts/Novartis.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=1.2">
+  <link rel="preload" href="/fonts/CaviarDreams_Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Novartis.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/styles.css?v=1.3">
 
   <title>Нет подключения | СПК "Спортзнак"</title>
 </head>
@@ -52,10 +52,11 @@
 
     <footer class="copyright">
       <div class="footer-main">
-        <span>© 1990-2026 СПК "Спортзнак". Все права защищены.</span>
-        <img class="russian-flag" src="flag-russia.png" alt="Флаг России" width="45" height="30" decoding="async">
+        <span>© 1990-<span class="current-year">2026</span> СПК "Спортзнак". Все права защищены.</span>
+        <img class="russian-flag" src="/flag-russia.png" alt="Флаг России" width="45" height="30" decoding="async">
       </div>
     </footer>
   </div>
+  <script>document.querySelectorAll('.current-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });</script>
 </body>
 </html>

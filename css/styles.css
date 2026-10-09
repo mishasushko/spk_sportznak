@@ -1707,3 +1707,163 @@
     .offline-card,
     .offline-card h1 { animation: none; }
 }
+
+/* ===== Исправления 2026-10 ===== */
+.gallery {
+    list-style: none;
+}
+.gallery li {
+    display: flex;
+    flex-shrink: 0;
+}
+.contact-text p > span {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+@media (max-width: 768px) {
+    .contact-text p {
+        align-items: flex-start;
+    }
+    .contact-text p .fas {
+        margin-top: 0.25em;
+    }
+}
+.close {
+    background: none;
+    border: none;
+    padding: 0 6px;
+    line-height: 1;
+    font-family: inherit;
+    z-index: 2;
+}
+.close:focus-visible,
+.nav-arrow:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+.news-container:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+    border-radius: 10px;
+}
+.news-item--highlight {
+    border-left-color: #ffd700;
+    background: rgba(255, 215, 0, 0.05);
+}
+.anniversary-badge[hidden] {
+    display: none !important;
+}
+
+/* ===== Хэллоуинский стиль (включается только в октябре, см. js/main.js) ===== */
+html.theme-halloween {
+    --accent-color: #ff7a1a;
+    --accent-hover: #e0620a;
+    --accent-light: rgba(255, 122, 26, 0.12);
+    --halloween-glow: rgba(140, 60, 220, 0.25);
+}
+html.theme-halloween body {
+    background:
+        radial-gradient(ellipse at top, var(--halloween-glow), transparent 60%),
+        linear-gradient(to bottom, var(--bg-color), var(--bg-secondary));
+    background-attachment: fixed;
+}
+@media (prefers-color-scheme: light) {
+    html.theme-halloween {
+        --accent-color: #c2410c;
+        --accent-hover: #9a3412;
+        --accent-light: rgba(194, 65, 12, 0.1);
+        --halloween-glow: rgba(140, 60, 220, 0.12);
+    }
+}
+html.theme-halloween h1 {
+    text-shadow: 0 0 18px rgba(255, 122, 26, 0.45), 2px 2px 10px var(--text-shadow);
+}
+html.theme-halloween .block {
+    position: relative;
+}
+html.theme-halloween .block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    opacity: 0.35;
+    background:
+        repeating-radial-gradient(circle at 100% 0, transparent 0 10px, currentColor 10px 11px),
+        repeating-conic-gradient(from 180deg at 100% 0, transparent 0 13deg, currentColor 13deg 14deg, transparent 14deg 22.5deg);
+    -webkit-mask: radial-gradient(circle at 100% 0, #000 0 68px, transparent 69px);
+    mask: radial-gradient(circle at 100% 0, #000 0 68px, transparent 69px);
+    border-top-right-radius: inherit;
+}
+html.theme-halloween .news-item {
+    border-left-color: var(--accent-color);
+}
+html.theme-halloween .news-item--highlight {
+    border-left-color: #ffd700;
+}
+.halloween-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff7a1a, #7c3aed);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 122, 26, 0.45);
+}
+#halloween-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 90; /* под окном просмотра фото (100) */
+}
+.halloween-item {
+    position: absolute;
+    bottom: -60px;
+    opacity: 0;
+    pointer-events: none;
+    animation: halloween-float linear infinite;
+    will-change: transform, opacity;
+}
+@keyframes halloween-float {
+    0% { transform: translate(0, 0) rotate(-8deg); opacity: 0; }
+    10% { opacity: 0.55; }
+    50% { transform: translate(30px, -55vh) rotate(8deg); }
+    90% { opacity: 0.55; }
+    100% { transform: translate(-20px, calc(-100vh - 80px)) rotate(-8deg); opacity: 0; }
+}
+.halloween-spider {
+    position: fixed;
+    top: 0;
+    right: 8%;
+    width: 2px;
+    height: 70px;
+    background: rgba(200, 200, 200, 0.5);
+    pointer-events: none;
+    z-index: 90;
+    transform-origin: top center;
+    animation: spider-drop 6s ease-in-out infinite;
+}
+.halloween-spider::after {
+    content: "🕷️";
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+}
+@keyframes spider-drop {
+    0%, 100% { height: 50px; }
+    50% { height: 120px; }
+}
+@media (max-width: 480px) {
+    .halloween-spider { right: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .halloween-item,
+    .halloween-spider { animation: none; display: none; }
+}

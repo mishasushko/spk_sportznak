@@ -1,22 +1,25 @@
-const CACHE_NAME = 'spk-sportznak-v6';
+const CACHE_NAME = 'spk-sportznak-v7';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/offline.html',
-  '/css/styles.css?v=1.2',
-  '/js/main.js?v=1.1',
+  '/css/styles.css?v=1.3',
+  '/js/main.js?v=1.2',
   '/site.webmanifest',
   '/favicon.ico',
-  '/flag-russia.png'
+  '/flag-russia.png',
+  '/fonts/CaviarDreams_Bold.woff2',
+  '/fonts/Novartis.woff2'
 ];
 
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE).catch(() => {
-        // Some resources may fail (analytics endpoints) — ignore
-      });
+      // Cache each file separately so one missing file does not break the whole precache
+      return Promise.all(ASSETS_TO_CACHE.map((url) =>
+        cache.add(url).catch((err) => console.warn('Precache failed:', url, err))
+      ));
     })
   );
   self.skipWaiting();
