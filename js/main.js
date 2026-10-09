@@ -337,11 +337,18 @@ function initializeSectionNav() {
   const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      links.forEach(link => link.classList.remove('active'));
       const active = byId.get(entry.target.id);
-      if (active) {
-        active.classList.add('active');
-        active.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      if (!active || active.classList.contains('active')) return;
+      links.forEach(link => link.classList.remove('active'));
+      active.classList.add('active');
+      // Scroll only the menu strip sideways. scrollIntoView() would also scroll the page
+      // and fight the visitor's own scrolling, which made the page jerk.
+      const list = active.closest('ul');
+      if (list && list.scrollWidth > list.clientWidth) {
+        const listRect = list.getBoundingClientRect();
+        const linkRect = active.getBoundingClientRect();
+        const left = list.scrollLeft + (linkRect.left - listRect.left) - (listRect.width - linkRect.width) / 2;
+        list.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
       }
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
